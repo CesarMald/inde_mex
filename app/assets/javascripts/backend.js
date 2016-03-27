@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min.js
 //= require jquery.metisMenu.js
@@ -18,3 +19,4 @@
 //= require pace.min.js
 //= require jquery-ui
 //= require turbolinks
+

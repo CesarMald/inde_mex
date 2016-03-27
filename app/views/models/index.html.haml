@@ -1,0 +1,36 @@
+%div.ibox-title
+  %h5= "Listado de Modelos"
+  = link_to "Nuevo", new_model_path, class: "btn btn-primary ca-crear"
+  
+%p#notice= notice
+
+%div.ibox-content
+  %div.row
+    %div.col-sm-4
+      %div.input-group
+        %input{type: "text", placeholder: "Search", class: "input-sm form-control"}
+        %span.input-group-btn
+          %button{type: "button", class: "btn btn-sm btn-primary"} Buscar
+
+
+  %div.table-responsive
+    %table.table.table-striped
+      %thead
+        %th ID
+        %th Nombre
+        %th Acciones
+      %tbody
+        - @models.each do |model|
+          %tr
+            %td= model.id
+            %td= model.name
+            %td
+              = link_to model, class: "ca-actions" do
+                %i.fa.fa-file-text.text-navy
+              = link_to edit_model_path(model), class: "ca-actions" do
+                %i.fa.fa-pencil.text-navy
+              = link_to model, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
+                %i.fa.fa-remove.text-navy
+
+
+

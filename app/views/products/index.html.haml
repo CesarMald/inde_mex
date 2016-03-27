@@ -1,0 +1,55 @@
+%div.ibox-title
+  %h5= "Listado de Productos"
+  = link_to "Nuevo", new_product_path, class: "btn btn-primary ca-crear"
+
+%p#notice= notice
+
+%div.ibox-content
+  %div.row
+    %div.col-sm-4.mb-xs
+      %select.input-sm.form-control.input-s-sm.inline
+        %option{:value => "0"} Modelos
+        %option{:value => "1"} Option 2
+        %option{:value => "2"} Option 3
+        %option{:value => "3"} Option 4
+    %div.col-sm-4.mb-xs
+      %select.input-sm.form-control.input-s-sm.inline
+        %option{:value => "0"} Marcas
+        %option{:value => "1"} Option 2
+        %option{:value => "2"} Option 3
+        %option{:value => "3"} Option 4
+    %div.col-sm-4
+      %div.input-group
+        %input{type: "text", placeholder: "Search", class: "input-sm form-control"}
+        %span.input-group-btn
+          %button{type: "button", class: "btn btn-sm btn-primary"} Buscar
+
+
+  %div.table-responsive
+    %table.table.table-striped
+      %thead
+        %th ID
+        %th Nombre
+        %th Código
+        %th Modelo
+        %th Marca
+        %th Precio Mayorista
+        %th Precio Regular
+        %th Acciones
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.id
+            %td= product.name
+            %td= product.code
+            %td= product.model.name
+            %td= product.brand.name
+            %td= product.regular_price
+            %td= product.offer_price
+            %td
+              = link_to product, class: "ca-actions" do
+                %i.fa.fa-file-text.text-navy
+              = link_to edit_product_path(product), class: "ca-actions" do
+                %i.fa.fa-pencil.text.navy
+              = link_to product, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
+                %i.fa.fa-remove.text-navy

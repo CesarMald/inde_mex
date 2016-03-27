@@ -1,0 +1,57 @@
+%nav.navbar-default.navbar-static-side{role: "navigation"}
+  %div.sidebar-collapse
+    %ul.nav#side-menu
+      %li.nav-header
+        %div.dropdown.profile-element
+          %span
+            = image_tag "profile_small.jpg", {alt: "image", class: "img-circle"}
+          %a.dropdown-toggle{"data-toggle" => "dropdown", "href" => "#"}
+            %span.clear
+              %span.block.m-t-xs
+                %strong.font-bold= "David Williams"
+              %span.text-muted.text-xs.block= "Art Director"
+        %div.logo-element= "IN+"
+      %li{class: "#{set_active_class("orders")}"}
+        = link_to "#" do
+          %i.fa.fa-list-ul
+          %span.nav-label= "Listado de Órdenes"
+      %li{class: "#{set_active_class("products")}"}
+        = link_to products_path do
+          %i.fa.fa-th
+          %span.nav-label= "Catálogo de Productos"
+      %li{class: "#{set_active_class("users")}"}
+        = link_to users_path do
+          %i.fa.fa-users
+          %span.nav-label= "Catálogo de Usuarios"
+      %li{class: "#{set_active_class("collections")}"}
+        = link_to collections_path do
+          %i.fa.fa-database
+          %span.nav-label= "Catálogo de Colecciones"
+      %li{class: "#{set_active_class("models")}"}
+        = link_to models_path do
+          %i.fa.fa-mobile
+          %span.nav-label= "Catálogo de Modelos"
+      %li{class: "#{set_active_class("brands")}"}
+        = link_to brands_path do
+          %i.fa.fa-apple
+          %span.nav-label= "Catálogo de Marcas"
+      %li{class: "#{set_active_class("home")}"}
+        = link_to "#" do
+          %i.fa.fa-magic
+          %span.nav-label= "Home Builder"
+          %span.fa.arrow
+        %ul.nav.nav-second-level
+          %li
+            %a{:href => "#"} Slider Principal
+          %li
+            %a{:href => ""} Sección de Marcas
+          %li
+            %a{:href => "#"} Primer Banner
+          %li
+            %a{:href => "#"} Segundo Banner
+          %li
+            %a{:href => "#"} Tercer Banner
+          %li
+            %a{:href => "#"} Cuarto Banner
+
+

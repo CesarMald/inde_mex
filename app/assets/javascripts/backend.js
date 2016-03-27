@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min.js
+//= require jquery.metisMenu.js
+//= require inspinia.js
+//= require pace.min.js
 //= require jquery-ui
 //= require turbolinks
-//= require_tree .

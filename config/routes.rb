@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :collections
-  resources :users
-  resources :line_items
-  resources :orders
-  resources :models
-  resources :brands
-  resources :products
+  scope '/admin' do
+    resources :collections
+    resources :users
+    resources :line_items
+    resources :orders
+    resources :models
+    resources :brands
+    resources :products
+  end
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

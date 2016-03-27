@@ -1,4 +1,4 @@
-class CollectionsController < ApplicationController
+class CollectionsController < AdminController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
   # GET /collections
@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
+        format.html { redirect_to collections_path, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @collection }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
+        format.html { redirect_to collections_path, notice: 'Collection was successfully updated.' }
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:title, :description, :text_link, :url_link)
+      params.require(:collection).permit(:name, :description, :text_link, :url_link)
     end
 end

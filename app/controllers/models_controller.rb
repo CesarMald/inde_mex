@@ -1,4 +1,4 @@
-class ModelsController < ApplicationController
+class ModelsController < AdminController
   before_action :set_model, only: [:show, :edit, :update, :destroy]
 
   # GET /models
@@ -28,7 +28,7 @@ class ModelsController < ApplicationController
 
     respond_to do |format|
       if @model.save
-        format.html { redirect_to @model, notice: 'Model was successfully created.' }
+        format.html { redirect_to models_path, notice: 'Model was successfully created.' }
         format.json { render :show, status: :created, location: @model }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ModelsController < ApplicationController
   def update
     respond_to do |format|
       if @model.update(model_params)
-        format.html { redirect_to @model, notice: 'Model was successfully updated.' }
+        format.html { redirect_to models_path, notice: 'Model was successfully updated.' }
         format.json { render :show, status: :ok, location: @model }
       else
         format.html { render :edit }

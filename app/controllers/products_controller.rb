@@ -28,7 +28,7 @@ class ProductsController < AdminController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to products_url, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ProductsController < AdminController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:brand_id, :model_id, :name, :code, :regular_price, :offer_price, :description)
+      params.require(:product).permit(:brand_id, :model_id, :collection_id, :name, :code, :regular_price, :offer_price, :description)
     end
 end

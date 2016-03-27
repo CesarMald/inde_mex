@@ -1,0 +1,40 @@
+= form_for(@product) do |f| 
+  - if @product.errors.any? 
+    %div#error_explanation
+      %h2= pluralize(@product.errors.count, "error") + "prohibited this product from being saved:"
+      %ul
+        - @product.errors.full_messages.each do |message| 
+          %li= message
+
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :name, placeholder: "Nombre", class: "form-control", required: true
+
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :code, placeholder: "Código", class: "form-control", required: true
+
+  %div.col-sm-6
+    = f.select :brand_id, brands_combo, {prompt: "Marca"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
+
+  %div.form-group.col-sm-6
+    = f.select :model_id, models_combo, {prompt: "Modelo"},  {class: "ca-forms input-sm form-control input-s-sminline", required: true}
+
+  %div.form-group.col-sm-12
+    = f.select :collection_id, collections_combo, {prompt: "Colección"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
+  
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :regular_price, placeholder: "Precio Normal", class: "form-control"
+
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :offer_price, placeholder: "Precio Mayorista", class: "form-control"
+
+  %div.col-sm-12
+    %div.form-group
+      = f.text_area :description, placeholder: "Descripción", class: "form-control"
+
+  %div.col-sm-12
+    = link_to "Cancelar", collections_path, class: "btn btn-white"
+    = f.submit "Guardar Cambios", class: "btn btn-primary ca-suc"

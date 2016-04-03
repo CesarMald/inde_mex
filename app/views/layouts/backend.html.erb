@@ -38,8 +38,8 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="ibox float-e-margins">
-                <p class="notice"><%= notice %></p>
-                <p class="alert"><%= alert %></p>
+                <% if flash[:notice] %><p class="notice"><%= notice %></p><% end %>
+                <% if flash[:alert] %><p class="alert"><%= alert %></p><% end %>
                 <%= yield %>
               </div>
             </div>

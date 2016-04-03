@@ -4,7 +4,8 @@ class ModelsController < AdminController
   # GET /models
   # GET /models.json
   def index
-    @models = Model.all
+    @q = Model.ransack(params[:q])
+    @models = @q.result(distinct: true)
   end
 
   # GET /models/1

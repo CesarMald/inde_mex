@@ -4,11 +4,12 @@
 
 %div.ibox-content
   %div.row
-    %div.col-sm-4
-      %div.input-group
-        %input{type: "text", placeholder: "Search", class: "input-sm form-control"}
-        %span.input-group-btn
-          %button{type: "button", class: "btn btn-sm btn-primary"} Buscar
+    = search_form_for @q, remote: true do |f|
+      %div.col-sm-4
+        %div.input-group
+          = f.text_field :first_name_or_last_name_or_email_cont, {placeholder: "Search", class: "input-sm form-control"}
+          %span.input-group-btn
+            = f.submit "Buscar", class: "btn btn-sm btn-primary" 
 
   %div.table-responsive
     %table.table.table-striped
@@ -18,17 +19,5 @@
         %td Email
         %td Rol
         %td Acciones
-      %tbody
-        - @users.each do |user|
-          %tr
-            %td= user.id
-            %td= user.complete_name
-            %td= user.email
-            %td= user.role.titleize
-            %td
-              = link_to user, class: "ca-actions" do
-                %i.fa.fa-file-text.text-navy
-              = link_to edit_user_path(user), class: "ca-actions" do
-                %i.fa.fa-pencil.text.navy
-              = link_to user, { method: :delete, data: { confirm: "¿Estás seguro?" } } do
-                %i.fa.fa-remove.text-navy
+      %tbody#users_result
+        = render 'users', users: @users

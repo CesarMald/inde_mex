@@ -4,7 +4,8 @@ class BrandsController < AdminController
   # GET /brands
   # GET /brands.json
   def index
-    @brands = Brand.all
+    @q = Brand.ransack(params[:q])
+    @brands = @q.result(distinct: true)
   end
 
   # GET /brands/1

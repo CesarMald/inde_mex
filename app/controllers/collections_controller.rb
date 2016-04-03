@@ -4,7 +4,8 @@ class CollectionsController < AdminController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+    @q = Collection.ransack(params[:q])
+    @collections = @q.result(distinct: true)
   end
 
   # GET /collections/1

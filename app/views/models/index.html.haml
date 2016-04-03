@@ -4,12 +4,12 @@
   
 %div.ibox-content
   %div.row
-    %div.col-sm-4
-      %div.input-group
-        %input{type: "text", placeholder: "Search", class: "input-sm form-control"}
-        %span.input-group-btn
-          %button{type: "button", class: "btn btn-sm btn-primary"} Buscar
-
+    = search_form_for @q, remote: true do |f|
+      %div.col-sm-4
+        %div.input-group
+          = f.text_field :name_cont, { placeholder: "Search", class: "input-sm form-control"}
+          %span.input-group-btn
+            = f.submit "Buscar", class: "btn btn-sm btn-primary" 
 
   %div.table-responsive
     %table.table.table-striped
@@ -17,18 +17,5 @@
         %th ID
         %th Nombre
         %th Acciones
-      %tbody
-        - @models.each do |model|
-          %tr
-            %td= model.id
-            %td= model.name
-            %td
-              = link_to model, class: "ca-actions" do
-                %i.fa.fa-file-text.text-navy
-              = link_to edit_model_path(model), class: "ca-actions" do
-                %i.fa.fa-pencil.text-navy
-              = link_to model, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
-                %i.fa.fa-remove.text-navy
-
-
-
+      %tbody#models_result
+        = render 'models', models: @models

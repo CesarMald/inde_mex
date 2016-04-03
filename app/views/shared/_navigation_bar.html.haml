@@ -8,8 +8,8 @@
           %a.dropdown-toggle{"data-toggle" => "dropdown", "href" => "#"}
             %span.clear
               %span.block.m-t-xs
-                %strong.font-bold= "David Williams"
-              %span.text-muted.text-xs.block= "Art Director"
+                %strong.font-bold= current_user.complete_name
+              %span.text-muted.text-xs.block= current_user.email 
         %div.logo-element= "IN+"
       %li{class: "#{set_active_class("orders")}"}
         = link_to "#" do

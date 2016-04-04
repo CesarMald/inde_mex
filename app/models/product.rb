@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
-  belongs_to :brand
-  belongs_to :model
   belongs_to :collection
-
-  validates :name, :code, :brand, :model, :collection, :regular_price, :offer_price, presence: true
+  belongs_to :model
+  has_one :brand, through: :model
   has_many :line_items
+
+  validates :name, :code, :brand, :collection, :regular_price, :offer_price, presence: true
 end

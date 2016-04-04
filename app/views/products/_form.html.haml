@@ -15,7 +15,7 @@
       = f.text_field :code, placeholder: "Código", class: "form-control", required: true
 
   %div.col-sm-6
-    = f.select :brand_id, brands_combo, {prompt: "Marca"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
+    = select_tag :brand_id, options_for_select(brands_combo), { class: "ca-forms input-sm form-control input-s-sminline", prompt: "Marca", required: true}
 
   %div.form-group.col-sm-6
     = f.select :model_id, models_combo, {prompt: "Modelo"},  {class: "ca-forms input-sm form-control input-s-sminline", required: true}

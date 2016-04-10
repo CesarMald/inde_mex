@@ -18,5 +18,9 @@
 //= require inspinia.js
 //= require pace.min.js
 //= require jquery-ui
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require products
+//= require pictures
 //= require turbolinks
 

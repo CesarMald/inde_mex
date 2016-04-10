@@ -16,10 +16,12 @@ class ProductsController < AdminController
   # GET /products/new
   def new
     @product = Product.new
+    @products = @product.related_products.build
   end
 
   # GET /products/1/edit
   def edit
+    @pictures = @product.pictures
   end
 
   # POST /products
@@ -70,6 +72,8 @@ class ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:model_id, :collection_id, :name, :code, :regular_price, :offer_price, :description)
+      params[:product][:related_product_ids] ||= {}
+      params[:product][:related_product_ids] = params[:product][:related_product_ids].values
+      params.require(:product).permit(:model_id, :collection_id, :name, :code, :regular_price, :offer_price, :description, :on_offer, related_product_ids: [])
     end
 end

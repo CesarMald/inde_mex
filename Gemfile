@@ -28,6 +28,8 @@ gem 'haml'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'ransack'
+gem 'jquery-fileupload-rails'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

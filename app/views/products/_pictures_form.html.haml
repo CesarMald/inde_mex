@@ -1,0 +1,18 @@
+%div.col-sm-12
+  %div.ibox.float-e-margins
+    %div.ibox-title
+      %h5 HAZ CLICK PARA AGREGAR O ARRASTRA LA IMÁGENES SOBRE LA ZONA GRIS
+    %div.ibox-content
+      %div.row
+        %div.col-sm-12
+          %div.ca-dragabble-zone
+            = form_for Picture.new do |f|
+              = f.hidden_field :picturable_id, value: product.id
+              = f.hidden_field :picturable_type, value: "Product"
+              = f.file_field :image, multiple: true, name: "picture[image]"
+            = render 'shared/script_template'
+          %div.attachment
+            - @pictures.each do |picture|
+              = render 'pictures/picture', picture: picture
+          %div.clearfix
+

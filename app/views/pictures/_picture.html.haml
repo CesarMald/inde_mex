@@ -1,0 +1,9 @@
+%div.file-box{id: "picture_#{picture.id}"}
+  %div.file
+    %span
+      %span.corner
+      %div.image
+        = image_tag picture.image_url, class: "img-responsive"
+      = link_to picture_path(picture), method: :delete, class: "ca-del", remote: true, data: { confirm: "¿Estás seguro?" } do
+        %i.fa.fa-times
+

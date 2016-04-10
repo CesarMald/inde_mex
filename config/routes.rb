@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
+
   devise_for :users
   scope '/admin' do
     resources :collections
     resources :users
     resources :line_items
     resources :orders
-    resources :models
-    resources :brands
+    resources :models 
+    resources :brands do
+      get 'search_models', on: :member
+    end
     resources :products
+    resources :pictures, only: [:create, :destroy]
   end
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -14,5 +14,7 @@
  *= require font-awesome
  *= require animate
  *= require style
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
  *= require_self
  */

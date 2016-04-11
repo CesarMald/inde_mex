@@ -1,0 +1,7 @@
+var models_ids = <%= @models.to_h.to_json.html_safe %>
+
+$("#product_model_id").empty()
+$("#product_model_id").append($("<option></option>").attr("value", "").text("Modelo"));
+for(var key in models_ids){
+  $("#product_model_id").append($("<option></option>").attr("value", models_ids[key]).text(key));
+}

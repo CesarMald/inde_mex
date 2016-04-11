@@ -1,0 +1,9 @@
+%div.col-sm-12.ca-lin
+  %div.row
+    %div.col-sm-10
+      %h5.ca-pap Artículos Relacionados
+    %div.col-sm-2
+      = link_to_add_fields "Agregar", "btn btn-primary pxs"
+- product.related_products.each do |r_product|
+  = render 'products_fields', product_id: r_product.id
+

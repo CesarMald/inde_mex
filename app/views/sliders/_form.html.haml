@@ -1,0 +1,30 @@
+%div.ibox-content.ca-hb
+  %div.row
+    = form_for slider do |f|
+      %div.col-sm-12
+        %h4
+          %i.fa.fa-picture-o 
+          = "SLIDE #{index + 1}"
+      %div.col-sm-12
+        %div.form-group
+          = f.text_field :title, placeholder: "Título", class: "form-control", required: true
+      %div.col-sm-12
+        %div.form-group
+          = f.text_field :link_text, placeholder: "Texto del botón", class: "form-control", required: true
+      %div.col-sm-12
+        %div.form-group
+          = f.text_field :url_link, placeholder: "Enlace del botón (http://idenmex.com/url-deseada)", class: "form-control", required: true
+      %div.col-sm-12
+        %div.form-group
+          = f.text_area :description, placeholder: "Descripción", class: "form-control"
+
+      %div.col-sm-12
+        %div.form-group
+          %label=image_label_for_slider(slider)
+          = image_tag(slider.picture.image_url) if slider.picture
+          = f.fields_for :picture do |f_fields|
+            = f_fields.file_field :image, class: "form-control"
+
+      %div.col-sm-12
+        = f.submit "Guardar Cambios", class: "btn btn-primary ca-suc"
+  

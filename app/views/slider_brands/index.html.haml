@@ -1,0 +1,20 @@
+%div.ibox-title
+  %h5 Sección de Marcas
+
+= form_for @slider_brand do |f|
+  %div.ibox-content.ca-hab
+    = render 'form', slider_brand: @slider_brand, f: f
+  %br
+  %div.ibox-title
+    %h5 Sliders de Marcas
+    = link_to_add_brands "Agregar", f, "btn btn-primary ca-crear"
+
+  #slider_items_section
+    - @items.each_with_index do |item, index|
+      = render 'slider_item_fields', f: f, item: item, number: index + 1
+
+  %div.ibox-content.ca-hab
+    %div.row
+      %div.col-sm-12
+        = f.submit "Guardar Cambios", class: "btn btn-primary ca-suc"
+        

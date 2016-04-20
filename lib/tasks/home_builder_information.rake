@@ -4,5 +4,8 @@ namespace :home_builder_information do
     5.times do 
       Slider.create!()
     end
+
+    slider_brand = SliderBrand.create!()
+    slider_brand.items.create!()
   end
 end

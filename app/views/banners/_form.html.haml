@@ -1,0 +1,42 @@
+%div.ibox-content.ca-hb
+  %div.row
+    %div.col-sm-12
+
+    %div.col-sm-12
+      %div.form-group
+        = f.text_field :title, placeholder: "Título", class: "form-control"
+    
+    %div.col-sm-12
+      %div.form-group
+        = f.text_area :description, placeholder: "Descripción", class: "form-control"
+    - if banner.complete?
+      %div.col-sm-12
+        %div.form-group
+          = f.text_field :link_text, placeholder: "Texto del botón", class: "form-control"
+
+    %div.col-sm-12
+      %div.form-group
+        = f.text_field :link_url, placeholder: "Url del botón", class: "form-control"
+
+
+%br
+%div.ibox.float-e-margins
+  %div.ibox-title
+    %h5 Información de la Imagen
+  %div.ibox-content.ca-hab
+    %div.row
+      %div.col-sm-12
+        %div.form-group
+          = f.text_field :hover_title, placeholder: "Título", class: "form-control"
+      %div.col-sm-12
+        %div.form-group
+          = f.text_area :hover_description, placeholder: "Descripción", class: "form-control"
+      %div.col-sm-12
+        %div.form-group
+          = render 'shared/picture_fields', object: banner, f: f
+      %div.col-sm-12
+        %div.form-group
+          = f.submit "Guardar", class: "btn btn-primary ca-suc"
+           
+
+

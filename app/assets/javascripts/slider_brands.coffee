@@ -4,7 +4,6 @@
 
 $(document).ready ->
   $('form').on 'click', '.remove_brand_fields', (event) ->
-    console.log("eliminando..")
     $(this).parents("#slider_item").find(".destroy_field").val('1')
     $(this).closest("#slider_item").hide()
     event.preventDefault()

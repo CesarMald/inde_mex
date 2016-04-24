@@ -1,5 +1,5 @@
 class SliderBrand < ActiveRecord::Base
-  validates :name, :description, presence: true, on: :update
+  validates :name, :description, presence: true
 
   has_many :items, class_name: "SliderBrandItem", foreign_key: "slider_id", dependent: :destroy
   has_one :picture, as: :picturable, dependent: :destroy

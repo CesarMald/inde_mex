@@ -7,4 +7,5 @@ module BrandsHelper
   def simplest_brands_combo
     Brand.pluck(:name)
   end
+
 end

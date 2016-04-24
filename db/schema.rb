@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411004343) do
+ActiveRecord::Schema.define(version: 20160423230108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "link_url"
+    t.string   "link_text"
+    t.string   "banner_type",       default: "complete"
+    t.string   "hover_title"
+    t.string   "hover_description"
+    t.string   "position"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "brand_sliders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -78,6 +98,30 @@ ActiveRecord::Schema.define(version: 20160411004343) do
     t.datetime "updated_at",                    null: false
     t.integer  "collection_id"
     t.boolean  "on_offer",      default: false
+  end
+
+  create_table "slider_brand_items", force: :cascade do |t|
+    t.integer  "slider_id"
+    t.integer  "brand_id"
+    t.string   "url_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slider_brands", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url_link"
+    t.string   "description"
+    t.string   "link_text"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

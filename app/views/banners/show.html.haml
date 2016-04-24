@@ -1,0 +1,5 @@
+%div.ibox-title
+  %h5 Información del banner
+
+= form_for @banner, url: banner_path(@banner.position) do |f|
+  = render 'form', f: f, banner: @banner

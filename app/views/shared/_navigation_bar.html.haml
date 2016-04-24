@@ -11,27 +11,27 @@
                 %strong.font-bold= current_user.complete_name
               %span.text-muted.text-xs.block= current_user.email 
         %div.logo-element= "IN+"
-      %li{class: "#{set_active_class("orders")}"}
+      %li{class: "#{set_active_class("order")}"}
         = link_to "#" do
           %i.fa.fa-list-ul
           %span.nav-label= "Listado de Órdenes"
-      %li{class: "#{set_active_class("products")}"}
+      %li{class: "#{set_active_class("product")}"}
         = link_to products_path do
           %i.fa.fa-th
           %span.nav-label= "Catálogo de Productos"
-      %li{class: "#{set_active_class("users")}"}
+      %li{class: "#{set_active_class("user")}"}
         = link_to users_path do
           %i.fa.fa-users
           %span.nav-label= "Catálogo de Usuarios"
-      %li{class: "#{set_active_class("collections")}"}
+      %li{class: "#{set_active_class("collection")}"}
         = link_to collections_path do
           %i.fa.fa-database
           %span.nav-label= "Catálogo de Colecciones"
-      %li{class: "#{set_active_class("models")}"}
+      %li{class: "#{set_active_class("model")}"}
         = link_to models_path do
           %i.fa.fa-mobile
           %span.nav-label= "Catálogo de Modelos"
-      %li{class: "#{set_active_class("brands")}"}
+      %li{class: "#{set_active_class("brand")}"}
         = link_to brands_path do
           %i.fa.fa-apple
           %span.nav-label= "Catálogo de Marcas"
@@ -42,16 +42,15 @@
           %span.fa.arrow
         %ul.nav.nav-second-level
           %li
-            %a{:href => "#"} Slider Principal
+            = link_to "Slider Principal", sliders_path
           %li
-            %a{:href => ""} Sección de Marcas
+            = link_to "Sección de Marcas", slider_brands_path
           %li
-            %a{:href => "#"} Primer Banner
+            = link_to "Primer Banner", banner_path("first")
           %li
-            %a{:href => "#"} Segundo Banner
+            = link_to "Segundo Banner", banner_path("second")
           %li
-            %a{:href => "#"} Tercer Banner
+            = link_to "Tercer Banner", banner_path("third")
           %li
-            %a{:href => "#"} Cuarto Banner
-
+            = link_to "Cuarto Banner", banner_path("fourth")
 

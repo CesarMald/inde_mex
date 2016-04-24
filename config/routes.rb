@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
     resources :products
     resources :pictures, only: [:create, :destroy]
+    resources :sliders, only: [:index, :update]
+    resources :slider_brands, only: [:index, :update]
+    resources :banners, only: [:show, :update], param: :position
   end
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

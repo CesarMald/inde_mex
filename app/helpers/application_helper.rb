@@ -5,6 +5,16 @@ module ApplicationHelper
   end
 
   def set_active_class action_link
-    current_controller == action_link ? "active" : ""
+    controllers = { 
+        order: ["orders"], 
+        product: ["products"],
+        user: ["users"],
+        collection: ["collections"],
+        model: ["models"],
+        brand: ["brands"],
+        home: ["sliders"]
+    }
+    controllers[:home].concat(["banners", "slider_brands"])
+    controllers[action_link.to_sym].include?(current_controller) ? "active" : ""
   end
 end

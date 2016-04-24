@@ -22,5 +22,6 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require products
 //= require pictures
+//= require slider_brands
 //= require turbolinks
 

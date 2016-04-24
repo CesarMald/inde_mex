@@ -1,0 +1,25 @@
+#slider_item
+  %div.ibox-content.ca-hab
+    %div.row
+      %div.col-sm-12
+        %h4
+          %i.fa.fa-picture-o 
+          = "SLIDE #{number}" 
+      
+      = f.fields_for :items, item do |f_item|
+        %div.col-sm-12
+          %div.form-group
+            = f_item.select :brand_id, brands_combo, { prompt: "Marca" }, { class: "ca-forms input-sm form-control input-s-sminline", required: true }
+
+        %div.col-sm-12
+          %div.form-group
+            = f_item.text_field :url_link, placeholder: "Enlace (http://idenmex.com/url-deseada)", class: "form-control", required: true
+
+        %div.col-sm-12
+          %div.form-group
+            = render 'shared/picture_fields', object: item, f: f_item
+            
+        = f_item.hidden_field :_destroy, class: "destroy_field"
+        %div.col-sm-12
+          %div.form-group
+          = link_to "Eliminar", "#", class: "remove_brand_fields"

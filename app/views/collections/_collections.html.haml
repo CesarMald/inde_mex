@@ -5,8 +5,6 @@
     %td= collection.text_link
     %td= collection.url_link
     %td
-      = link_to collection, class: "ca-actions" do
-        %i.fa.fa-file-text.text-navy
       = link_to edit_collection_path(collection), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       = link_to collection, {method: :delete, data: {confirm: '¿Estás seguro?'}} do

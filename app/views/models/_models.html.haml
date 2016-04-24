@@ -4,8 +4,6 @@
     %td= model.name
     %td= model.brand.name
     %td
-      = link_to model, class: "ca-actions" do
-        %i.fa.fa-file-text.text-navy
       = link_to edit_model_path(model), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       = link_to model, {method: :delete, data: {confirm: '¿Estás seguro?'}} do

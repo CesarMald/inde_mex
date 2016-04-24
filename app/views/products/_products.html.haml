@@ -8,8 +8,6 @@
     %td= product.regular_price
     %td= product.offer_price
     %td
-      = link_to product, class: "ca-actions" do
-        %i.fa.fa-file-text.text-navy
       = link_to edit_product_path(product), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       = link_to product, {method: :delete, data: {confirm: '¿Estás seguro?'}} do

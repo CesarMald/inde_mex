@@ -19,8 +19,7 @@
       = f.email_field :email, placeholder: "Email", class: "form-control", required: true
   %div.col-sm-12
     %div.form-group
-      = "Administrador"
-      = f.check_box :role, {}, "admin", "regular"
+      = f.select :role, role_combo, {prompt: "Role"}, class: "form-control", required: true
 
   %div.col-sm-12
     = link_to "Cancelar", users_path, class: "btn btn-white"

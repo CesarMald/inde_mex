@@ -74,6 +74,6 @@ class ProductsController < AdminController
     def product_params
       params[:product][:related_product_ids] ||= {}
       params[:product][:related_product_ids] = params[:product][:related_product_ids].values
-      params.require(:product).permit(:model_id, :collection_id, :name, :code, :regular_price, :offer_price, :description, :on_offer, related_product_ids: [])
+      params.require(:product).permit(:model_id, :collection_id, :name, :code, :regular_price, :offer_price, :premium_price, :description, :on_offer, related_product_ids: [])
     end
 end

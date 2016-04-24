@@ -27,13 +27,17 @@
   %div.form-group.col-sm-12
     = f.select :collection_id, collections_combo, {prompt: "Colección"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
   
-  %div.col-sm-6
+  %div.col-sm-4
     %div.form-group
-      = f.text_field :regular_price, placeholder: "Precio Normal", class: "form-control"
+      = f.text_field :regular_price, placeholder: "Precio Normal", class: "form-control", required: true
 
-  %div.col-sm-6
+  %div.col-sm-4
     %div.form-group
-      = f.text_field :offer_price, placeholder: "Precio Mayorista", class: "form-control"
+      = f.text_field :offer_price, placeholder: "Precio Mayorista", class: "form-control", required: true
+
+  %div.col-sm-4
+    %div.form-group
+      = f.text_field :premium_price, placeholder: "Precio Mayorista Premium", class: "form-control", required: true
 
   %div.col-sm-12
     %div.form-group

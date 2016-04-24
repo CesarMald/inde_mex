@@ -20,6 +20,9 @@
 
   %div.form-group.col-sm-12
     = f.text_area :description, placeholder: "Descripción", class: "form-control"
+  
+  %div.form-group.col-sm-12
+    = render 'shared/picture_fields', object: @collection, f: f
 
   %div.col-sm-12
     = link_to "Cancelar", collections_path, class: "btn btn-white"

@@ -16,10 +16,12 @@ class CollectionsController < AdminController
   # GET /collections/new
   def new
     @collection = Collection.new
+    @collection.build_picture
   end
 
   # GET /collections/1/edit
   def edit
+    @collection.build_picture unless @collection.picture
   end
 
   # POST /collections
@@ -70,6 +72,6 @@ class CollectionsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :text_link, :url_link)
+      params.require(:collection).permit(:name, :description, :text_link, :url_link, picture_attributes: [:id, :image, :remote_image_url, :picturable_id, :picturable_type)
     end
 end

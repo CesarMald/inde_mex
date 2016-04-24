@@ -14,5 +14,9 @@
     = f.select :brand_id, brands_combo, {prompt: "Marca"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
 
   %div.col-sm-12
+    %div.form-group
+      = render 'shared/picture_fields', object: @model, f: f
+
+  %div.col-sm-12
     = link_to "Cancelar", models_path, class: "btn btn-white"
     = f.submit "Guardar Cambios", class: "btn btn-primary ca-suc"

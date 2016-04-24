@@ -16,10 +16,12 @@ class ModelsController < AdminController
   # GET /models/new
   def new
     @model = Model.new
+    @model.build_picture
   end
 
   # GET /models/1/edit
   def edit
+    @model.build_picture unless @model.picture
   end
 
   # POST /models
@@ -70,6 +72,6 @@ class ModelsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def model_params
-      params.require(:model).permit(:name, :brand_id)
+      params.require(:model).permit(:name, :brand_id, picture_attributes: [:id, :image, :remote_image_url, :picturable_id, :picturable_type])
     end
 end

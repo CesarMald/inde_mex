@@ -6,9 +6,9 @@
   %div.row
     = search_form_for @q, remote: true do |f|
       %div.col-sm-4.mb-xs
-        = f.select :model_id_eq, models_combo, {include_blank: "Modelo"}, {class: "input-sm form-control input-s-sm inline"}
+        = f.select :brand_id_eq, brands_combo, {include_blank: "Marca"}, {class: "input-sm form-control input-s-sm inline brand_field"}
       %div.col-sm-4.mb-xs
-        = f.select :brand_id_eq, brands_combo, {include_blank: "Marca"}, {class: "input-sm form-control input-s-sm inline"}
+        = f.select :model_id_eq, models_combo, {include_blank: "Modelo"}, {class: "input-sm form-control input-s-sm inline"}
       %div.col-sm-4
         %div.input-group
           = f.text_field :name_or_code_cont, {placeholder: "Search", class: "input-sm form-control"}
@@ -21,8 +21,8 @@
         %th ID
         %th Nombre
         %th Código
-        %th Modelo
         %th Marca
+        %th Modelo
         %th Precio Mayorista
         %th Precio Regular
         %th Acciones

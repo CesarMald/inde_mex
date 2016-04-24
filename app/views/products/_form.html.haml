@@ -16,10 +16,13 @@
       = f.text_field :code, placeholder: "Código", class: "form-control", required: true
 
   %div.col-sm-6
-    = select_tag :brand_id, options_for_select(brands_combo), { class: "ca-forms input-sm form-control input-s-sminline", prompt: "Marca", required: true}
+    - if @product.persisted?
+      = select_tag :brand_id, options_for_select(brands_combo, f.object.brand.id), { class: "ca-forms input-sm form-control input-s-sminline brand_field", prompt: "Marca", required: true}
+    - else
+      = select_tag :brand_id, options_for_select(brands_combo), {class: "ca-forms input-sm form-control input-s-sminline brand_field", prompt: "Marca", required: true}
 
   %div.form-group.col-sm-6
-    = f.select :model_id, {}, { prompt: "Modelo"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
+    = f.select :model_id, models_combo, { prompt: "Modelo"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}
   
   %div.form-group.col-sm-12
     = f.select :collection_id, collections_combo, {prompt: "Colección"}, {class: "ca-forms input-sm form-control input-s-sminline", required: true}

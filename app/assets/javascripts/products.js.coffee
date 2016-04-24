@@ -17,7 +17,7 @@ jQuery ->
     $(this).removeClass("error")
     $(this).siblings("p").html("")
 
-  $('form').on 'change', '#brand_id', (event) ->
+  $('form').on 'change', '.brand_field', (event) ->
     jQuery.ajax
       url: "/admin/brands/" + $(this).val() + "/search_models"
       type: 'GET'

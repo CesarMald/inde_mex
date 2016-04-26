@@ -1,0 +1,20 @@
+%section.image-bg.parallax.overlay
+  .background-image-holder
+    = image_tag "third_parties_banner", alt: "background image", class: "background-image"
+  .container
+    .row
+      .col-sm-12.text-center
+        %h3.mb-xs-24.uppercase.shadows Échale un ojo a estos sitios.
+        %p.lead.mb40.shadows
+          Si ves algo que te gusta pues solo le das clic en comprar,total estamos aquí
+          %br y allá, digo solo para tu comodidad.
+        %ul.stores
+          %li
+            %a{href: "#"}
+              = image_tag "amazon.png"
+          %li
+            %a{href: "#"}
+              = image_tag "linio.png"
+          %li
+            %a{href: "#"}
+              = image_tag "mercado.png"

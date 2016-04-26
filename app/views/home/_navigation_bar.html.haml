@@ -54,10 +54,7 @@
             %form.search-form
               %input{placeholder: "Buscar", type: "text"}/
         .module.widget-handle.cart-widget-handle.left
-          - if user_signed_in?
-            = link_to "Logout", destroy_user_session_path, method: :delete
-          - else
-            = render "login"
+          = render 'sessions'
             
         .module.widget-handle.cart-widget-handle.left
           %div

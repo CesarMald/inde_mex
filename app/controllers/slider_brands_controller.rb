@@ -10,7 +10,6 @@ class SliderBrandsController < AdminController
 
   def update
     @slider_brand = SliderBrand.find(params[:id])
-    binding.pry
     if @slider_brand.update(slider_brand_params)
       redirect_to slider_brands_path, notice: "Slider brand was successfully updated"
     else

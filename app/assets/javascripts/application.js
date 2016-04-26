@@ -21,20 +21,3 @@
 //= require frontend/slick.min.js
 //= require turbolinks
 //
-$('.multiple-items').slick({
-      infinite: true,
-      autoplay: false,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: true,
-      dots:false,
-      responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        dots:true,
-      }
-    }
-  ]
-});

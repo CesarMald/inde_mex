@@ -1,0 +1,18 @@
+%section.bg-primary.choose-model
+  .container
+    .row
+      .col-md-6
+        .v-center
+          %h3.mb0.inline-block.uppercase= slider_brand.name
+          %p.lead
+            = slider_brand.first_description
+            %br
+            = slider_brand.last_description
+      .col-md-6
+        .multiple-items
+          - items.each do |item|
+            %div
+              = link_to item.url_link, class: "model-cont" do
+                = image_tag item.picture.image_url
+                %h6.uppercase.txt-center= item.brand.name
+

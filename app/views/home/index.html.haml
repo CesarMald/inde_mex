@@ -1,0 +1,26 @@
+= render 'main_slider_section', sliders: @sliders
+= render 'slider_brands_section', slider_brand: @slider_brand, items: @items
+- @complete_banners.each do |banner|
+  = render 'complete_banner_section', banner: banner
+= render 'third_parties_section'
+
+= render 'half_banners_section', banners: @half_banners
+
+:javascript
+  $('.multiple-items').slick({
+      infinite: true,
+      autoplay: false,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots:false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            dots:true,
+          }
+        }
+      ]
+  });

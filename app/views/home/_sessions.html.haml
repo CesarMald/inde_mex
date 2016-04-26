@@ -1,0 +1,24 @@
+%div
+  %i
+    = image_tag("01-login.png", class: "log-ico")
+  %span.title Acceso a Mayoristas
+
+.function
+  .log
+    .feature.text-center
+      - if user_signed_in?
+        = link_to "Logout", destroy_user_session_path, method: :delete
+      - else
+        %h6.uppercase Acceso a Mayoristas
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+          %form.text-left
+            = f.text_field :email, placeholder: "Email", class: "mb8 wlog"
+            = f.password_field :password, placeholder: "Password"
+            = f.submit "Login", class: "mr-hover"
+        %p.mb0
+          Regístrate como Mayorista
+          %a.lh0{href: ""} Click Here
+        %p.mb0
+          ¿Olvidaste tu password?
+          %a.lh0{href: ""} Click Here To Reset
+      

@@ -10,8 +10,12 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <%= render 'shared/navigation_bar_front' %>
-  <%= yield %>
-
+    <%= render 'home/navigation_bar' %>
+    <div class="main-container">
+      <%= yield %>
+      <%= render 'home/footer_section'%>
+    </div>
+    <%= render 'home/contacts_form' %>
+    
   </body>
 </html>

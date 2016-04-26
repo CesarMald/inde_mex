@@ -1,0 +1,14 @@
+%section.bg-secondary
+  .container
+    .row
+      - banners.each do |banner|
+        .col-sm-6
+          = link_to banner.link_url, class: "backstreet" do
+            = image_tag banner.picture.image_url, alt: "pic", class: "mb24"
+            .water-bottom
+              %h3.jfk-bottom= banner.hover_title 
+              %p.slogan-bottom= banner.hover_description
+          = link_to banner.link_url do
+            %h4.mb8.uppercase= banner.title 
+          %p.mb30
+            = banner.description

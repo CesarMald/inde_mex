@@ -18,4 +18,26 @@
     <%= render 'home/contacts_form' %>
     
   </body>
+  <%= javascript_include_tag 'frontend/parallax' %>
+  <%= javascript_include_tag 'frontend/scripts' %>
+  <%= javascript_include_tag 'frontend/slick.min' %>
+  <script type="text/javascript">
+    $('.multiple-items').slick({
+      infinite: true,
+      autoplay: false,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots:false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            dots:true,
+          }
+        }
+      ]
+     });
+  </script>
 </html>

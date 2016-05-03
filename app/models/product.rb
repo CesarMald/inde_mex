@@ -12,4 +12,12 @@ class Product < ActiveRecord::Base
 
   scope :on_offer, -> { where(on_offer: true) }
   scope :regular, -> { where(on_offer: false) }
+
+  def main_picture
+    if pictures.empty?
+      "default-product.png"
+    else
+      pictures.first.image_url
+    end
+  end
 end

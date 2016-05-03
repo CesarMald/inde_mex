@@ -17,6 +17,14 @@ Rails.application.routes.draw do
     resources :banners, only: [:show, :update], param: :position
   end
   root 'home#index'
+  get 'models/:id' => 'home#model_section', as: :model_section
+  get 'colecciones' => 'home#collections_section', as: :collections_section
+  get 'coleccion/:id' => 'home#collection_section', as: :collection_section
+  get 'lo_mas_nuevo' => 'home#newest_section', as: :newest_section
+  get 'producto/:id' => 'home#product_section', as: :product_section
+  get 'oferta' => 'home#offer_section', as: :offer_section
+  get 'contactanos' => 'home#contact_section', as: :contact_section
+  get 'search_section' => 'home#search_section', as: :search_section
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

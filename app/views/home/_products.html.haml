@@ -1,0 +1,20 @@
+- @products.each do |product|
+  %div.col-md-4.col-sm-4.masonry-item.col-xs-12
+    %div.image-tile.outer-title.text-center
+      - if type
+        %span{class: "#{label_class(type)}"}= span_label(type)
+      = link_to product_section_path(product) do
+        = image_tag "default-product.png", class: "product-thumb"
+      %div.title
+        %h5.mb0.m-name= product.name
+        %p.p-title.mb8= product.description
+        %div.price-section
+          - if user_signed_in?
+            %span.mb8.rebate-price= number_to_currency(product.regular_price, precision: 2)
+            - if current_user.premium?
+              %span.mb8.rebate-price= number_to_currency(product.offer_price, precision: 2)
+              %span.mb8.normal-price= number_to_currency(product.premium_price, precision: 2)
+            - else
+              %span.mb8.normal-price= number_to_currency(product.offer_price, precision: 2)
+          - else
+            %span.mb8.normal-price= number_to_currency(product.regular_price, precision: 2)

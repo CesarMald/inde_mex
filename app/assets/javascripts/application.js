@@ -16,8 +16,6 @@
 //= require frontend/flexslider.min.js
 //= require frontend/masonry.min.js
 //= require frontend/smooth-scroll.min.js
-//= require frontend/parallax.js
-//= require frontend/scripts.js
-//= require frontend/slick.min.js
+//= require frontend/home
 //= require turbolinks
 //

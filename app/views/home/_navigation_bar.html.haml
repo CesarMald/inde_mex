@@ -29,37 +29,40 @@
                         %span.title= brand.name.titleize
                         - brand.models.each do |model|
                           %li
-                            = link_to model.name.titleize, "#"
+                            = link_to model.name.titleize, model_section_path(model)
             %li.has-dropdown
-              = link_to "Colecciones", "#"
+              = link_to "Colecciones", collections_section_path
               %ul.mega-menu
                 - @collections.each do |collection_slide|
                   %li
                     - collection_slide.each do |collection|
                       %ul
                         %li
-                          = link_to collection.name, "#"
+                          = link_to collection.name, collection_section_path(collection) 
             %li
-              %a{:href => ""} Lo más nuevo
+              = link_to "Lo más nuevo", newest_section_path
             %li
-              %a{:href => ""} Oferta
+              = link_to "Oferta", offer_section_path
             %li
-              %a{:href => ""} Contáctanos
+              = link_to "Contáctanos", contact_section_path
         / end of menu module
         .module.widget-handle.search-widget-handle.left
           .search
             %i.ti-search
             %span.title Search Site
           .function
-            %form.search-form
-              %input{placeholder: "Buscar", type: "text"}/
+            = search_form_for @q, url: search_section_path, class: "search-form" do |f|
+              = f.search_field :name_or_description_or_code_cont, placeholder: "Buscar"
+
         .module.widget-handle.cart-widget-handle.left
           = render 'sessions'
-            
-        .module.widget-handle.cart-widget-handle.left
-          %div
-            %i.ti-panel
-            %span.title Administrar Sitio
+        
+        - if user_signed_in? && current_user.admin?
+          .module.widget-handle.cart-widget-handle.left
+            %div
+              = link_to products_path do
+                %i.ti-panel
+                %span.title Administrar Sitio
         .module.widget-handle.cart-widget-handle.left.vart
           .cart
             %i.ti-shopping-cart

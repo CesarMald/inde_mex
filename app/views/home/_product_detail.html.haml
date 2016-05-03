@@ -1,0 +1,34 @@
+%div.col-md-5.col-md-offset-1.col-sm-6
+  %div.description
+    %h4.uppercase.mb8= product.name
+    %span.mt8.bls
+      %strong Codigo
+      = product.code
+    %div.mb32.mb-xs-24
+      - if user_signed_in?
+        %span.number.price.old-price= number_to_currency(product.regular_price, precision: 2)
+        - if current_user.premium?
+          %span.number.price.old-price= number_to_currency(product.offer_price, precision: 2)
+          %span.number.price= number_to_currency(product.premium_price, precision: 2)
+        - else
+          %span.number.price= number_to_currency(product.offer_price, precision: 2)
+      - else
+        %span.number.price= number_to_currency(product.regular_price, precision: 2)
+
+    = form_tag "#", class: "add-to-cart" do 
+      = number_field_tag "quantity", nil, class: "qty", placeholder: 0 
+      = submit_tag "Cotización", class: "mr-hover"
+
+    %ul.share-items
+      %li.share-item
+        %a.share-button{:href => "javascript:var dir=window.document.URL;var tit=window.document.title;var tit2=encodeURIComponent(tit);var dir2= encodeURIComponent(dir);window.location.href=('http://www.facebook.com/share.php?u='+dir2+'&amp;t='+tit2+'');"}
+          %i.share-icon.fa.fa-facebook
+      %li.share-item
+        %a.share-button{:href => "javascript:var dir=window.document.URL;var tit=window.document.title;var tit2=encodeURIComponent(tit);window.location.href=('http://twitter.com/?status='+tit2+'%20'+dir+'');"}
+          %i.share-icon.fa.fa-twitter
+      %li.share-item
+        %a.share-button{:href => "https://www.pinterest.com/pin/create/button/"}
+          %i.share-icon.fa.fa-pinterest
+      %li.share-item
+        %a.share-button{:href => "javascript:window.location.href='https://plus.google.com/share?url='+encodeURIComponent(location);void0;"}
+          %i.share-icon.fa.fa-google-plus

@@ -12,4 +12,15 @@ module HomeHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def products_order_combo
+    [["Highest Price", "highest"], ["Lowest Price", "lowest"]]
+  end
+
+  def span_label type
+    type == "newest" ? "Nuevo" : "Sale"
+  end
+
+  def label_class type
+    type == "newest" ? "label" : "label deal-label"
+  end
 end

@@ -1,0 +1,24 @@
+%section.page-title.page-title-2.image-bg.overlay.parallax
+  %div.background-image-holder
+    - if @collection.picture
+      = image_tag @collection.picture.image_url, class: "background-image"
+    - else
+      = image_tag "default-collection.jpg", class: "background-image"
+
+%section.sps
+  %div.container
+    %div.row
+      %div.col-md-2.col-sm-4.masonry-item.col-xs-12
+        %div.select-option
+          %i.ti-angle-down
+          = form_tag collection_section_path, id: "products_sort", method: :get, remote: true do
+            = select_tag "product_order", options_for_select(products_order_combo), prompt: "Sort by"
+        %div.title
+          %h5= @collection.name
+      
+    %div.row
+      %div.col-sm-12
+        %hr
+    %div.row.masonry#products_section
+      = render 'products', products: @products, type: nil
+

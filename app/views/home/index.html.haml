@@ -5,22 +5,3 @@
 = render 'third_parties_section'
 
 = render 'half_banners_section', banners: @half_banners
-
-:javascript
-  $('.multiple-items').slick({
-      infinite: true,
-      autoplay: false,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: true,
-      dots:false,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            dots:true,
-          }
-        }
-      ]
-  });

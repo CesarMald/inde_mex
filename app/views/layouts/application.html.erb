@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Idenmex</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta charset="utf-8"> 
+    <title>Idenmex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'> 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'home/navigation_bar' %>
+    <div class="main-container">
+      <%= yield %>
+      <%= render 'home/footer_section'%>
+    </div>
+    <%= render 'home/contacts_form' %>
+    
+  </body>
+  <%= javascript_include_tag 'frontend/parallax' %>
+  <%= javascript_include_tag 'frontend/scripts' %>
+  <%= javascript_include_tag 'frontend/slick.min' %>
+  <script type="text/javascript">
+    $('.multiple-items').slick({
+      infinite: true,
+      autoplay: false,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots:false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            dots:true,
+          }
+        }
+      ]
+     });
+  </script>
 </html>

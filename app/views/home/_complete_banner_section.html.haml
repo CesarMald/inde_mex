@@ -1,0 +1,17 @@
+%section.image-square{class: "#{banner_orientation(banner.position)}"}
+  .col-md-6.image.hide-over.bg-oblack
+    .background-image-holder.motion-anim
+      = image_tag banner.picture.image_url, alt: "image", class: "background-image"
+    .water
+      %h3.jfk= banner.hover_title 
+      %p.slogan-thumb= banner.hover_description
+  .col-md-6.content
+    %h3.uppercase
+      = banner.first_title
+      %br/
+      = banner.last_title
+    %p
+      = banner.first_description 
+      %br
+      = banner.last_description
+    = link_to banner.link_text, banner.link_url, class: "btn btn-lg bg-dark mb0"

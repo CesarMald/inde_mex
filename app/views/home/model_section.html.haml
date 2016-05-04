@@ -1,0 +1,14 @@
+%section.sps
+  %div.container
+    %div.row
+      %div.col-sm-12
+        %h4= @model.name
+
+    %div.row.masonry
+      - @products.each do |product|
+        %div.col-md-3.col-sm-4.masonry-item.col-xs-6
+          %div.image-tile.outer-title.text-center.rif
+            = link_to product_section_path(product) do
+              = image_tag product.main_picture, class: "product-thumb"
+            %div.title
+              %h5.mb0.m-name= product.name

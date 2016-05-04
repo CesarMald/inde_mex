@@ -1,4 +1,7 @@
 %label=image_label_for(object)
 = image_tag(object.picture.image_url) if object.picture
 = f.fields_for :picture do |f_fields|
-  = f_fields.file_field :image, class: "form-control", required: true
+  - if object.picture.persisted?
+    = f_fields.file_field :image, class: "form-control"
+  - else
+    = f_fields.file_field :image, class: "form-control", required: true

@@ -1,0 +1,22 @@
+%div.container
+  %div.product-single.mt48
+    %div.row.mb24.mb-xs-48
+      = render 'pictures_slider', pictures: @product.pictures
+      = render 'product_detail', product: @product
+
+    %div.row
+      %div.col-sm-12
+        %div.tabbed-content.text-tabs
+          %ul.tabs
+            %li.active
+              %div.tab-title
+                %span Description
+              %div.tab-content
+                %p= @product.description
+
+%div.container
+  %div.row
+    %div.col-sm-12
+      %h4.uppercase.mb80.mb-xs-40 You May Also Like
+  %div.row
+    = render 'related_products', products: @product.related_products unless @product.related_products.empty?

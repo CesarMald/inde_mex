@@ -19,14 +19,14 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    role == "ADMIN"
+    role == ADMIN
   end
 
   def regular?
-    role == "REGULAR"
+    role == REGULAR
   end
 
   def premium?
-    role == "PREMIUM"
+    role == (ADMIN || PREMIUM)
   end
 end

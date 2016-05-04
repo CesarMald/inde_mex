@@ -1,0 +1,19 @@
+%section.cover.fullscreen.image-slider.slider-arrow-controls.controls-inside.parallax
+  %ul.slides
+    - sliders.each do |slider|
+      %li.overlay.image-bg.bg-light
+        .background-image-holder
+          = image_tag slider.picture.image_url, alt: "image", class: "background-image"
+        .container.v-align-transform
+          .row
+            .col-sm-10.col-sm-offset-1.text-center
+              %h1.mb40.mb-xs-16.large
+                = slider.first_title
+                %br
+                = slider.last_title
+              %p.lead.mb40
+                = slider.first_description
+                %br
+                = slider.last_description
+              = link_to slider.link_text, slider.url_link, class: "btn btn-lg btn-filled"
+

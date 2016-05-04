@@ -1,3 +1,40 @@
+namespace :basic_information do
+  desc 'Creates basic objects'
+  task create: :environment do
+    # Brands
+    ["Motorola", "Apple", "LG", "Samsung"].each do |brand_name|
+      Brand.create!(name: brand_name)
+    end
+    # Models
+    models = ["Iphone 6", "S6 EDGE", "iphone 4 / 4s", "iphone 5 / 5s", "iphone 5c"]
+    models.each do |model|
+     Brand.find_by(name: "Apple").models.create(name: model)
+    end
+
+    models = ["g3", "g3 stylus", "g4 stylus", "magna"]
+    models.each do |model|
+      Brand.find_by(name: "LG").models.create(name: model)
+    end
+    
+    models = ["moto g", "moto g2", "moto g3", "moto x force", "moto x play"]
+    models.each do |model|
+      Brand.find_by(name: "Motorola").models.create(name: model)
+    end
+
+    models = ["galaxy s4", "galaxy s5", "galaxy s6", "galaxy s6 edge", "s6 edge plus"]
+    models.each do |model|
+      Brand.find_by(name: "Samsung").models.create(name: model)
+    end
+
+    # Collections
+    collections = ["cargadores domésticos", "cargadores para autos", "protectores de pantalla", "carcasas", "fundas de uso rudo", "fundas gummy tuff", "cables, datos y audio", "funda cartera"]
+    collections.each do |collection|
+      Collection.create(name: collection, text_link: "#buscandomiestilo", url_link: "google.com")
+    end
+     
+  end
+end
+
 namespace :home_builder_information do
   desc 'Create objects for home builder functionality'
   task create: :environment do
@@ -7,9 +44,6 @@ namespace :home_builder_information do
     end
 
     # Brands section
-    ["Motorola", "Apple", "LG", "Samsung"].each do |brand_name|
-      Brand.create!(name: brand_name)
-    end
     slider_brand = SliderBrand.create!(name: "#MYBRAND", description: "Escoge tu marca de tu equipo, elige tu modelo y empieza a comprar." )
     slider_brand.items.create!(brand_id: Brand.first.id, url_link: "google.com")
 

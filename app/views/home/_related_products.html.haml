@@ -1,0 +1,17 @@
+- products.each do |r_product|
+  %div.col-md-3.col-sm-4
+    %div.image-tile.outer-title.text-center
+      = link_to product_section_path(r_product) do
+        = image_tag r_product.main_picture, class: "product-thumb"
+      %div.title
+        %h5= r_product.name
+        %div.price-section
+          - if user_signed_in?
+            %span.mb8.rebate-price= number_to_currency(r_product.regular_price, precision: 2)
+            - if current_user.premium?
+              %span.mb8.rebate-price= number_to_currency(r_product.offer_price, precision: 2)
+              %span.mb8.normal-price= number_to_currency(r_product.premium_price, precision: 2)
+            - else
+              %span.mb8.normal-price= number_to_currency(r_product.offer_price, precision: 2)
+          - else
+            %span.mb8.normal-price= number_to_currency(r_product.regular_price, precision: 2)

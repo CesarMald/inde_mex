@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require frontend/bootstrap.min.js
+//= require frontend/flexslider.min.js
+//= require frontend/masonry.min.js
+//= require frontend/smooth-scroll.min.js
+//= require frontend/home
 //= require turbolinks
-//= require_tree .
+//

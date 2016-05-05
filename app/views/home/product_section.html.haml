@@ -14,9 +14,10 @@
               %div.tab-content
                 %p= @product.description
 
-%div.container
-  %div.row
-    %div.col-sm-12
-      %h4.uppercase.mb80.mb-xs-40 You May Also Like
-  %div.row
-    = render 'related_products', products: @product.related_products unless @product.related_products.empty?
+- if @product.related_products.any?
+  %div.container
+    %div.row
+      %div.col-sm-12
+        %h4.uppercase.mb80.mb-xs-40 You May Also Like
+    %div.row
+      = render 'related_products', products: @product.related_products unless @product.related_products.empty?

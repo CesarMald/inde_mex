@@ -8,7 +8,9 @@
     .feature.text-center
       - if user_signed_in?
         %h5= current_user.email
-        = link_to "Logout", destroy_user_session_path, method: :delete
+        = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete
+        %br
+        = link_to "Cambiar contraseña", edit_user_registration_path 
       - else
         %h6.uppercase Acceso a Mayoristas
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
@@ -18,8 +20,5 @@
             = f.submit "Login", class: "mr-hover"
         %p.mb0
           Regístrate como Mayorista
-          %a.lh0{href: ""} Click Here
-        %p.mb0
-          ¿Olvidaste tu password?
-          %a.lh0{href: ""} Click Here To Reset
+          = link_to "Click aquí", new_user_registration_path, class: "lh0"
       

@@ -3,11 +3,11 @@ class HomeController < ApplicationController
  before_filter :load_core_objects
 
   def index
-    @sliders = Slider.all
+    @sliders = Slider.includes(:picture)
     @slider_brand = SliderBrand.first
-    @items = @slider_brand.items
-    @complete_banners = Banner.complete.order(:position)
-    @half_banners = Banner.half.order(:position)
+    @items = @slider_brand.items.includes(:picture)
+    @complete_banners = Banner.includes(:picture).complete.order(:position)
+    @half_banners = Banner.includes(:picture).half.order(:position)
   end
 
   def model_section

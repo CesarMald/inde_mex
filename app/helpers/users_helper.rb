@@ -12,4 +12,15 @@ module UsersHelper
     }
     roles[role]
   end
+
+  def hear_about_us_options
+    [
+      ["facebook", "Facebook"],
+      ["google", "Google"],
+      ["mercado_libre", "Mercado Libre"],
+      ["amazon", "Amazon"],
+      ["linio", "Linio"]
+
+    ]
+  end
 end

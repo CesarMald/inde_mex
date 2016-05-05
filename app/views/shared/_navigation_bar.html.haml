@@ -12,7 +12,7 @@
               %span.text-muted.text-xs.block= current_user.email 
         %div.logo-element= "IN+"
       %li{class: "#{set_active_class("order")}"}
-        = link_to "#" do
+        = link_to orders_path do
           %i.fa.fa-list-ul
           %span.nav-label= "Listado de Órdenes"
       %li{class: "#{set_active_class("product")}"}

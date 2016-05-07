@@ -2,24 +2,17 @@ class LineItemsController < ApplicationController
    before_action :authenticate_user!
    before_action :find_current_cart
 
-  def new
-    @line_item = LineItem.new
-  end
-
-  # GET /line_items/1/edit
-  def edit
-  end
 
   # POST /line_items
   # POST /line_items.json
   def create
     @line_item = @order.line_items.new(line_item_params)
-    @line_item.total = calculate_price
+    @line_item.total = calculate_price(@line_item.quantity)
     if @line_item.save
       update_price_for_order
       flash[:notice] = "Producto agregado exitosamente"
     else
-      flash[:error] = "Hubo un error :(. Por favor intenta de nuevo"
+      flash[:alert] = "Hubo un error :(. Por favor intenta de nuevo"
     end
     redirect_to product_section_path(@line_item.product)
   end
@@ -27,25 +20,25 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
-    respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
+    @line_item = @order.line_items.find(params[:id])
+    @line_item.total = calculate_price(params[:line_item][:quantity].to_i)
+    if @line_item.update_attributes(line_item_update_attributes)
+      update_price_for_order
+      flash[:notice] = "Producto actualizado exitosamente"
+    else
+      flash[:alert] = "Hubo un error :(. Por favor intenta de nuevo"
     end
+    redirect_to detail_cart_path
   end
 
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
+    @line_item = @order.line_items.find(params[:id])
     @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    update_price_for_order
+    flash[:notice] = "¡Producto eliminado exitosamente!"
+    redirect_to detail_cart_path(@order) 
   end
 
   private
@@ -55,16 +48,16 @@ class LineItemsController < ApplicationController
   end
 
   def set_line_item
-    @line_item = LineItem.find(params[:id])
+    @line_item = @order.line_item.find(params[:id])
   end
 
   def line_item_params
-    params.require(:line_item).permit(:product_id, :order_id, :quantity, :total)
+    params.require(:line_item).permit(:product_id, :order_id, :quantity)
   end
 
-  def calculate_price
+  def calculate_price quantity
     price = price_for_current_user
-    price * @line_item.quantity
+    price * quantity
   end
 
   def price_for_current_user
@@ -76,7 +69,11 @@ class LineItemsController < ApplicationController
 
   def update_price_for_order
     subtotal = @order.line_items.sum(:total)
-    iva = subtotal * 0.16
-    @order.update_attribute(:total, subtotal + iva)
+    total = subtotal + (subtotal * 0.16)
+    @order.update_attributes(subtotal: subtotal, total: total)
+  end
+
+  def line_item_update_attributes
+    params.require(:line_item).permit(:quantity)
   end
 end

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
  layout 'application'
  before_filter :load_core_objects
+ before_filter :load_current_cart
 
   def index
     @sliders = Slider.includes(:picture)
@@ -32,11 +33,7 @@ class HomeController < ApplicationController
 
   def product_section
     @product = Product.find(params[:id])
-    if user_signed_in?
-      session[:cart_id] = find_or_initialize_cart
-      @current_cart ||= Order.find(session[:cart_id])
-      @line_item = @current_cart.line_items.build
-    end
+    
   end
 
   def offer_section
@@ -74,6 +71,14 @@ class HomeController < ApplicationController
     when current_user.nil? then "regular_price"
     when current_user.premium? then "premium_price"
     when current_user.regular? then "offer_price"
+    end
+  end
+
+  def load_current_cart
+    if user_signed_in?
+      session[:cart_id] = find_or_initialize_cart
+      @current_cart ||= Order.find(session[:cart_id])
+      @line_item = @current_cart.line_items.build
     end
   end
 

@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 20160507183943) do
     t.integer  "product_id"
     t.integer  "order_id"
     t.integer  "quantity"
-    t.decimal  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "total",      default: 0.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "models", force: :cascade do |t|
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20160507183943) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "total"
+    t.decimal  "total",      default: 0.0
     t.integer  "user_id"
+    t.decimal  "subtotal",   default: 0.0
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "status",     default: "in_progress"

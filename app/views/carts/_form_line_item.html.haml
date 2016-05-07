@@ -1,0 +1,22 @@
+= form_for line_item, url: cart_line_item_path(order, line_item) do |f|
+
+  %th{scope: "row"}
+    = link_to cart_line_item_path(order, line_item), { method: :delete, data: {placement: "top", toggle: "tooltip", confirm: "¿Estás seguro?"}, class: "remove-item"} do
+      %i.ti-close
+  %td.no-mvl
+    = link_to product_section_path(line_item.product) do
+      = image_tag line_item.product.main_picture, class: "product-thumb"
+  %td
+    %span= line_item.product.name
+  
+  %td
+    = f.number_field :quantity, class: "qty-cot mt24 product_quantity", required: true
+  %td
+    - if current_user.regular?
+      %span= number_to_currency(line_item.product.offer_price, precision: 2)
+    - else
+      %span= number_to_currency(line_item.product.premium_price, precision: 2)
+
+  %td
+    %span= number_to_currency(line_item.total, precision: 2)
+  %td= f.submit "Actualizar", class: "btn btn-sm btn-filled mr-hover"

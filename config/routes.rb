@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resources :customers, only: [:edit, :update]
 
   resources :carts do
+    get 'checkout', on: :member
+    get 'detail', on: :member
+    get 'complete', on: :member
     resources :line_items
     get 'add_line_item', on: :member
     get 'remove_line_item', on: :member

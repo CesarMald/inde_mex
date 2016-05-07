@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
   scope '/admin' do
     resources :collections
-    resources :users
+    resources :users do
+      get 'edit_password', on: :member
+      put 'update_password', on: :member
+    end
     resources :line_items
     resources :orders
     resources :models 

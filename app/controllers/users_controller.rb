@@ -1,5 +1,5 @@
 class UsersController < AdminController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_password, :update_password]
 
   # GET /users
   # GET /users.json
@@ -16,10 +16,12 @@ class UsersController < AdminController
   # GET /users/new
   def new
     @user = User.new
+    @user.build_picture
   end
 
   # GET /users/1/edit
   def edit
+    @user.build_picture unless @user.picture
   end
 
   # POST /users
@@ -62,6 +64,18 @@ class UsersController < AdminController
     end
   end
 
+  def edit_password
+  end
+
+  def update_password
+    if @user.update_attributes(password_params)
+      flash[:notice] = "Contraseña actualizada exitosamente"
+      redirect_to users_path
+    else
+      render :edit_password
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -70,6 +84,10 @@ class UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :role)
+      params.require(:user).permit(:first_name, :last_name, :email, :role, :status, :address, :company, :cell_phone, :phone_number, :hear_about_us, :subscribed_to_newsletter, picture_attributes: [:id, :image, :remote_image_url, :picturable_id, :picturable_type])
+    end
+
+    def password_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end

@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, :role, presence: true
   
   has_many :orders
+  has_one :picture, as: :picturable, dependent: :destroy
+  
+  accepts_nested_attributes_for :picture, allow_destroy: true
 
   scope :admin, -> { where(role: ADMIN) }
   scope :premium, -> { where(role: PREMIUM) }
@@ -45,5 +48,13 @@ class User < ActiveRecord::Base
 
   def inactive_message
     "Tu cuenta todavía no ha sido activada"
+  end
+
+  def profile_picture
+    if picture
+      picture.image_url
+    else
+      "profile_small.jpg"
+    end
   end
 end

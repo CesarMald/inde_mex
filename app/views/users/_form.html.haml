@@ -17,9 +17,36 @@
   %div.col-sm-12
     %div.form-group
       = f.email_field :email, placeholder: "Email", class: "form-control", required: true
-  %div.col-sm-12
+  
+  %div.col-sm-6
+    %div.form-group
+      = f.select :status, status_combo, {prompt: "Estado"}, class: "form-control" , required: true
+
+  %div.col-sm-6
     %div.form-group
       = f.select :role, role_combo, {prompt: "Role"}, class: "form-control", required: true
+
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :address, placeholder: "Dirección", class: "form-control"
+
+  %div.col-sm-6
+    %div.form-group
+      = f.text_field :company, placeholder: "Compañía", class: "form-control"
+
+  %div.col-sm-6
+    %div.form-group
+      = f.select :hear_about_us, hear_about_us_options, {prompt: "Referencia"},  class: "form-control"
+
+  %div.col-sm-6
+    %div.form-group
+      = "Suscrito al Newsletter"
+      = f.check_box :subscribed_to_newsletter
+  
+  - if @user.persisted? && @user.admin?
+    %div.col-sm-12
+      %div.form-group
+        = render 'shared/picture_fields', object: @user, f: f
 
   %div.col-sm-12
     = link_to "Cancelar", users_path, class: "btn btn-white"

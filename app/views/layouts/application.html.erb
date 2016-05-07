@@ -12,6 +12,9 @@
   <body>
     <%= render 'home/navigation_bar' %>
     <div class="main-container">
+       <% if flash[:notice] %><p class="alert alert-success"><%= notice %></p><% end %>
+       <% if flash[:alert] %><p class="alert alert-danger"><%= alert %></p><% end %>
+
       <%= yield %>
       <%= render 'home/footer_section'%>
     </div>

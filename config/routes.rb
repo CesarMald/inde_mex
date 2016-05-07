@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
   scope '/admin' do
     resources :collections
-    resources :users
+    resources :users do
+      get 'edit_password', on: :member
+      put 'update_password', on: :member
+    end
     resources :line_items
     resources :orders
     resources :models 
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
   get 'oferta' => 'home#offer_section', as: :offer_section
   get 'contactanos' => 'home#contact_section', as: :contact_section
   get 'search_section' => 'home#search_section', as: :search_section
+  resources :customers, only: [:edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

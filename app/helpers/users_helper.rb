@@ -12,4 +12,30 @@ module UsersHelper
     }
     roles[role]
   end
+
+  def hear_about_us_options
+    [
+      ["Facebook", "facebook"],
+      ["Google", "Google"],
+      ["Mercado Libre", "mercado_libre"],
+      ["Amazon", "amazon"],
+      ["Linio", "linio"]
+    ]
+  end
+
+  def status_to_s user_status
+    possible_status = {
+      "active" => "Activo",
+      "inactive" => "Inactivo"
+    }
+    possible_status[user_status]
+  end
+
+  def status_combo
+    [
+      ["Activo", "active"],
+      ["Inactivo", "inactive"]
+    ]
+  end
+
 end

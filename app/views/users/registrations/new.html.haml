@@ -1,0 +1,51 @@
+%section
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .text-center
+          %h4.uppercase Regístrate como Mayorista
+          %hr
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages! 
+          %form.customer-details.mb80.mb-xs-40
+            .input-with-label.col-sm-6.text-left
+              %span Nombre:
+              = f.text_field :first_name, autofocus: true, required: true
+            .input-with-label.col-sm-6.text-left
+              %span Apellido:
+              = f.text_field :last_name, autofocus: true, required: true
+            .input-with-label.col-sm-12.text-left
+              %span Email:
+              = f.email_field :email, autofocus: true, required: true
+            .input-with-label.col-sm-6.text-left
+              %span Contraseña:
+              = f.password_field :password, autofocus: true, required: true
+            .input-with-label.col-sm-6.text-left
+              %span Confirmar contraseña:
+              = f.password_field :password_confirmation, autofocus: true, required: true
+            .input-with-label.col-sm-6.text-left
+              %span Telefono fijo:
+              = f.telephone_field :phone_number, autofocus: true 
+            .input-with-label.col-sm-6.text-left
+              %span Dirección Completa:
+              = f.text_field :address, autofocus: true 
+            .input-with-label.col-sm-6.text-left
+              %span Celular / WhatsApp:
+              = f.telephone_field :cell_phone, autofocus: true 
+            .input-with-label.col-sm-6.text-left
+              %span Nombre de negocio / tienda:
+              = f.text_field :company, autofocus: true
+            .input-with-label.col-sm-6.text-left
+              %span ¿Cómo te enteraste de nosotros?:
+              .select-option
+                %i.ti-angle-down
+                = f.select :hear_about_us, hear_about_us_options, class: "referemcoa"
+            %hr
+              .overflow-hidden
+                .col-sm-12
+                  %span.pull-left Quiero recibir ofertas por correo.
+                  .checkbox-option.pull-right
+                    .inner
+                    = f.check_box :subscribed_to_newsletter
+            
+            = f.submit "Registrarse"

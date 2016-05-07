@@ -1,0 +1,20 @@
+%section.cover.fullscreen.image-bg.overlay
+  .background-image-holder
+    %img.background-image{:alt => "image", :src => "img/home2.jpg"}/
+  .container.v-align-transform
+    .row
+      .col-sm-6.col-sm-offset-3
+        .feature.bordered.text-center
+          %h4.uppercase Actualizar contraseña 
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| 
+            = devise_error_messages! 
+            %form.text-left
+              = f.hidden_field :email, value: current_user.email
+              = f.password_field :password, autocomplete: "off", placeholder: "Nueva contraseña", required: true
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirma nueva contraseña", required: true
+              %i Necesitamos la contraseña actual para confirmar los cambios
+              = f.password_field :current_password, autocomplete: "off", placeholder: "Contraseña actual", required: true
+              = f.submit "Actualizar"
+            %p.mb0
+              = link_to "Terms of Use", "#"
+

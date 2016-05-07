@@ -55,7 +55,7 @@
               = f.search_field :name_or_description_or_code_cont, placeholder: "Buscar"
 
         .module.widget-handle.cart-widget-handle.left
-          = render 'sessions'
+          = render 'home/sessions'
         
         - if user_signed_in? && current_user.admin?
           .module.widget-handle.cart-widget-handle.left

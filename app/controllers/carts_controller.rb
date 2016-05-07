@@ -18,6 +18,7 @@ class CartsController < ApplicationController
     @order.update_attribute(:status, "complete")
     session[:cart_id] = nil
     flash[:notice] = "Se ha enviado la cotización correctamente"
+    OrderMailer.send_confirmation(@order, current_user).deliver_now
     redirect_to root_path
   end
 

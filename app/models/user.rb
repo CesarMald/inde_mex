@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     role == (ADMIN || PREMIUM)
   end
 
+  def premium_or_regular?
+    regular? || premium?
+  end
+
   def active?
     status == ACTIVE
   end

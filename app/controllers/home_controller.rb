@@ -32,6 +32,11 @@ class HomeController < ApplicationController
 
   def product_section
     @product = Product.find(params[:id])
+    if user_signed_in?
+      session[:cart_id] = find_or_initialize_cart
+      @current_cart ||= Order.find(session[:cart_id])
+      @line_item = @current_cart.line_items.build
+    end
   end
 
   def offer_section
@@ -70,6 +75,13 @@ class HomeController < ApplicationController
     when current_user.premium? then "premium_price"
     when current_user.regular? then "offer_price"
     end
+  end
 
+  def find_or_initialize_cart
+    if session[:cart_id].nil?
+       order = current_user.orders.create
+       session[:cart_id] = order.id
+    end
+    session[:cart_id]
   end
 end

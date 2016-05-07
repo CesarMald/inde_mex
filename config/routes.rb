@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get 'edit_password', on: :member
       put 'update_password', on: :member
     end
-    resources :line_items
     resources :orders
     resources :models 
     resources :brands do
@@ -29,6 +28,12 @@ Rails.application.routes.draw do
   get 'contactanos' => 'home#contact_section', as: :contact_section
   get 'search_section' => 'home#search_section', as: :search_section
   resources :customers, only: [:edit, :update]
+
+  resources :carts do
+    resources :line_items
+    get 'add_line_item', on: :member
+    get 'remove_line_item', on: :member
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

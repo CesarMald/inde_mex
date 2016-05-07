@@ -1,18 +1,7 @@
 class LineItemsController < ApplicationController
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_user!
+   before_action :find_current_cart
 
-  # GET /line_items
-  # GET /line_items.json
-  def index
-    @line_items = LineItem.all
-  end
-
-  # GET /line_items/1
-  # GET /line_items/1.json
-  def show
-  end
-
-  # GET /line_items/new
   def new
     @line_item = LineItem.new
   end
@@ -24,17 +13,15 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-        format.json { render :show, status: :created, location: @line_item }
-      else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
+    @line_item = @order.line_items.new(line_item_params)
+    @line_item.total = calculate_price
+    if @line_item.save
+      update_price_for_order
+      flash[:notice] = "Producto agregado exitosamente"
+    else
+      flash[:error] = "Hubo un error :(. Por favor intenta de nuevo"
     end
+    redirect_to product_section_path(@line_item.product)
   end
 
   # PATCH/PUT /line_items/1
@@ -62,13 +49,34 @@ class LineItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_line_item
-      @line_item = LineItem.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def line_item_params
-      params.require(:line_item).permit(:product_id, :order_id, :quantity, :total)
+  def find_current_cart
+    @order = Order.find(session[:cart_id])
+  end
+
+  def set_line_item
+    @line_item = LineItem.find(params[:id])
+  end
+
+  def line_item_params
+    params.require(:line_item).permit(:product_id, :order_id, :quantity, :total)
+  end
+
+  def calculate_price
+    price = price_for_current_user
+    price * @line_item.quantity
+  end
+
+  def price_for_current_user
+    case
+    when current_user.regular? then @line_item.product.offer_price
+    when current_user.premium? then @line_item.product.premium_price
     end
+  end
+
+  def update_price_for_order
+    subtotal = @order.line_items.sum(:total)
+    iva = subtotal * 0.16
+    @order.update_attribute(:total, subtotal + iva)
+  end
 end

@@ -57,39 +57,13 @@
         .module.widget-handle.cart-widget-handle.left
           = render 'home/sessions'
         
-        - if user_signed_in? && current_user.admin?
-          .module.widget-handle.cart-widget-handle.left
-            %div
-              = link_to products_path do
-                %i.ti-panel
-                %span.title Administrar Sitio
-        .module.widget-handle.cart-widget-handle.left.vart
-          .cart
-            %i.ti-shopping-cart
-            %span.label.number 2
-            %span.title Shopping Cart
-          .function
-            .widget
-              %h6.title Shopping Cart
-              %hr
-                %ul.cart-overview
-                  %li
-                    = link_to "#" do
-                      = image_tag("01-demo-pic.jpg", alt: "Product")
-                      .description
-                        %span.product-title Canvas Backpack
-                        %span.price.number $39.90
-                  %li
-                    = link_to "#" do
-                      = image_tag("01-demo-pic.jpg", alt: "Product")
-                      .description
-                        %span.product-title Vintage Camera
-                        %span.price.number $249.50
-                %hr
-                  .cart-controls
-                    %a.btn.btn-sm.btn-filled.mr-hover{:href => "cart.html"} Cotizar
-                    .list-inline.pull-right
-                      %span.cart-total Total:
-                      %span.number $289.40
-            / end of widget
-      / end of module group
+        - if user_signed_in?
+          - if current_user.admin?
+            .module.widget-handle.cart-widget-handle.left
+              %div
+                = link_to products_path do
+                  %i.ti-panel
+                  %span.title Administrar Sitio
+            = render 'shopping_cart'
+
+        

@@ -19,4 +19,3 @@
 //= require frontend/home
 //= require frontend/product_section
 //= require turbolinks
-//

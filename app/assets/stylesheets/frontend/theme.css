@@ -446,9 +446,9 @@ hr.short-thick {
   transform: scale(1.2) translate(-50px,0px);
 }
 .motion-anim:hover{
-  -ms-transform:transform: scale(1.2) translate(0px,0px);
-  -moz-transform:transform: scale(1.2) translate(0px,0px);
-  -webkit-transform:transform: scale(1.2) translate(0px,0px);
+  -ms-transform: scale(1.2) translate(0px,0px);
+  -moz-transform: scale(1.2) translate(0px,0px);
+  -webkit-transform: scale(1.2) translate(0px,0px);
   transform: scale(1.2) translate(0px,0px);
   opacity: .3 !important;
 }

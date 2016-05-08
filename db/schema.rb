@@ -29,13 +29,6 @@ ActiveRecord::Schema.define(version: 20160508033815) do
     t.datetime "updated_at",                             null: false
   end
 
-  create_table "brand_sliders", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "brands", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -117,7 +110,7 @@ ActiveRecord::Schema.define(version: 20160508033815) do
     t.datetime "updated_at",                    null: false
     t.integer  "collection_id"
     t.boolean  "on_offer",      default: false
-    t.decimal  "premium_price"
+    t.decimal  "premium_price", default: 0.0
   end
 
   create_table "slider_brand_items", force: :cascade do |t|

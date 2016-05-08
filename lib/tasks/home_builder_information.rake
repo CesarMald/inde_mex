@@ -63,7 +63,7 @@ dura más que un ramo de flores...#todoPorAmor.", link_url: "google.com", link_t
   end
 
   desc 'Delete objects for home builder functionality'
-  task delete: :environment do
+  task delete_from_db: :environment do
     Slider.destroy_all
     SliderBrand.destroy_all
     Banner.destroy_all

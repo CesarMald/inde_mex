@@ -33,6 +33,7 @@ class HomeController < ApplicationController
 
   def newest_section
     @products = Product.order("created_at DESC").limit(20)
+    @interior_builders = InteriorBuilder.includes(:picture).order(:position)
     search_products_based_on_price if params[:product_order].present?
   end
 

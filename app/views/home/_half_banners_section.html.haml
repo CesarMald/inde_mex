@@ -4,7 +4,7 @@
       - banners.each do |banner|
         .col-sm-6
           = link_to banner.link_url, class: "backstreet" do
-            = image_tag banner.picture.image_url, alt: "pic", class: "mb24"
+            = image_tag banner.main_picture, alt: "pic", class: "mb24"
             .water-bottom
               %h3.jfk-bottom= banner.hover_title 
               %p.slogan-bottom= banner.hover_description

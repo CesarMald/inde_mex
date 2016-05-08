@@ -13,6 +13,6 @@
           - items.each do |item|
             %div
               = link_to item.url_link, class: "model-cont" do
-                = image_tag item.picture.image_url
+                = image_tag item.main_picture
                 %h6.uppercase.txt-center= item.brand.name
 

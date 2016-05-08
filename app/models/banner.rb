@@ -30,4 +30,12 @@ class Banner < ActiveRecord::Base
     description.chars.each_slice(59).map(&:join).last
   end
 
+  def main_picture
+    if picture
+      picture.image_url
+    else
+      "default-banner.jpg"
+    end
+  end
+
 end

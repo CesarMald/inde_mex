@@ -9,7 +9,7 @@ class BannersController < AdminController
     @banner = Banner.find_by(position: params[:position])
     
     if @banner.update(banner_attributes)
-      flash[:notice] = "Baner actualizado exitosamente"
+      flash[:notice] = "Banner actualizado exitosamente"
       redirect_to banner_path(@banner.position)
     else
       render :show

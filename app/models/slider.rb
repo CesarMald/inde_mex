@@ -20,4 +20,12 @@ class Slider < ActiveRecord::Base
   def last_description
     description.chars.each_slice(30).map(&:join).last
   end
+
+  def main_picture
+    if picture
+      picture.image_url
+    else
+      "default-slider.jpg"
+    end
+  end
 end

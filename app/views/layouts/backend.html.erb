@@ -21,9 +21,10 @@
                 <span class="m-r-sm text-muted welcome-message">Bienvenido</span>
               </li>
               <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                  <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                </a>
+                <%= link_to orders_path, class: "dropdown-toggle count-info", data: {toggle: "dropdown"} do %>
+                  <i class="fa fa-envelope"></i>  
+                  <span class="label label-warning"><%= Order.unseen.count %></span>
+                <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, {method: :delete} do %>

@@ -2,7 +2,7 @@
   %div.description
     %h4.uppercase.mb8= product.name
     %span.mt8.bls
-      %strong Codigo
+      %strong Código
       = product.code
     %div.mb32.mb-xs-24
       - if user_signed_in?
@@ -14,10 +14,11 @@
           %span.number.price= number_to_currency(product.offer_price, precision: 2)
       - else
         %span.number.price= number_to_currency(product.regular_price, precision: 2)
-
-    = form_tag "#", class: "add-to-cart" do 
-      = number_field_tag "quantity", nil, class: "qty", placeholder: 0 
-      = submit_tag "Agregar", class: "mr-hover"
+    - if user_signed_in?
+      = form_for @line_item, url: cart_line_items_path(@current_cart), html: {class: "add-to-cart"} do |f|
+        = f.hidden_field :product_id, value: @product.id
+        = f.number_field :quantity, class: "qty", placeholder: 0, required: true, min: 1
+        = f.submit "Agregar", class: "mr-hover"
 
     %ul.share-items
       %li.share-item

@@ -1,0 +1,27 @@
+.module.widget-handle.cart-widget-handle.left.vart
+  .cart
+    %i.ti-shopping-cart
+    %span.label.number= line_items.count
+    %span.title Shopping Cart
+  .function
+    .widget
+      %h6.title Shopping Cart
+      %hr
+        %ul.cart-overview
+          - if line_items.count == 0
+            %h5 No tienes ningún producto agregado
+          - else
+            - line_items.each do |line_item|
+              - next unless line_item.persisted?
+              %li
+                = link_to product_section_path(line_item.product) do
+                  = image_tag line_item.product.main_picture
+                  .description
+                    %span.product-title= line_item.product.name + " (" + line_item.quantity.to_s + ")"
+                    %span.price.number= number_to_currency(line_item.total, precision: 2)
+        %hr
+        .cart-controls
+          = link_to "Ver Carrito", detail_cart_path(current_cart), class: "btn btn-sm btn-filled mr-hover"
+          .list-inline.pull-right
+            %span.cart-total Total:
+            %span.number= number_to_currency(current_cart.total, precision: 2)

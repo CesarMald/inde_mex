@@ -38,4 +38,8 @@ module UsersHelper
     ]
   end
 
+  def users_combo
+    User.all.map{ |u| [u.complete_name, u.id] }
+  end
+
 end

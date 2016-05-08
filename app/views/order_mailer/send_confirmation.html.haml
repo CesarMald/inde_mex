@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      %div
+        %h4.uppercase.text-center.mail-title Cotización
+        = image_tag "https://cloud.githubusercontent.com/assets/4439027/15095264/c64bd44e-1483-11e6-9283-6f830c978c4e.jpg", alt: "idenmex"
+        %p.ca-order-number
+          %strong No. de Orden
+          %span.ca-nu= @order.id 
+      %table.table
+        %tbody
+          %tr
+            %th{scope: "row"} Producto
+            %th.text-center{scope: "row"} Código
+            %th.text-center{scope: "row"} Cantidad
+            %th.text-center{scope: "row"} Precio
+          - @line_items.each do |line_item|
+            %tr
+              %td= line_item.product.name
+              %td.text-center= line_item.product.code
+              %td.text-center= line_item.quantity
+              %td.text-center= number_to_currency(line_item.total, precision: 2)
+          %tr
+            %td{scope: "row"} Total
+            %td
+            %td.text-center
+              %strong= @line_items.sum(:quantity)
+            %td.text-center
+              %strong= number_to_currency(@order.total, precision: 2)

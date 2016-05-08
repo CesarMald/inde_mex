@@ -1,0 +1,29 @@
+%section
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .text-center
+          %h4.uppercase Cotización
+          %hr
+        %table.table
+          %tbody
+            %tr
+              %th{:scope => "row"} Producto
+              %th.text-center{:scope => "row"} Cantidad
+              %th.text-center{:scope => "row"} Precio
+
+            - @line_items.each do |line_item|
+              %tr
+                %td= line_item.product.name
+                %td.text-center= line_item.quantity
+                %td.text-center= number_to_currency(line_item.total, precision: 2)
+
+            %tr
+              %th{scope: "row"} Order Total
+              %td.text-center
+                %strong= @line_items.sum(:quantity)
+              %td.text-center
+                %strong= number_to_currency(@order.total, precision: 2)
+        %form.halves.text-center
+          = link_to "Regresar", detail_cart_path(@order), class: "btn btn-lg pull left"
+          = link_to "Enviar Cotización", complete_cart_path(@order), class: "btn btn-lg pull-right"

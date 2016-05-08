@@ -1,0 +1,30 @@
+%section
+  .container
+    .row
+      .col-md-9.col-md-offset-0.col-sm-10.col-sm-offset-1
+        - if @line_items.count == 0
+          %h5 No tienes ningún producto agregado
+        - else
+          %table.table.cart.mb48.kart
+            %thead
+              %tr
+                %th &nbsp;
+                %th.no-mvl Producto
+                %th Descripción
+                %th Cantidad
+                %th Precio
+                %th Total
+                %th
+            %tbody
+              - @line_items.each do |line_item|
+                %tr{id: "line_item_#{line_item.id}"}
+                  = render 'form_line_item', line_item: line_item, order: @order
+                
+      .col-md-3.col-md-offset-0.col-sm-10.col-sm-offset-1
+        .mb24
+          %h5.uppercase Tu cotización
+          #order_total
+            = render 'price_table', order: @order
+          
+          - if @line_items.count > 0
+            = link_to "Cotizar", checkout_cart_path(@order), class: "btn btn-lg mr-hover", id: "checkout_button"

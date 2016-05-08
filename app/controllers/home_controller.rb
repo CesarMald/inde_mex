@@ -11,9 +11,14 @@ class HomeController < ApplicationController
     @half_banners = Banner.includes(:picture).half.order(:position)
   end
 
+  def brands_section
+    @models = Model.all
+  end
+
   def model_section
     @model = Model.find(params[:id])
     @products = @model.products
+    search_products_based_on_price if params[:product_order].present?
   end
   
   def collections_section

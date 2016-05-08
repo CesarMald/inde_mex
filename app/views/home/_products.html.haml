@@ -4,7 +4,7 @@
       - if type
         %span{class: "#{label_class(type)}"}= span_label(type)
       = link_to product_section_path(product) do
-        = image_tag "default-product.png", class: "product-thumb"
+        = image_tag product.main_picture, class: "product-thumb"
       %div.title
         %h5.mb0.m-name= product.name
         %p.p-title.mb8= product.description

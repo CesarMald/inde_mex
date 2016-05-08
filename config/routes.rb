@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :banners, only: [:show, :update], param: :position
   end
   root 'home#index'
+  get 'marcas' => 'home#brands_section', as: :brands_section
   get 'models/:id' => 'home#model_section', as: :model_section
   get 'colecciones' => 'home#collections_section', as: :collections_section
   get 'coleccion/:id' => 'home#collection_section', as: :collection_section

@@ -1,0 +1,6 @@
+%section.sps
+  %div.container
+    - @brands.each do |brand|
+      = render 'brand_section', brand: brand, models: brand.models
+    
+

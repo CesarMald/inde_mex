@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   scope :regular, -> { where(role: REGULAR) }
   scope :active, -> { where(status: ACTIVE) }
   scope :inactive, -> { where(status: INACTIVE) }
+  scope :by_name, -> { order(:first_name) }
+  
 
   def complete_name
     "#{first_name} #{last_name}"

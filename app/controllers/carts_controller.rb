@@ -15,7 +15,7 @@ class CartsController < ApplicationController
 
   def complete
     @order = Order.find(session[:cart_id])
-    @order.update_attribute(:status, "complete")
+    @order.update_attribute(:status, "completed")
     session[:cart_id] = nil
     flash[:notice] = "Se ha enviado la cotización correctamente"
     OrderMailer.send_confirmation(@order, current_user).deliver_now

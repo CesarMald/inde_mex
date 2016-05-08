@@ -1,0 +1,27 @@
+%div.ibox-title
+  %h5 Listado de Órdenes
+
+%div.ibox-content
+  %div.row
+    = search_form_for @q, remote: true do |f|
+      %div.col-sm-4.mb-xs
+        = f. select :status_eq, options_for_select(order_status_combo, "completed"), {}, {class: "input-sm form-control input-s-sm inline"}
+      %div.col-sm-4.mb-xs
+        = f.select :user_id_eq, users_combo, { include_blank: "Usuario"}, {class: "input-sm form-control input-s-sm inline"}
+      
+      %div.col-sm-4
+        %div.input-group
+          %span.input-group-btn
+            = f.submit "Buscar", class: "btn btn-sm btn-primary"
+
+  %div.table-response
+    %table.table.table-striped
+      %thead
+        %th ID
+        %th Usuario
+        %th # Productos
+        %th Subtotal
+        %th Total
+      %tbody#orders_result
+        = render 'orders', orders: @orders
+

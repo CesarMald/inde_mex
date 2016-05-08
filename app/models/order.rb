@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 
   scope :in_progress, -> { where(status: IN_PROGRESS) }
   scope :completed, -> { where(status: COMPLETED) }
+  scope :seen, -> { where(seen: true) }
+  scope :unseen, -> { where(seen: false) }
 
   def in_progress?
     status == IN_PROGRESS

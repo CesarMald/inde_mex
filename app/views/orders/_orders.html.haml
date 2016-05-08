@@ -1,0 +1,7 @@
+- orders.each do |order|
+  %tr
+    %td= link_to order.id, order_path(order)
+    %td= order.user.complete_name
+    %td= order.line_items.sum(:quantity)
+    %td= number_to_currency(order.subtotal, precision: 2)
+    %td= number_to_currency(order.total, precision: 2)

@@ -1,0 +1,39 @@
+%div.ibox-title
+  %h5= "Orden: #{@order.id}"
+
+%div.ibox-title
+  %h5= "Usuario: #{@order.user.email}"
+
+%div.ibox-content
+
+  %div.table-response
+    %table.table.table-striped
+      %thead
+        %th Producto
+        %th Código
+        %th Cantidad
+        %th Precio
+        %th Total
+      %tbody
+        - @line_items.each do |line_item|
+          %tr
+            %td= line_item.product.name
+            %td= line_item.product.code
+            %td= line_item.quantity
+            - if @order.user.regular?
+              %td= number_to_currency(line_item.product.offer_price)
+            - else
+              %td= number_to_currency(line_item.product.premium_price)
+            %td= number_to_currency(line_item.total, precision: 2)
+        %tr
+          %td
+            %strong Total
+          %td
+          %td
+            %strong= @line_items.sum(:quantity)
+          %td
+            %strong= number_to_currency(@order.subtotal)
+          %td
+            %strong= number_to_currency(@order.total)
+
+

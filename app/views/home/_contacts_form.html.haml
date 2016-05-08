@@ -1,23 +1,19 @@
 .fb-wt
-  %a.facebook-fixed{:href => ""}
+  %a.facebook-fixed{href: ""}
     Facebook
     %i.ti-facebook
-  %a.whats-fixed{:href => ""}
+  %a.whats-fixed{href: ""}
     whatsapp
     %i.fa.fa-whatsapp
 %a.form-btn
-  Ponte en Contácto
+  Ponte en Contacto
   %i.ti-pencil-alt
 .fixed-forms
   .col-md-12
     %a.close-form X
     %h4 Contáctanos
-    %form.form-email.ca-elipsis{"data-error" => "Please fill all fields correctly.", "data-success" => "Thanks for your submission, we will be in touch shortly."}
-      %input.validate-required{:name => "name", :placeholder => "Nombre", :type => "text"}/
-      %input.validate-required.validate-email{:name => "email", :placeholder => "Email", :type => "text"}/
-      %input.validate-required.validate-email{:name => "tel", :placeholder => "Celular / WhatsApp", :type => "text"}/
-      %textarea.validate-required{:name => "message", :placeholder => "Comentario", :rows => "4"}
-      %button.mr-hover{:type => "submit"} Enviar Mensaje
+    = render 'make_a_contact_form'
+    
 .foundry_modal.text-center.image-bg.overlay{"data-cookie" => "signup-form-dismissed", "data-time-delay" => "3000"}
   %h3.uppercase.bold.italic
     Subscribe and receive Ben's

@@ -39,9 +39,10 @@
           <h6 class="title wht">Let's be friends</h6>
           <hr>
           <p class="wht">Regístrate a nuestro newsletter y obten un 10% de descuento en tu primer compra.</p>
-          <form class="form-newsletter halves">
-            <input type="text" name="email" class="mb16 transparent" placeholder="Email" />
-            <button type="submit" class="btn-white mb0 nwsletter">Registrar</button>
+          <%= form_for Newsletter.new, class: "form-newsletter halves" do |f| %>
+            <%= f.email_field :email, placeholder: "email", class: "mb16 transparent", required: true %>
+            <%= f.submit "Registrar", class: "btn-white mb0 newsletter" %>
+          <% end %>
         </div>
         <!--end of widget-->
       </div>

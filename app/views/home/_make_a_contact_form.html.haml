@@ -1,0 +1,6 @@
+= form_tag(make_contact_path, method: :get) do
+  = text_field_tag :name, "", placeholder: "Nombre", required: true
+  = email_field_tag :email, "", placeholder: "Email", required: true
+  = text_field_tag :tel, "", placeholder: "Celular / WhatsApp"
+  = text_area_tag :message, "", placeholder: "Comentario", required: true, rows: 4
+  = submit_tag "Enviar Mensaje"

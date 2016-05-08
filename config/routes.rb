@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get 'oferta' => 'home#offer_section', as: :offer_section
   get 'contactanos' => 'home#contact_section', as: :contact_section
   get 'search_section' => 'home#search_section', as: :search_section
+  get 'make_contact' => 'home#make_contact', as: :make_contact
+  
+  resources :newsletters, only: [:create]
   resources :customers, only: [:edit, :update]
 
   resources :carts do

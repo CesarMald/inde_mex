@@ -55,6 +55,16 @@ class HomeController < ApplicationController
     search_products_based_on_price if params[:product_order].present?
   end
 
+  def make_contact
+    name = params[:name]
+    email = params[:email]
+    tel = params[:tel]
+    message = params[:message]
+    ContactMailer.send_notification_to_admin(name, email, tel, message).deliver_now
+    flash[:notice] = "Gracias por contactarnos. Te responderemos pronto"
+    redirect_to root_path
+  end
+
   private 
 
   def load_core_objects

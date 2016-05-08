@@ -1,0 +1,13 @@
+.container
+  .row
+    = "Hola #{@admin.complete_name},"
+
+    %p= "Tienes un nuevo mensaje de #{@name}: "
+    %p
+      %i= @message
+
+    %p Estos son sus datos de contacto:
+    %p= "Teléfono: #{@phone}"
+    %p= "Email: #{@email}"
+
+

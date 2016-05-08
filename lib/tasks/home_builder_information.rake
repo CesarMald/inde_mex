@@ -56,6 +56,10 @@ dura más que un ramo de flores...#todoPorAmor.", link_url: "google.com", link_t
     Banner.create!(position: "third", title: "¿quieres vender nuestros productos", description: "Inscríbete con nosotros y empieza ahora mismo tu propio negocio, es fácil y rápido, solo haz click", link_url: "google.com", link_text: "", hover_title: "Lorem Ipsum Atom", hover_description: "generando reacciones, compartiendo tu estilo", banner_type: "half")
 
     Banner.create!(position: "fourth", title: "Cartera para iphone6/iphone 6s", description: "Disponible también para otros modelos haz click y busca el tuyo", link_url: "google.com", link_text: "", hover_title: "loremp ipsum atom", hover_description: "generando reacciones, compartiendo tu estilo", banner_type: "half")
+
+    InteriorBuilder.create!(position: "first", title: "¿Quieres vender nuestros productos?", description: "Inscríbete con nosotros y empieza ahora mismo tu propio negocio, es fácil y rápido, solo haz clic.", url_link: "google.com", hover_title: "lorem ipsum atom", hover_description: "generando reacciones, compartiendo tu estilo")
+
+    InteriorBuilder.create!(position: "second", title: "Cartera para Iphone 6 / Iphone 6s", description: "Disponible tambien para otros modelos, haz clic y busca el tuyo.", url_link: "google.com", hover_title: "lorem ipsum atom", hover_description: "generando reacciones, compartiendo tu estilo")
   end
 
   desc 'Delete objects for home builder functionality'
@@ -63,5 +67,6 @@ dura más que un ramo de flores...#todoPorAmor.", link_url: "google.com", link_t
     Slider.destroy_all
     SliderBrand.destroy_all
     Banner.destroy_all
+    InteriorBuilder.destroy_all
   end
 end

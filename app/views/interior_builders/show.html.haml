@@ -1,0 +1,5 @@
+%div.ibox-title
+  %h5 Información del banner
+
+= form_for @interior_builder, url: interior_builder_path(@interior_builder.position) do |f|
+  = render 'form', f: f, interior_builder: @interior_builder

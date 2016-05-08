@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :sliders, only: [:index, :update]
     resources :slider_brands, only: [:index, :update]
     resources :banners, only: [:show, :update], param: :position
+    resources :interior_builders, param: :position
   end
   root 'home#index'
   get 'marcas' => 'home#brands_section', as: :brands_section

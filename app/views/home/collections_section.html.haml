@@ -1,13 +1,10 @@
 - @collections_for_section.each do |collection|
   %section.image-bg.bg-dark.parallax.overlay.pt160.pb160.pt-xs-40.pb-xs-40
     %div.background-image-holder
-      - if collection.picture
-        = image_tag collection.picture.image_url, class: "background-image"
-      - else
-        = image_tag "default-collection.jpg", class: "background-image"
+      = image_tag collection.main_picture, class: "background-image"
     %div.container
       %div.row
         %div.col-sm-12.text-right
           %h2.uppercase.mb8.text-shadow= collection.name
           %p.lead.mb40.text-shadow= collection.description
-          = link_to collection.text_link, collection.url_link, class: "btn btn-lg btn-white mb0"
+          = link_to collection.text_link, collection_section_path(collection), class: "btn btn-lg btn-white mb0"

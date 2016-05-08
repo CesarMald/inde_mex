@@ -1,7 +1,18 @@
-%section.page-title.page-title-2.image-bg.overlay.parallax
-  %div.background-image-holder
-    = image_tag "default-banner.jpg", class: "background-image"
-%section.sps
+%section.double-ban
+  .container
+    .row
+      - @interior_builders.each do |interior_builder|
+        .col-sm-6
+          = link_to interior_builder.url_link, class: "backstreet" do
+            = image_tag interior_builder.main_picture, class: "mb24"
+            .water-bottom
+              %h3.jfk-bottom= interior_builder.title
+              %p.slogan-bottom= interior_builder.description
+          = link_to interior_builder.url_link do
+            %h4.mb8.uppercase= interior_builder.hover_title
+          %p.mb30= interior_builder.hover_description
+
+%section.c-sip
   %div.container
     %div.row
       %div.col-md-2.col-sm-4.masonry-item.col-xs-12

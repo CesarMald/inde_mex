@@ -8,4 +8,12 @@ class Model < ActiveRecord::Base
   accepts_nested_attributes_for :picture, allow_destroy: true
 
   default_scope { order(:name) } 
+
+  def main_picture
+    if picture
+      picture.image_url
+    else
+      "default-product.png"
+    end
+  end
 end

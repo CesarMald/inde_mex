@@ -54,3 +54,13 @@
           %li
             = link_to "Cuarto Banner", banner_path("fourth")
 
+      %li{class: "#{set_active_class("builder")}"}
+        = link_to "#" do
+          %i.fa.fa-magic
+          %span.nav-label= "Interior Builder"
+          %span.fa.arrow
+        %ul.nav.nav-second-level
+          %li
+            = link_to "Primer Banner", interior_builder_path("first")
+          %li
+            = link_to "Segundo Banner", interior_builder_path("second")

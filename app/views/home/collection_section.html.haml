@@ -1,9 +1,6 @@
 %section.page-title.page-title-2.image-bg.overlay.parallax
   %div.background-image-holder
-    - if @collection.picture
-      = image_tag @collection.picture.image_url, class: "background-image"
-    - else
-      = image_tag "default-collection.jpg", class: "background-image"
+    = image_tag @collection.main_picture, class: "background-image"
 
 %section.sps
   %div.container

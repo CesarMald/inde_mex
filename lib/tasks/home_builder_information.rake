@@ -29,7 +29,7 @@ namespace :basic_information do
     # Collections
     collections = ["cargadores domésticos", "cargadores para autos", "protectores de pantalla", "carcasas", "fundas de uso rudo", "fundas gummy tuff", "cables, datos y audio", "funda cartera"]
     collections.each do |collection|
-      Collection.create(name: collection, text_link: "#buscandomiestilo", url_link: "google.com")
+      Collection.create(name: collection, text_link: "#buscandomiestilo")
     end
      
   end

@@ -9,7 +9,7 @@
       %hr
         %ul.cart-overview
           - if line_items.count == 0
-            %h5 No tienes ningún producto agregado
+            %p No tienes ningún producto agregado
           - else
             - line_items.each do |line_item|
               - next unless line_item.persisted?
@@ -17,7 +17,9 @@
                 = link_to product_section_path(line_item.product) do
                   = image_tag line_item.product.main_picture
                   .description
-                    %span.product-title= line_item.product.name + " (" + line_item.quantity.to_s + ")"
+                    %span.product-title
+                      = line_item.product.name 
+                      %b= line_item.quantity.to_s
                     %span.price.number= number_to_currency(line_item.total, precision: 2)
         %hr
         .cart-controls

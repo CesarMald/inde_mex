@@ -15,14 +15,16 @@
     = render 'home/make_a_contact_form'
     
 .foundry_modal.text-center.image-bg.overlay{"data-cookie" => "signup-form-dismissed", "data-time-delay" => "3000"}
+  %div.background-image-holder
+    = image_tag "newsletter.jpg", class: "background-image"
   %h3.uppercase.bold.italic
-    Subscribe and receive Ben's
+    Subscríbete a nuestro sitio
     %br/
-    awesome fitness tips!
+    y recibe grandes sorpresas
   %p.lead.mb48
-    This is an auto-show modal that you can customize to appear after a period
+    Nullam posuere faucibus condimentum. Donec ultrices convallis dui. 
     %br/
-    of time by editing the 'data-time-delay' attribute.
-  %form.form-newsletter.halves.mb160.mb-xs-80{"data-error" => "Please fill all fields correctly.", "data-success" => "Thanks for your registration, we will be in touch shortly."}
-    %input.mb0.validate-email.validate-required.signup-email-field{:name => "email", :placeholder => "Email Address", :type => "text"}/
-    %button.mb0{:type => "submit"} Keep Me Informed
+    Suspendisse consequat elementum velit. Praesent suscipit ut tellus accumsan cursus.
+  = form_for Newsletter.new, class: "form-newsletter.halves.mb160.mb-xs-80" do |f|
+    = f.email_field :email, placeholder: "email", class: "mb0.validate-email.validate-required.signup-email-field", required: true 
+    = f.submit "Manténgame Informado", class: "mb0" 

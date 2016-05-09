@@ -7,10 +7,10 @@
   .log
     .feature.text-center
       - if user_signed_in?
-        %h5= current_user.email
-        = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete
-        %br
-        = link_to "Cambiar contraseña", edit_user_registration_path 
+        %div.sign_out_session
+          %p= current_user.email
+          = link_to "Cambiar contraseña", edit_user_registration_path 
+          = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete
       - else
         %h6.uppercase Acceso a Mayoristas
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 

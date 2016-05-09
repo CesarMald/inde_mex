@@ -858,6 +858,43 @@ a:focus{
   -moz-transform: translate(0, -15px); /* firefox */
   transform: translate(0, -15px);
 }
+
+.sign_out_session p{
+  margin: 0;
+}
+
+.sign_out_session a:last-of-type{
+  color: #fff;
+  background-color: #228bb7;
+  padding: 1.2rem;
+  margin-top:1rem;
+} 
+.cart-overview p{
+    color: #797979;
+}
+.product-title b{
+    margin-left: 20px;
+    background-color: #228bb7;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: .2rem .5rem;
+ }
+ .c-sip {
+    margin-top: 0;
+    padding-top: 0;
+}
+.double-ban {
+    padding: 30px;
+}
+.ca-colection-title{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2988b0;    
+    font-size: 1.8rem;
+    background-color: transparent;
+    display: inline-block;
+    padding: 1rem;
+}
 @media all and (max-width: 1100px) {
   .col-md-push-1 {
     left: 0;
@@ -1838,6 +1875,7 @@ nav.nav-centered .module.widget-handle {
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
+  color: #4C4C4C;
 }
 .module.widget-handle:hover i,
 .module.active i {
@@ -2353,14 +2391,13 @@ nav.nav-centered.outOfSight .logo {
   padding: 9px 24px 12px 24px;
 }
 /*!---------- 9. ALERTS ----------*/
-.alert {
-  margin-bottom: 24px;
-  background: none;
-  border-radius: 0;
-  font-weight: 600;
-  padding: 12px 16px;
-}
-.alert .close {
+.alert {    
+    background: none;
+    border-radius: 0;
+    font-weight: 600;
+    padding: 12px 16px;
+    margin: 0;
+}.alert .close {
   opacity: 1;
   font-size: 24px;
   top: -2px;
@@ -2380,11 +2417,16 @@ nav.nav-centered.outOfSight .logo {
   border: 1px solid #60b963;
   color: #60b963;
 }
-.alert-danger {
-  border: 1px solid #c64444;
-  color: #c64444;
+.alert-success {
+    border: none;
+    color: #fff;
+    background-color: #75BF75;
 }
-/*!---------- 10. ICONS ----------*/
+.alert-danger {
+    color: #fff;
+    background-color: #EA6565 !important;
+    border-color: transparent;}
+  /*!---------- 10. ICONS ----------*/
 .icon {
   font-size: 64px;
   display: inline-block;
@@ -2469,7 +2511,7 @@ input[type="password"] {
   display: block;
   cursor: default;
 }
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+input[type="text"],input[type="search"], input[type="password"], input[type="email"], input[type="tel"] {
     background: #f5f5f5;
     border: none;
     width: 100%;

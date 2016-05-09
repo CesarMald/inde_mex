@@ -5,13 +5,15 @@
 %section.sps
   %div.container
     %div.row
-      %div.col-md-2.col-sm-4.masonry-item.col-xs-12
+      %div.col-md-6.col-sm-6.masonry-item.col-xs-12
+        %div.title
+          %h5.ca-colection-title= @model.name
+
+      %div.col-md-6.col-sm-6.masonry-item.col-xs-12
         %div.select-option
           %i.ti-angle-down
           = form_tag model_section_path(@model), id: "products_sort", method: :get, remote: true do
             = select_tag "product_order", options_for_select(products_order_combo), prompt: "Sort by"
-        %div.title
-          %h5= @model.name
 
     %div.row
       %div.col-sm-12

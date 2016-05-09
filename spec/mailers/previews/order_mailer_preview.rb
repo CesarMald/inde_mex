@@ -2,6 +2,6 @@
 class OrderMailerPreview < ActionMailer::Preview
 
   def send_confirmation
-    OrderMailer.send_confirmation(Order.first, User.find(3))
+    OrderMailer.send_confirmation(Order.find(4), User.find(2))
   end
 end

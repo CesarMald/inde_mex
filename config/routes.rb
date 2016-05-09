@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'edit_password', on: :member
       put 'update_password', on: :member
     end
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :destroy]
     resources :models 
     resources :brands do
       get 'search_models', on: :member

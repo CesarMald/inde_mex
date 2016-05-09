@@ -18,6 +18,15 @@
     %div.form-group
       = f.email_field :email, placeholder: "Email", class: "form-control", required: true
   
+  - unless @user.persisted?
+    %div.col-sm-6
+      %div.form-group
+        = f.password_field :password, placeholder: "Contraseña", class: "form-control", required: true
+
+    %div.col-sm-6
+      %div.form-group
+        = f.password_field :password_confirmation, placeholder: "Confirmación de contraseña", class: "form-control", required: true
+
   %div.col-sm-6
     %div.form-group
       = f.select :status, status_combo, {prompt: "Estado"}, class: "form-control" , required: true

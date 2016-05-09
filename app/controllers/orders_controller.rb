@@ -15,6 +15,12 @@ class OrdersController < AdminController
     @line_items = @order.line_items.includes(:product)
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

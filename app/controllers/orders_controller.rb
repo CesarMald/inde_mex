@@ -18,6 +18,7 @@ class OrdersController < AdminController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
+    flash[:notice] = "¡Orden eliminada exitosamente!"
     redirect_to orders_path
   end
 

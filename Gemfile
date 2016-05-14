@@ -55,7 +55,6 @@ group :development do
   gem 'spring'
   gem "capistrano", "~> 3.4"
   gem 'capistrano-rails'
-  gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-ssh-doctor'
 end

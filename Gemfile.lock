@@ -249,7 +249,6 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano (~> 3.4)
-  capistrano-bundler
   capistrano-rails
   capistrano-rbenv
   capistrano-ssh-doctor

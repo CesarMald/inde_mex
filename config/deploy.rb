@@ -19,9 +19,10 @@ set :application, 'idenmex'
 set :deploy_via, :remote_cache
 set :repo_url,  "git@github.com:antidoto-mx/#{application}.git"
 set :scm, "git"
-set :repository, "git@github.com:antidoto-mx/#{application}.git"
 set :branch, "master"
 set :shared_children, shared_children + %w{public/uploads}
+set :rbenv_ruby, '2.1.0'
+set :rails_env, 'staging'
 
 default_run_options[:pty] = true
 

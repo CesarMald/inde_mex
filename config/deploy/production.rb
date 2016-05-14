@@ -1,10 +1,14 @@
-server "ec2-54-213-190-137.us-west-2.compute.amazonaws.com", :web, :app, :db, primary: true
-set :rails_env, :staging
-set :user, "ubuntu"
-set :deploy_to, "/home/#{user}/apps/#{application}"
-ssh_options[:keys] = ["~/.ec2/idenmex.pem"]
-ssh_options[:auth_methods] = ["publickey"]
+set :stage, :production
+set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: ["publickey"],
+  keys: ["~/.ec2/idenmex.pem"]
+}
 
+server 'ec2-54-213-190-137.us-west-2.compute.amazonaws.com', 
+  user: 'ubuntu', 
+  roles: %w{web app db}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

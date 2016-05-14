@@ -1,31 +1,27 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-load "config/recipes/base"
-load "config/recipes/ssh"
-load "config/recipes/nginx"
-load "config/recipes/unicorn"
-load "config/recipes/postgresql"
-load "config/recipes/nodejs"
-load "config/recipes/rbenv"
-load "config/recipes/check"
-
-ssh_options[:forward_agent] = true
-
 
 set :application, 'idenmex'
-set :deploy_via, :remote_cache
-set :repo_url,  "git@github.com:antidoto-mx/#{application}.git"
-set :scm, "git"
-set :branch, "master"
-set :shared_children, shared_children + %w{public/uploads}
-set :rbenv_ruby, '2.1.0'
-set :rails_env, 'staging'
+set :repo_url,  "git@github.com:antidoto-mx/idenmex.git"
+set :deploy_to, "home/ubuntu/idenmex"
 
-default_run_options[:pty] = true
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-after "deploy", "deploy:cleanup" # keep only the last 5 releases
-before "deploy:restart", "bundle:install"
+namespace :deploy do
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  after :publishing, 'deploy:restart'
+  after :finishing, 'deploy:cleanup'
+end
+
 
 
 # Default branch is :master

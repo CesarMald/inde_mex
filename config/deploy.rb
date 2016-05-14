@@ -1,8 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-require "bundler/capistrano"
-
 load "config/recipes/base"
 load "config/recipes/ssh"
 load "config/recipes/nginx"

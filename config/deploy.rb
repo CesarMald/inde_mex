@@ -12,8 +12,6 @@ load "config/recipes/postgresql"
 load "config/recipes/nodejs"
 load "config/recipes/rbenv"
 load "config/recipes/check"
-load "config/recipes/imagemagick"
-load "config/recipes/redis"
 
 ssh_options[:forward_agent] = true
 

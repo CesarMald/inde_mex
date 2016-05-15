@@ -16,6 +16,7 @@
             %th.text-center{scope: "row"} Precio
           - @line_items.each do |line_item|
             %tr
+              %td= image_tag @server_name + line_item.product.main_picture
               %td= line_item.product.name
               %td.text-center= line_item.product.code
               %td.text-center= line_item.quantity

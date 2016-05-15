@@ -56,7 +56,7 @@ group :development do
   gem "capistrano", "~> 3.4"
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-ssh-doctor'
+  gem 'capistrano-passenger'
 end
 
 group :test do

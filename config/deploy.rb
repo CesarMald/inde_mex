@@ -4,10 +4,13 @@ lock '3.5.0'
 
 set :application, 'idenmex'
 set :repo_url,  "git@github.com:antidoto-mx/idenmex.git"
+set :passenger_restart_with_touch, true
 set :deploy_to, "/home/ubuntu/idenmex"
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :use_sudo, false
+
 
 namespace :deploy do
 

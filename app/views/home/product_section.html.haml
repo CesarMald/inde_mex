@@ -5,14 +5,9 @@
       = render 'product_detail', product: @product
 
     %div.row
-      %div.col-sm-12
-        %div.tabbed-content.text-tabs
-          %ul.tabs
-            %li.active
-              %div.tab-title
-                %span Description
-              %div.tab-content
-                %p= @product.description
+      %h4.uppercase.mb8 Descripción
+      %div
+        %p= @product.description
 
 - if @product.related_products.any?
   %div.container

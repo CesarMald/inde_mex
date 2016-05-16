@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :interior_builders, param: :position
   end
   root 'home#index'
+  get 'brand/:id' => 'home#brand_section', as: :brand_section
   get 'marcas' => 'home#brands_section', as: :brands_section
   get 'models/:id' => 'home#model_section', as: :model_section
   get 'colecciones' => 'home#collections_section', as: :collections_section

@@ -3,7 +3,7 @@ class SliderBrandItem < ActiveRecord::Base
   belongs_to :brand
   has_one :picture, as: :picturable, dependent: :destroy
 
-  validates :slider, :brand, :url_link, presence: true
+  validates :slider, :brand, presence: true
 
   accepts_nested_attributes_for :picture
 

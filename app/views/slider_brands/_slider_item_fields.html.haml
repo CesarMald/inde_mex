@@ -13,10 +13,6 @@
 
         %div.col-sm-12
           %div.form-group
-            = f_item.text_field :url_link, placeholder: "Enlace (http://idenmex.com/url-deseada)", class: "form-control", required: true
-
-        %div.col-sm-12
-          %div.form-group
             = render 'shared/picture_fields', object: item, f: f_item
             
         = f_item.hidden_field :_destroy, class: "destroy_field"

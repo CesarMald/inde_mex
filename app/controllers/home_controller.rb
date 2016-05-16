@@ -15,6 +15,12 @@ class HomeController < ApplicationController
     @models = Model.all
   end
 
+  def brand_section
+    @brand = Brand.find(params[:id])
+    @products = @brand.products
+    search_products_based_on_price if params[:product_order].present?
+  end
+
   def model_section
     @model = Model.find(params[:id])
     @products = @model.products

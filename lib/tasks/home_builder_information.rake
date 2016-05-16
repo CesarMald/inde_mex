@@ -45,7 +45,7 @@ namespace :home_builder_information do
 
     # Brands section
     slider_brand = SliderBrand.create!(name: "#MYBRAND", description: "Escoge tu marca de tu equipo, elige tu modelo y empieza a comprar." )
-    slider_brand.items.create!(brand_id: Brand.first.id, url_link: "google.com")
+    slider_brand.items.create!(brand_id: Brand.first.id)
 
     # Complete banners
     Banner.create!(position: "first", title: "tpu mickey y minnie mouse para iphone 6", description: "Si yo fuera tu igual y se lo compro a mi novia, total

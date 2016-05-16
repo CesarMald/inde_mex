@@ -24,6 +24,6 @@ class SliderBrandsController < AdminController
     attributes[:items_attributes].each_pair do |key, value|
       attributes[:items_attributes][key] = attributes[:items_attributes][key][:items] if attributes[:items_attributes][key].key?("items")
     end
-    params.require(:slider_brand).permit(:name, :description, items_attributes: [:id, :brand_id, :url_link, :_destroy, picture_attributes: [:id, :image, :remote_image_url, :picturable_id, :picturable_type]])
+    params.require(:slider_brand).permit(:name, :description, items_attributes: [:id, :brand_id, :_destroy, picture_attributes: [:id, :image, :remote_image_url, :picturable_id, :picturable_type]])
   end
 end

@@ -12,7 +12,7 @@
         .multiple-items
           - items.each do |item|
             %div
-              = link_to item.url_link, class: "model-cont" do
+              = link_to brand_section_path(item.brand), class: "model-cont" do
                 = image_tag item.main_picture
                 %h6.uppercase.txt-center= item.brand.name
 

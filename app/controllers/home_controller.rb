@@ -50,6 +50,7 @@ class HomeController < ApplicationController
 
   def offer_section
     @products = Product.on_offer
+    @offer_builder = OfferBuilder.first
     search_products_based_on_price if params[:product_order].present?
   end
 

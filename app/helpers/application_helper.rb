@@ -13,6 +13,7 @@ module ApplicationHelper
         model: ["models"],
         brand: ["brands"],
         home: ["sliders"],
+        offer_builder: ["offer_builders"],
         builder: ["interior_builders"]
     }
     controllers[:home].concat(["banners", "slider_brands"])

@@ -64,3 +64,8 @@
             = link_to "Primer Banner", interior_builder_path("first")
           %li
             = link_to "Segundo Banner", interior_builder_path("second")
+      
+      %li{class: "#{set_active_class("offer_builder")}"}
+        = link_to offer_builders_path do
+          %i.fa.fa-magic
+          %span.nav-label= "Sección de Ofertas"

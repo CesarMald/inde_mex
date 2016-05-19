@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :banners, only: [:show, :update], param: :position
     resources :interior_builders, param: :position
     resources :offer_builders
+    resources :newsletter_builders
   end
   root 'home#index'
   get 'brand/:id' => 'home#brand_section', as: :brand_section

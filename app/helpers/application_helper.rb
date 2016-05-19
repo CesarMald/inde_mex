@@ -14,7 +14,9 @@ module ApplicationHelper
         brand: ["brands"],
         home: ["sliders"],
         offer_builder: ["offer_builders"],
-        builder: ["interior_builders"]
+        newsletter_builder: ["newsletter_builders"],
+        builder: ["interior_builders"],
+
     }
     controllers[:home].concat(["banners", "slider_brands"])
     controllers[action_link.to_sym].include?(current_controller) ? "active" : ""

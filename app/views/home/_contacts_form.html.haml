@@ -13,18 +13,3 @@
     %a.close-form X
     %h4 Contáctanos
     = render 'home/make_a_contact_form'
-    
-.foundry_modal.text-center.image-bg.overlay{"data-cookie" => "signup-form-dismissed", "data-time-delay" => "3000"}
-  %div.background-image-holder
-    = image_tag "newsletter.jpg", class: "background-image"
-  %h3.uppercase.bold.italic
-    Subscríbete a nuestro sitio
-    %br/
-    y recibe grandes sorpresas
-  %p.lead.mb48
-    Nullam posuere faucibus condimentum. Donec ultrices convallis dui. 
-    %br/
-    Suspendisse consequat elementum velit. Praesent suscipit ut tellus accumsan cursus.
-  = form_for Newsletter.new, class: "form-newsletter.halves.mb160.mb-xs-80" do |f|
-    = f.email_field :email, placeholder: "email", class: "mb0.validate-email.validate-required.signup-email-field", required: true 
-    = f.submit "Manténgame Informado", class: "mb0" 

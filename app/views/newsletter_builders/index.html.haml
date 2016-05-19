@@ -1,0 +1,5 @@
+%div.ibox-title
+  %h5 Información del Newsletter
+
+= form_for @newsletter_builder, url: newsletter_builder_path(@newsletter_builder) do |f| 
+  = render 'form', f: f, newsletter_builder: @newsletter_builder

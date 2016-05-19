@@ -2,9 +2,11 @@
   %h5 Información de la Sección de Ofertas
 
 = form_for @offer_builder, url: offer_builder_path(@offer_builder) do |f|
-  %div.col-sm-12
-    %div.form-group
-      = render 'shared/picture_fields', object: @offer_builder, f: f
+  %div.ibox-content.ca-hav
+    %div.row
+      %div.col-sm-12
+        %div.form-group
+          = render 'shared/picture_fields', object: @offer_builder, f: f
 
   %div.col-sm-12
     %div.form-group

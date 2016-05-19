@@ -1,0 +1,34 @@
+%div.ibox-content.ca-hb
+  %div.row
+    %div.col-sm-12
+
+    %div.col-sm-12
+      %div.form-group
+        = f.text_field :title, placeholder: "Título", class: "form-control", required: true
+    
+    %div.col-sm-12
+      %div.form-group
+        = f.text_area :description, placeholder: "Descripción", class: "form-control", required: true
+
+    %div.col-sm-12
+      %div.form-group
+        = f.text_field :text_link, placeholder: "Texto del botón", class: "form-control", required: true
+
+
+%br
+%div.ibox.float-e-margins
+  %div.ibox-title
+    %h5 Información de la Imagen
+  %div.ibox-content.ca-hab
+    %div.row
+      %div.col-sm-12
+        %div.form-group
+          = render 'shared/picture_fields', object: newsletter_builder, f: f
+      %div.col-sm-12
+        %div.form-group
+          = f.submit "Guardar", class: "btn btn-primary ca-suc"
+           
+
+
+
+

@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @items = @slider_brand.items.includes(:picture)
     @complete_banners = Banner.includes(:picture).complete.order(:position)
     @half_banners = Banner.includes(:picture).half.order(:position)
+    @newsletter_builder = NewsletterBuilder.first
   end
 
   def brands_section

@@ -1,0 +1,14 @@
+.foundry_modal.text-center.image-bg.overlay{"data-cookie" => "signup-form-dismissed", "data-time-delay" => "3000"}
+  %div.background-image-holder
+    = image_tag newsletter_builder.main_picture, class: "background-image"
+  %h3.uppercase.bold.italic
+    = newsletter_builder.first_title 
+    %br/
+    = newsletter_builder.last_title 
+  %p.lead.mb48
+    = newsletter_builder.first_description 
+    %br/
+    = newsletter_builder.last_description
+  = form_for Newsletter.new, class: "form-newsletter.halves.mb160.mb-xs-80" do |f|
+    = f.email_field :email, placeholder: "email", class: "mb0.validate-email.validate-required.signup-email-field", required: true 
+    = f.submit newsletter_builder.text_link, class: "mb0" 

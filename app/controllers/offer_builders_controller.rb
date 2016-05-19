@@ -9,7 +9,7 @@ class OfferBuildersController < AdminController
     @offer_builder = OfferBuilder.find(params[:id])
     if @offer_builder.update(offer_builder_attributes)
       flash[:notice] = "Sección de Oferta actualizado exitosamente"
-      redirect_to offer_builders_path(@offer_buider)
+      redirect_to offer_builders_path
     else
       render :index
     end

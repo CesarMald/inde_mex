@@ -1,14 +1,16 @@
 set :stage, :production
 set :pty, true
-set :ssh_options, {
-  forward_agent: true,
-  auth_methods: ["publickey"],
-  keys: ["~/.ec2/idenmex.pem"]
-}
+##set :ssh_options, {
+#  forward_agent: true,
+#  auth_methods: ["publickey"],
+#  keys: ["~/.ec2/idenmex.pem"]
+#}
 
-server 'ec2-54-213-190-137.us-west-2.compute.amazonaws.com', 
+server '159.203.192.36', 
   user: 'ubuntu', 
   roles: %w{web app db}
+
+# old server ec2-54-213-190-137.us-west-2.compute.amazonaws.com
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

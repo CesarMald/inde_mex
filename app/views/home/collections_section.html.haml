@@ -1,7 +1,5 @@
 - @collections_for_section.each do |collection|
-  %section.image-bg.bg-dark.parallax.overlay.pt160.pb160.pt-xs-40.pb-xs-40
-    %div.background-image-holder
-      = image_tag collection.main_picture, class: "background-image"
+  %section{class: "ca-aft image-bg pt160 pb160 pt-xs-40 pb-xs-40", style: "#{image_style(collection.main_picture)}"}
     %div.container
       %div.row
         %div.col-sm-12.text-right

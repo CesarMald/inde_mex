@@ -7,39 +7,52 @@
           Dudas, comentarios o mayor información, llena el formulario, mándanos un correo, ven a la tienda o agréganos a WhatsApp y platícamos
           un rato.
         %hr
+          %h5.uppercase Monterrey
           %p.contact-i
             %i.ti-direction-alt
             %span Ave. Miguel Alemán 6063 Local 108
             %br
-              %span Col. America, Guadalupe, NL.
-              %br
+              %span "Plaza Antalay" Col. America, Guadalupe, NL.
           %p.contact-i
-            %i.ti-direction-alt
-            %span Elías Piña,88500 Reynosa, Tamps.
-            %br
-          %p.contact-i
-            %i.ti-headphone-alt
-            %span (899) 9252627
+            %i.fa.fa-phone
+            %span 812 164 7878
           %p.contact-i
             %i.fa.fa-whatsapp
-            %span 62 356 3502
+            %span 811 916 6503
+
+          %h5.uppercase Reynosa
+          %p.contact-i
+            %i.ti-direction-alt
+            %span Elías Piña 113 Local A
+            %br
+              %span Col. Aztlan, Reynosa, Tamps 
+          %p.contact-i
+            %i.fa.fa-phone
+            %span 899 925 2627
+          %p.contact-i
+            %i.fa.fa-whatsapp
+            %span 899 285 4904 
           %p.contact-i
             %i.ti-email
             %span contacto@idenmex.com
           %hr
-            %ul.list-inline.ctns
-              %li
-                %a{:href => ""}
-                  %i.fa.fa-instagram
-              %li
-                %a{:href => ""}
-                  %i.ti-facebook
-              %li
-                %a{:href => ""}
-                  %i.ti-twitter-alt
-              %li
-                %a{:href => ""}
-                  %i.fa.fa-whatsapp
+          %p.sigu Síguenos
+          %ul.list-inline.ctns
+            %li
+              %a{:href => "https://www.instagram.com/idenmex/", :target => "_blank"}
+                %i.fa.fa-instagram
+            %li
+              %a{:href => "https://www.facebook.com/iDENMEX/", :target => "_blank"}
+                %i.ti-facebook
+            %li
+              %a{:href => "https://twitter.com/IDENMEX", :target => "_blank"}
+                %i.ti-twitter-alt
+            %li
+              %a{:href => "https://es.pinterest.com/idenmex/", :target => "_blank"}
+                %i.fa.fa-pinterest
+            %li
+              %a{:href => "tel:811 916 6503"}
+                %i.fa.fa-whatsapp
       .col-sm-6.col-md-5.col-md-offset-1
         = render 'home/make_a_contact_form'
         
@@ -47,4 +60,6 @@
   / end of container
 %section.p0
   .map-holder.pt200.pb180
-    %iframe{src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3595.340658533625!2d-100.24686708554296!3d25.693142717706714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eabb3e44f2f7%3A0x37088d3a75d73a91!2siDENMEX!5e0!3m2!1ses-419!2smx!4v1460310154509"}
+    %iframe{:src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3595.340658533625!2d-100.24686708554296!3d25.693142717706714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eabb3e44f2f7%3A0x37088d3a75d73a91!2siDENMEX!5e0!3m2!1ses-419!2smx!4v1460310154509"}
+  .map-holder.pt200.pb180
+    %iframe{:src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.9660203164203!2d-98.31705858497278!3d26.067366883498945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866505f3e2f8c7e1%3A0xb6750dc910dd9f1a!2siDENMEX!5e0!3m2!1ses-419!2smx!4v1463532745069"}

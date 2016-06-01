@@ -23,4 +23,18 @@ module HomeHelper
   def label_class type
     type == "newest" ? "label" : "label deal-label"
   end
+
+  def image_style picture_path
+    if Rails.env.development?
+      server_name = ""
+    else
+      server_name = "http://159.203.192.36/"
+    end
+
+    "background: url('" + server_name + picture_path + "') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"
+  end
+
+  def offer_style picture_path
+
+  end
 end

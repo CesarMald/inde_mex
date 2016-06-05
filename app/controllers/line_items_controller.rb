@@ -24,11 +24,7 @@ class LineItemsController < ApplicationController
     @line_item.total = calculate_price(params[:line_item][:quantity].to_i)
     if @line_item.update_attributes(line_item_update_attributes)
       update_price_for_order
-      flash[:notice] = "Producto actualizado exitosamente"
-    else
-      flash[:alert] = "Hubo un error :(. Por favor intenta de nuevo"
     end
-    redirect_to detail_cart_path
   end
 
   # DELETE /line_items/1

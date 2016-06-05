@@ -1,0 +1,4 @@
+var line_item_id = <%= @line_item.id %>;
+$("#total_" + line_item_id).html("<%= number_to_currency(@line_item.total, precision: 2) %>")
+$("#order_total").html("<%= escape_javascript(render 'carts/price_table', order: @order)%>")
+$("#shopping_cart_section").html("<%= escape_javascript(render 'home/shopping_cart', order: @order, line_items: @order.line_items) %>")

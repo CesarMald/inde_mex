@@ -18,4 +18,3 @@
 //= require frontend/smooth-scroll.min.js
 //= require frontend/home
 //= require frontend/product_section
-//= require turbolinks

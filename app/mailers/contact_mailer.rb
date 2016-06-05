@@ -5,13 +5,7 @@ class ContactMailer < ApplicationMailer
     @email = email
     @phone = phone
     @message = message
-    @admin = find_admin_user
-    mail(to: @admin.email, subject: "Tienes una nueva notificación")
+    mail(to: "diegopulido@hotmail.com", subject: "Tienes una nueva notificación")
   end
 
-  private
-
-  def find_admin_user
-    User.find_by(role: "admin")
-  end
 end

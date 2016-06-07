@@ -6,7 +6,7 @@ class OrderMailer < ApplicationMailer
     if Rails.env.development?
       @server_name = ""
     else
-      @server_name = "159.203.192.36"
+      @server_name = "http://159.203.192.36/"
     end
     mail(to: user.email, subject: "Cotización ##{order.id}")
   end

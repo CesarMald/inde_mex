@@ -10,7 +10,8 @@
       %table.table
         %tbody
           %tr
-            %th{scope: "row"} Producto
+            %th{scope: "row"}
+            %th Producto
             %th.text-center{scope: "row"} Código
             %th.text-center{scope: "row"} Cantidad
             %th.text-center{scope: "row"} Precio
@@ -23,6 +24,7 @@
               %td.text-center= number_to_currency(line_item.total, precision: 2)
           %tr
             %td{scope: "row"} Total
+            %td
             %td
             %td.text-center
               %strong= @line_items.sum(:quantity)

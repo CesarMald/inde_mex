@@ -11,10 +11,6 @@
         %div.price-section
           - if user_signed_in?
             %span.mb8.rebate-price= number_to_currency(product.regular_price, precision: 2)
-            - if current_user.premium?
-              %span.mb8.rebate-price= number_to_currency(product.offer_price, precision: 2)
-              %span.mb8.normal-price= number_to_currency(product.premium_price, precision: 2)
-            - else
-              %span.mb8.normal-price= number_to_currency(product.offer_price, precision: 2)
+            %span.mb8.normal-price= price_for_product(product, current_user)
           - else
             %span.mb8.normal-price= number_to_currency(product.regular_price, precision: 2)

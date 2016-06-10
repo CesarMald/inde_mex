@@ -14,22 +14,6 @@ class Banner < ActiveRecord::Base
   def complete?; banner_type == COMPLETE; end
   def half?; banner_type == HALF; end
 
-  def first_title
-    title.chars.each_slice(19).map(&:join).first
-  end
-
-  def last_title
-    title.chars.each_slice(19).map(&:join).last
-  end
-
-  def first_description
-    description.chars.each_slice(59).map(&:join).first
-  end
-
-  def last_description
-    description.chars.each_slice(59).map(&:join).last
-  end
-
   def main_picture
     if picture
       picture.image_url

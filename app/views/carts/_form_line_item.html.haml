@@ -12,10 +12,7 @@
   %td
     = f.number_field :quantity, class: "qty-cot mt24 product_quantity", required: true
   %td
-    - if current_user.regular?
-      %span= number_to_currency(line_item.product.offer_price, precision: 2)
-    - else
-      %span= number_to_currency(line_item.product.premium_price, precision: 2)
+    %span= price_for_product(line_item.product, current_user)
 
   %td
     %span{id: "total_#{line_item.id}"}= number_to_currency(line_item.total, precision: 2)

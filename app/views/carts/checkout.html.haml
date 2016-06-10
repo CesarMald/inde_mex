@@ -9,19 +9,22 @@
           %tbody
             %tr
               %th{:scope => "row"} Producto
-              %th.text-center{:scope => "row"} Cantidad
-              %th.text-center{:scope => "row"} Precio
+              %th.text-center{scope:"row"} Cantidad
+              %th.text-center{scope: "row"} Precio
+              %th.text-center{scope: "row"} Total
 
             - @line_items.each do |line_item|
               %tr
                 %td= line_item.product.name
                 %td.text-center= line_item.quantity
+                %td.text-center= price_for_product(line_item.product, current_user)
                 %td.text-center= number_to_currency(line_item.total, precision: 2)
 
             %tr
-              %th{scope: "row"} Order Total
+              %th{scope: "row"} Total
               %td.text-center
                 %strong= @line_items.sum(:quantity)
+              %td
               %td.text-center
                 %strong= number_to_currency(@order.total, precision: 2)
         %form.halves.text-center

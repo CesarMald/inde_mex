@@ -1,7 +1,7 @@
 %div.container
   %div.product-single.mt48
     %div.row.mb24.mb-xs-48
-      = render 'pictures_slider', pictures: @product.pictures
+      = render 'pictures_slider', pictures: @product.pictures, product: @product
       = render 'product_detail', product: @product
 
     %div.row

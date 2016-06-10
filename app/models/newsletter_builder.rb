@@ -13,19 +13,4 @@ class NewsletterBuilder < ActiveRecord::Base
     end
   end
 
-  def first_title
-    title.chars.each_slice(27).map(&:join).first
-  end
-
-  def last_title
-    title.chars.each_slice(27).map(&:join).last
-  end
-
-  def first_description
-    description.chars.each_slice(50).map(&:join).first
-  end
-
-  def last_description
-    description.chars.each_slice(50).map(&:join).last
-  end
 end

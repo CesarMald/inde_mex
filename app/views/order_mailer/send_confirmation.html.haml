@@ -15,12 +15,19 @@
             %th.text-center{scope: "row"} Código
             %th.text-center{scope: "row"} Cantidad
             %th.text-center{scope: "row"} Precio
+            %th.text-center{scope: "row"} Total
           - @line_items.each do |line_item|
             %tr
               %td= image_tag @server_name + line_item.product.main_picture
               %td= line_item.product.name
               %td.text-center= line_item.product.code
               %td.text-center= line_item.quantity
+              %td.text-center
+                - if @user.regular?
+                  = number_to_currency(line_item.product.offer_price, precision: 2)
+                - else
+                  = number_to_currency(line_item.product.premium_price, precision: 2)
+
               %td.text-center= number_to_currency(line_item.total, precision: 2)
           %tr
             %td{scope: "row"} Total
@@ -28,5 +35,6 @@
             %td
             %td.text-center
               %strong= @line_items.sum(:quantity)
+            %td
             %td.text-center
               %strong= number_to_currency(@order.total, precision: 2)

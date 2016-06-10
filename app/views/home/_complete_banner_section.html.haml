@@ -7,11 +7,7 @@
       %p.slogan-thumb= banner.hover_description
   .col-md-6.content
     %h3.uppercase
-      = banner.first_title
-      %br/
-      = banner.last_title
+      = banner.title
     %p
-      = banner.first_description 
-      %br
-      = banner.last_description
+      = banner.description
     = link_to banner.link_text, banner.link_url, class: "btn btn-lg bg-dark mb0"

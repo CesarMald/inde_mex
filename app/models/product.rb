@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
 
   def main_picture
     if pictures.empty?
-      "default-product.png"
+      "default-product.jpg"
     else
       pictures.first.image_url
     end

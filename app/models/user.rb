@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def premium?
-    role == (ADMIN || PREMIUM)
+    role == ADMIN || role == PREMIUM
   end
 
   def premium_or_regular?

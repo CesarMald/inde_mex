@@ -5,12 +5,4 @@ class SliderBrand < ActiveRecord::Base
   has_one :picture, as: :picturable, dependent: :destroy
 
   accepts_nested_attributes_for :items, :picture, allow_destroy: true
-
-  def first_description
-    description.chars.each_slice(30).map(&:join).first
-  end
-
-  def last_description
-    description.chars.each_slice(30).map(&:join).last
-  end
 end

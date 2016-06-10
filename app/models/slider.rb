@@ -5,22 +5,6 @@ class Slider < ActiveRecord::Base
 
   accepts_nested_attributes_for :picture
 
-  def first_title
-    title.chars.each_slice(30).map(&:join).first
-  end
-
-  def last_title
-    title.chars.each_slice(30).map(&:join).last
-  end
-
-  def first_description
-    description.chars.each_slice(30).map(&:join).first
-  end
-
-  def last_description
-    description.chars.each_slice(30).map(&:join).last
-  end
-
   def main_picture
     if picture
       picture.image_url

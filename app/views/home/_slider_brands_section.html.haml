@@ -5,9 +5,7 @@
         .v-center
           %h3.mb0.inline-block.uppercase= slider_brand.name
           %p.lead
-            = slider_brand.first_description
-            %br
-            = slider_brand.last_description
+            = slider_brand.description 
       .col-md-6
         .multiple-items
           - items.each do |item|

@@ -3,6 +3,10 @@
     - if product.on_offer
       %span.label Sale
     %ul.slides
-      - pictures.each do |picture|
+      - if pictures.empty?
         %li
-          = image_tag picture.image_url, alt: "image"
+          = image_tag product.main_picture, alt: "image"
+      - else
+        - pictures.each do |picture|
+          %li
+            = image_tag picture.image_url, alt: "image"

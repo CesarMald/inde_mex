@@ -1,6 +1,7 @@
 %div.col-md-6.col-sm-6.col-xs-12
   %div.image-slider.slider-thumb-controls.controls-inside
-    %span.label Sale
+    - if product.on_offer
+      %span.label Sale
     %ul.slides
       - pictures.each do |picture|
         %li

@@ -1,8 +1,10 @@
 - @products.each do |product|
   %div.col-md-4.col-sm-4.masonry-item.col-xs-12
     %div.image-tile.outer-title.text-center
-      - if type
-        %span{class: "#{label_class(type)}"}= span_label(type)
+      - if type == "newest"
+        %span.label Nuevo
+      - elsif product.on_offer?
+        %span.label.deal-label Sale
       = link_to product_section_path(product) do
         = image_tag product.main_picture, class: "product-thumb"
       %div.title

@@ -17,4 +17,4 @@
 //= require frontend/masonry.min.js
 //= require frontend/smooth-scroll.min.js
 //= require frontend/home
-//= require frontend/product_section
+//= require frontend/cart

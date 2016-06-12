@@ -10,7 +10,7 @@
     %span= line_item.product.name
   
   %td
-    = f.number_field :quantity, class: "qty-cot mt24 product_quantity", required: true
+    = f.number_field :quantity, class: "qty-cot mt24 product_quantity", required: true, min: 1
   %td
     %span= price_for_product(line_item.product, current_user)
 

@@ -4,7 +4,7 @@ class OrdersController < AdminController
   # GET /orders
   # GET /orders.json
   def index
-    @q = Order.includes(:line_items).ransack(ransack_params)
+    @q = Order.includes(:line_items).order("orders.created_at desc").ransack(ransack_params)
     @orders = @q.result(distinct: true)
   end
 

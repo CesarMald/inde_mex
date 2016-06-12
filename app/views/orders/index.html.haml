@@ -7,7 +7,7 @@
       %div.col-sm-4.mb-xs
         = f. select :status_eq, options_for_select(order_status_combo, "completed"), {}, {class: "input-sm form-control input-s-sm inline"}
       %div.col-sm-4.mb-xs
-        = f.select :user_id_eq, users_combo, { include_blank: "Usuario"}, {class: "input-sm form-control input-s-sm inline"}
+        = f.select :user_id_eq, users_combo, { include_blank: "Cliente"}, {class: "input-sm form-control input-s-sm inline"}
       
       %div.col-sm-4
         %div.input-group
@@ -19,7 +19,7 @@
       %thead
         %th ID
         %th Estatus
-        %th Usuario
+        %th Cliente
         %th # Productos
         %th Subtotal
         %th Total

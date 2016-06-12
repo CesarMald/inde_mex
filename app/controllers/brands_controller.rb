@@ -64,7 +64,7 @@ class BrandsController < AdminController
 
   def search_models
     @brand = Brand.find(params[:id])
-    @models = @brand.models.map { |model| [model.name, model.id] }
+    @models = @brand.models.map { |model| [model.name.titleize, model.id] }
   end
 
   private

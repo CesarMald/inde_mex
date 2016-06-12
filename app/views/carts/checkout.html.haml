@@ -1,13 +1,14 @@
 %section
   .container
     .row
-      .col-md-8.col-md-offset-2
+      .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
         .text-center
           %h4.uppercase Cotización
           %hr
-        %table.table
+        %table.table.cart.mb48.kart
           %tbody
             %tr
+              %th
               %th{:scope => "row"} Producto
               %th.text-center{scope:"row"} Cantidad
               %th.text-center{scope: "row"} Precio
@@ -15,6 +16,8 @@
 
             - @line_items.each do |line_item|
               %tr
+                %td.no-mvl
+                  = image_tag line_item.product.main_picture, class: "product-thumb"
                 %td= line_item.product.name
                 %td.text-center= line_item.quantity
                 %td.text-center= price_for_product(line_item.product, current_user)
@@ -22,6 +25,7 @@
 
             %tr
               %th{scope: "row"} Total
+              %td
               %td.text-center
                 %strong= @line_items.sum(:quantity)
               %td

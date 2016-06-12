@@ -1,8 +1,8 @@
 - models.each do |model|
   %tr
     %td= model.id
-    %td= model.name
-    %td= model.brand.name
+    %td= model.name.titleize
+    %td= model.brand.name.titleize
     %td
       = link_to edit_model_path(model), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy

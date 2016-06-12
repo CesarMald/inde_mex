@@ -5,12 +5,13 @@
 %div.ibox-content
   %div.row
     = search_form_for @q, remote: true do |f|
+      %div.col-sm-4.mb-xs
+        = f.select :brand_id_eq, brands_combo, {include_blank: "Marca"}, {class: "input-sm form-control input-s-sm inline"}
       %div.col-sm-4
         %div.input-group
-          = f.text_field :name_cont, { placeholder: "Search", class: "input-sm form-control"}
           %span.input-group-btn
             = f.submit "Buscar", class: "btn btn-sm btn-primary" 
-
+  %br
   %div.table-responsive
     %table.table.table-striped
       %thead

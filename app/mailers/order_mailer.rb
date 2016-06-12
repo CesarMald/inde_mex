@@ -1,4 +1,5 @@
 class OrderMailer < ApplicationMailer
+  default bcc: "diegopulido@hotmail.com"
 
   def send_confirmation order, user
     @order = order

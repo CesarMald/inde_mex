@@ -4,7 +4,7 @@ class ProductsController < AdminController
   # GET /products
   # GET /products.json
   def index
-    @q = Product.ransack(params[:q])
+    @q = Product.order(created_at: :desc).ransack(params[:q])
     @products = @q.result(distinct: true)
   end
 

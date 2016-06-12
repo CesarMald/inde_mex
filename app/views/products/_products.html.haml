@@ -3,8 +3,9 @@
     %td= product.id
     %td= product.name
     %td= product.code
-    %td= product.brand.name
-    %td= product.model.name
+    %td= product.collection.name.titleize
+    %td= product.brand.name.titleize
+    %td= product.model.name.titleize
     %td= number_to_currency(product.regular_price, precision: 2)
     %td= number_to_currency(product.offer_price, precision: 2)
     %td= number_to_currency(product.premium_price, precision: 2)

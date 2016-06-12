@@ -1,8 +1,8 @@
-- @collections_for_section.each do |collection|
+- @collections_for_section.each_with_index do |collection, index|
   %section{class: "ca-aft image-bg pt160 pb160 pt-xs-40 pb-xs-40", style: "#{image_style(collection.main_picture)}"}
     %div.container
       %div.row
-        %div.col-sm-12.text-right
+        %div{class: "col-sm-12 #{collection_position(index)}"}
           %h2.uppercase.mb8.text-shadow= collection.name
           %p.lead.mb40.text-shadow= collection.description
           = link_to collection.text_link, collection_section_path(collection), class: "btn btn-lg btn-white mb0"

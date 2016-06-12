@@ -1,3 +1,11 @@
+namespace :users do 
+  task create: :environment do
+    User.create!(first_name: "Mayra", last_name: "Cabrera", email: "mcabrera1087@gmail.com", password: "password", password_confirmation: "password", status: "active", role: "admin")
+    User.create!(first_name: "Carlos", last_name: "Escalera", email: "carlos@antidotomx.com", password: "password", password_confirmation: "password", status: "active", role: "admin")
+    User.create!(first_name: "Cliente", last_name: "Mayorista", email: "mayorista@idenmex.com", password: "password", password_confirmation: "password", status: "active", role: "client")
+    User.create!(first_name: "Cliente", last_name: "Mayorista Premium", email: "mayorista_premium@idenmex.com", password: "password", password_confirmation: "password", status: "active", role: "client")
+  end
+end
 namespace :basic_information do
   desc 'Creates basic objects'
   task create: :environment do
@@ -75,3 +83,5 @@ dura más que un ramo de flores...#todoPorAmor.", link_url: "google.com", link_t
     NewsletterBuilder.destroy_all
   end
 end
+
+

@@ -22,6 +22,11 @@ jQuery ->
       url: "/admin/brands/" + $(this).val() + "/search_models"
       type: 'GET'
       dataType: 'script'
+
+  $("#product_on_offer").click ->
+    checked = $(this).is(':checked')
+    $("#offer_fields").toggle()
+    $("#product_offer_price").attr("required", checked)
     
 verifyRelatedProducts = ->
   product_id = parseInt($("#product_id").val())

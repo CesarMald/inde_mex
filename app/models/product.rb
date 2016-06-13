@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
 
   scope :on_offer, -> { where(on_offer: true) }
   scope :regular, -> { where(on_offer: false) }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(inactive: false) } 
 
   def main_picture
     if pictures.empty?

@@ -23,10 +23,13 @@
               %td.text-center= line_item.product.code
               %td.text-center= line_item.quantity
               %td.text-center
-                - if @user.regular?
+                - if line_item.product.on_offer?
                   = number_to_currency(line_item.product.offer_price, precision: 2)
                 - else
-                  = number_to_currency(line_item.product.premium_price, precision: 2)
+                  - if @user.regular?
+                    = number_to_currency(line_item.product.merchant_price, precision: 2)
+                  - else
+                    = number_to_currency(line_item.product.premium_price, precision: 2)
 
               %td.text-center= number_to_currency(line_item.total, precision: 2)
           %tr

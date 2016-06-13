@@ -18,13 +18,13 @@ class HomeController < ApplicationController
 
   def brand_section
     @brand = Brand.find(params[:id])
-    @products = @brand.products
+    @products = @brand.products.active
     search_products_based_on_price if params[:product_order].present?
   end
 
   def model_section
     @model = Model.find(params[:id])
-    @products = @model.products
+    @products = @model.products.active
     search_products_based_on_price if params[:product_order].present?
   end
   
@@ -34,12 +34,12 @@ class HomeController < ApplicationController
 
   def collection_section
     @collection = Collection.find(params[:id])
-    @products = @collection.products
+    @products = @collection.products.active
     search_products_based_on_price if params[:product_order].present?
   end
 
   def newest_section
-    @products = Product.order("created_at DESC").limit(20)
+    @products = Product.active.order("created_at DESC").limit(20)
     @interior_builders = InteriorBuilder.includes(:picture).order(:position)
     search_products_based_on_price if params[:product_order].present?
   end
@@ -50,7 +50,7 @@ class HomeController < ApplicationController
   end
 
   def offer_section
-    @products = Product.on_offer
+    @products = Product.on_offer.active
     @offer_builder = OfferBuilder.first
     search_products_based_on_price if params[:product_order].present?
   end
@@ -78,7 +78,7 @@ class HomeController < ApplicationController
   def load_core_objects
     @brands = Brand.includes(:models)
     @collections = Collection.all.each_slice(Collection.count / 2)
-    @q = Product.ransack(params[:q])
+    @q = Product.active.ransack(params[:q])
   end
 
   def search_products_based_on_price
@@ -88,6 +88,7 @@ class HomeController < ApplicationController
     else
       @products = @products.unscoped.order("#{sort_by} #{direction}")
     end
+    @product = @products.active
   end
 
   def sort_by

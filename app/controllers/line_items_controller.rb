@@ -57,9 +57,13 @@ class LineItemsController < ApplicationController
   end
 
   def price_for_current_user
-    case
-    when current_user.regular? then @line_item.product.offer_price
-    when current_user.premium? then @line_item.product.premium_price
+    if @line_item.product.on_offer?
+      @line_item.product.offer_price
+    else
+      case
+        when current_user.regular? then @line_item.product.merchant_price
+        when current_user.premium? then @line_item.product.premium_price
+      end
     end
   end
 

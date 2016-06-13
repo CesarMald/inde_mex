@@ -7,6 +7,9 @@
     = search_form_for @q, remote: true do |f|
       %div.col-sm-4.mb-xs
         = f.select :collection_id_eq, collections_combo, {include_blank: "Colección"}, {class: "input-sm form-control input-s-sm inline"}
+      %div.col-sm-4.mb-xs
+        = "Mostrar inactivos"
+        = f.check_box :active_false, {}, "1", nil
       %div.col-sm-4
         %div.input-group
           %span.input-group-btn
@@ -20,10 +23,11 @@
         %th Código
         %th Colección
         %th Marca
-        %th Modelo
+        %th Equipo
         %th Precio Regular
         %th Precio Mayorista
         %th Precio Mayorista Premium
+        %th Precio de Oferta
         %th Acciones
       %tbody#products_result
         = render 'products', products: @products

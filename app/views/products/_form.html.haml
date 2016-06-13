@@ -33,7 +33,7 @@
 
   %div.col-sm-4
     %div.form-group
-      = f.text_field :offer_price, placeholder: "Precio Mayorista", class: "form-control", required: true
+      = f.text_field :merchant_price, placeholder: "Precio Mayorista", class: "form-control", required: true
 
   %div.col-sm-4
     %div.form-group
@@ -43,11 +43,15 @@
     %div.form-group
       = f.text_area :description, placeholder: "Descripción", class: "form-control"
   
-  %div.col-sm-12
+  %div.col-sm-4
     %div.form-group
       %label
         = f.check_box :on_offer
         Producto en Oferta
+
+  %div{class: "col-sm-4", style: "#{offer_display_field(@product)}", id: "offer_fields"}
+    %div.form-group
+      = f.text_field :offer_price, placeholder: "Precio de Oferta", class: "form-control", required: @product.on_offer?
 
   #related_products_section
     = render 'related_products_section', product: @product if @product.persisted?

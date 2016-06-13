@@ -34,7 +34,4 @@ module HomeHelper
     "background: url('" + server_name + picture_path + "') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"
   end
 
-  def offer_style picture_path
-
-  end
 end

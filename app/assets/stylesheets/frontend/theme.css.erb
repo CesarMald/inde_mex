@@ -504,6 +504,7 @@ hr.short-thick {
   font-family: 'Raleway',"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
+  width: 88%;
 }
 .hide-over:hover .water{
   -ms-transform: translate(20px,0px); /* IE 9 */
@@ -521,12 +522,13 @@ hr.short-thick {
 .referencia{
   height: 40px !important;
 }
-.water h3{
+.water h3 {
   color: #DEDEDE;
   text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-  line-height: 0;
+  line-height: 1.4;
   opacity: 0;
-  transition:.35s;
+  transition: .35s;
+  width: 88%;
 }
 .hide-over:hover .water h3{
   opacity: 1;
@@ -585,12 +587,13 @@ hr.short-thick {
   left: 30px;
   transition:.35s;
 }
-.water-bottom h3{
+.water-bottom h3 {
   color: #DEDEDE;
   text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-  line-height: 0;
+  line-height: 1.4;
   opacity: 0;
-  transition:.35s;
+  transition: .35s;
+  width: 87%;
 }
 .slogan-bottom{
   -ms-transform: translate(-15px,0px); /* IE 9 */
@@ -607,6 +610,7 @@ hr.short-thick {
   font-family: 'Raleway',"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
+  width: 87%;
 }
 .backstreet:hover .water-bottom{
   -ms-transform: translate(20px,0px); /* IE 9 */
@@ -895,7 +899,7 @@ a:focus{
   background-color: rgba(0,0,0,0.3);
 }
 .whats-fixed::after {
-  content: " 811 9166503 \A 811 9166503";
+  content: "MONTERREY \A 811 9166503 \A \A REYNOSA \A  899 2854904";
   white-space: pre;
   position: absolute;
   top: 0;
@@ -907,12 +911,39 @@ a:focus{
   transform: translate(0,100%);
   display: block;
   width: 100%;
-  height: 100%;
+  height: 200%;
   text-align: center;
   line-height: 1.2;
   padding: 7px;
   background: black;
   font-size: 11px;
+}
+.cols-footer h5{
+    color: #fff;
+    margin-bottom: 5px;
+}
+.lamb {
+  border: none !important;
+  width: initial !important;
+  height: initial !important;
+}
+a:focus {
+    color: #464646 !important;
+}
+.map-holder iframe{
+  width: 100%;
+}
+.bobo{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.ibris{
+  margin-left: 10px;
+}
+@media all and (min-width: 768px) {
+.list-inline li:last-child{
+    display: none;
+  }
 }
 @media all and (max-width: 1100px) {
   .col-md-push-1 {
@@ -2787,12 +2818,11 @@ select:hover {
   button.col-md-6:last-of-type {
     margin-left: 1%;
   }
-  .whats-fixed:hover::after{
-  -ms-transform: translate(0,0); /* IE 9 */
-  -webkit-transform: translate(0,0); /* Safari */
-  -moz-transform: translate(0,0); /* Safari */
-  transform: translate(0,0);
-}
+.whats-fixed:hover::after {
+    -ms-transform: translate(15%,-142%) rotate(90deg);
+    -webkit-transform: translate(15%,-142%) rotate(90deg);
+    -moz-transform: translate(15%,-142%) rotate(90deg);
+    transform: translate(15%,-142%) rotate(90deg);
 }
 form.thirds input,
 form.thirds button {
@@ -5484,10 +5514,11 @@ video {
 }
 /*!---------- 33. MAPS ----------*/
 .map-holder {
-  overflow: hidden;
-  position: relative;
-  width: 50%;
-  float: left;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    float: left;
+    height: 300px;
 }
 .map-holder iframe {
   border: none;

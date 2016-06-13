@@ -7,15 +7,22 @@
           <hr>
           <ul class="cols-footer">
             <li>
-              <i class="ti-direction-alt"></i><span>Ave. Miguel Alemán 6063 Local 108</span><br>
-              <span>Col. America, Guadalupe, NL.</span>
+              <h5>Monterrey</h5>
+              <i class="ti-direction-alt"></i><span>Ave. Miguel Alemán 6063 Local 108 "Plaza Antalya" </span><br>
+              <span>Col. America, Guadalupe, NL. </span>
             </li>
             <li>
-              <i class="ti-direction-alt"></i><span>Elias Piña 88500 Reynosa, tamps</span><br>
+              <i class="fa fa-phone"></i><span>812 164 7878</span> <br>
+              <i class="fa fa-whatsapp"></i><span>811 916 6503</span>
             </li>
             <li>
-              <i class="fa fa-phone"></i><span>(899) 9252627</span> <br>
-              <i class="fa fa-whatsapp"></i><span>62 356 3502 </span>
+              <br>
+              <h5>Reynosa</h5>
+              <i class="ti-direction-alt"></i><span>Elias Piña 88500 Reynosa, Tamps</span><br>
+            </li>
+            <li>
+              <i class="fa fa-phone"></i><span>899 925 2627</span> <br>
+              <i class="fa fa-whatsapp"></i><span>899 285 4904</span>
             </li>
             <li>
               <i class="ti-email"></i><span>contacto@idenmex.com</span> 
@@ -29,10 +36,10 @@
           <hr>
           <ul class="cols-footer">
             <li>
-              <a href="">Términos y condiciones</a>
+                <a data-toggle="modal" data-target="#myModal" href="#">Términos y condiciones</a>
             </li>
             <li>
-              <a href="">Aviso de Privacidad</a>
+                <a data-toggle="modal" data-target="#myModal" href="#">Aviso de Privacidad</a>
             </li>
           </ul>
         </div>
@@ -41,7 +48,7 @@
         <div class="widget">
           <h6 class="title wht">Let's be friends</h6>
           <hr>
-          <p class="wht">Regístrate a nuestro newsletter y obten un 10% de descuento en tu primer compra.</p>
+          <p class="wht">Regístrate a nuestro newsletter y obtén información antes que nadie.</p>
           <%= form_for Newsletter.new, class: "form-newsletter halves" do |f| %>
             <%= f.email_field :email, placeholder: "email", class: "mb16 transparent", required: true %>
             <%= f.submit "Registrar", class: "btn-white mb0 newsletter" %>
@@ -68,3 +75,25 @@
   <!--end of container-->
   <a class="btn btn-sm fade-half back-to-top inner-link slip" href="#top">Top</a>
 </footer>
+      <!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Términos y condiciones</h4>
+      </div>
+      <div class="modal-body">
+        <p class="mb0">
+          Aviso de privacidad de: Idenmex con domicilio en Ave. Miguel Alemán 6063 Local 108 "Plaza Antalya" Col. America, Guadalupe, NL, directa o indirectamente procesa, usa, almacena y en general trata los datos personales que obtiene de sus consumidores para ofrecerle nuestros productos, servicios, promociones, lanzamientos y proveerle de un bien, pudiéndose transferir a terceros para realizar actividades de mercado. Sus datos serán protegidos con las medidas de seguridad y confidencialidad aplicables de conformidad con la regulación vigente y atendiendo las políticas internas.<br><br>
+
+          Los Consumidores pueden, en cualquier momento, solicitar el acceso, rectificación o eliminación de sus datos personales , así como limitar el uso y/o divulgación de los mismos, pedir que no se le envíen comunicaciones de estos o bien retirar el consentimiento otorgado para el tratamiento de sus datos personales, contactando a idenmex, en su teléfono: 812 164 7878 o por medio de su correo electrónico : contacto@idenmex.com , donde obtendrán mayor información sobre el proceso a seguir. <br>
+          Cualquier modificación al presente aviso, se informará en términos de las disposiciones normativas
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

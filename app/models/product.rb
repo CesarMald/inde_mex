@@ -22,4 +22,8 @@ class Product < ActiveRecord::Base
       pictures.first.image_url
     end
   end
+
+  def can_be_activated?
+    brand.active? && model.active?
+  end
 end

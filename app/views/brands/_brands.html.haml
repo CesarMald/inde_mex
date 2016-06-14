@@ -5,5 +5,7 @@
     %td
       = link_to edit_brand_path(brand), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
-      = link_to brand, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
-        %i.fa.fa-remove.text-navy
+      - if brand.active?
+        = link_to "Desactivar", deactivate_brand_path(brand)
+      - else
+        = link_to "Activar", activate_brand_path(brand)

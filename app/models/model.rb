@@ -7,7 +7,10 @@ class Model < ActiveRecord::Base
   
   accepts_nested_attributes_for :picture, allow_destroy: true
 
-  default_scope { order(:name) } 
+  default_scope { order(:name) }
+  
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }  
 
   def main_picture
     if picture
@@ -15,5 +18,9 @@ class Model < ActiveRecord::Base
     else
       "default-product.png"
     end
+  end
+
+  def can_be_activated?
+    brand.active?
   end
 end

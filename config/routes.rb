@@ -8,7 +8,10 @@ Rails.application.routes.draw do
       put 'update_password', on: :member
     end
     resources :orders, only: [:index, :show, :destroy]
-    resources :models 
+    resources :models, except: :destroy do
+      get 'activate', on: :member
+      get 'deactivate', on: :member
+    end
     resources :brands do
       get 'search_models', on: :member
     end

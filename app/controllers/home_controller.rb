@@ -34,12 +34,12 @@ class HomeController < ApplicationController
 
   def collection_section
     @collection = Collection.find(params[:id])
-    @products = @collection.products.active
+    @products = active_products.where(collection_id: @collection.id)
     search_products_based_on_price if params[:product_order].present?
   end
 
   def newest_section
-    @products = Product.active.order("created_at DESC").limit(20)
+    @products = active_products.order("products.created_at DESC").limit(20)
     @interior_builders = InteriorBuilder.includes(:picture).order(:position)
     search_products_based_on_price if params[:product_order].present?
   end
@@ -50,7 +50,7 @@ class HomeController < ApplicationController
   end
 
   def offer_section
-    @products = Product.on_offer.active
+    @products = active_products.on_offer
     @offer_builder = OfferBuilder.first
     search_products_based_on_price if params[:product_order].present?
   end
@@ -114,4 +114,9 @@ class HomeController < ApplicationController
     end
     session[:cart_id]
   end
+
+  def active_products
+    Product.joins(:model).active.merge(Model.active)
+  end
+
 end

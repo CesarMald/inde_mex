@@ -58,7 +58,7 @@ class ProductsController < AdminController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Producto eliminado exitosamente' }
       format.json { head :no_content }
     end
   end
@@ -66,14 +66,14 @@ class ProductsController < AdminController
   def activate
     @product = Product.find(params[:id])
     @product.update_attribute(:active, true)
-    flash[:notice] = "Producto activado exitosamente"
+    flash[:notice] = "¡Producto activado exitosamente!"
     redirect_to products_path
   end
 
   def deactivate
     @product = Product.find(params[:id])
     @product.update_attribute(:active, false)
-    flash[:notice] = "Producto desactivado exitosamente"
+    flash[:notice] = "¡Producto desactivado exitosamente1"
     redirect_to products_path
   end
 

@@ -6,5 +6,7 @@
     %td
       = link_to edit_model_path(model), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
-      = link_to model, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
-        %i.fa.fa-remove.text-navy
+      - if model.active?
+        = link_to "Desactivar", deactivate_model_path(model)
+      - else
+        = link_to "Activar", activate_model_path(model)

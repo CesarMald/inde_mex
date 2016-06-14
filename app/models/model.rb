@@ -19,4 +19,8 @@ class Model < ActiveRecord::Base
       "default-product.png"
     end
   end
+
+  def can_be_activated?
+    brand.active?
+  end
 end

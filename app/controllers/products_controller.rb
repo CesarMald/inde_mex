@@ -65,8 +65,12 @@ class ProductsController < AdminController
 
   def activate
     @product = Product.find(params[:id])
-    @product.update_attribute(:active, true)
-    flash[:notice] = "¡Producto activado exitosamente!"
+    if @product.can_be_activated?
+      @product.update_attribute(:active, true)
+      flash[:notice] = "¡Producto activado exitosamente!"
+    else
+      flash[:alert] = "Producto no puede ser activado correctamente. Revise que su marca o modelo estén activados"
+    end
     redirect_to products_path
   end
 

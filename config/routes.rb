@@ -12,8 +12,10 @@ Rails.application.routes.draw do
       get 'activate', on: :member
       get 'deactivate', on: :member
     end
-    resources :brands do
+    resources :brands, except: :destroy do
       get 'search_models', on: :member
+      get 'activate', on: :member
+      get 'deactivate', on: :member
     end
     resources :products, except: :destroy do
       get 'activate', on: :member

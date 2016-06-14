@@ -4,7 +4,7 @@ class BrandsController < AdminController
   # GET /brands
   # GET /brands.json
   def index
-    @q = Brand.ransack(params[:q])
+    @q = Brand.ransack(params_q)
     @brands = @q.result(distinct: true)
   end
 
@@ -67,6 +67,24 @@ class BrandsController < AdminController
     @models = @brand.models.map { |model| [model.name.titleize, model.id] }
   end
 
+  def activate
+    @brand = Brand.find(params[:id])
+    @brand.update_attribute(:active, true)
+    @brand.models.update_all(active: true)
+    @brand.products.update_all(active: true)
+    flash[:notice] = "¡Marca activada exitosamente!"
+    redirect_to brands_path
+  end
+
+  def deactivate
+    @brand = Brand.find(params[:id])
+    @brand.update_attribute(:active, false)
+    @brand.models.update_all(active: false)
+    @brand.products.update_all(active: false)
+    flash[:notice] = "¡Marca desactivada exitosamente!"
+    redirect_to brands_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
@@ -77,4 +95,15 @@ class BrandsController < AdminController
     def brand_params
       params.require(:brand).permit(:name)
     end
+
+    def params_q
+      params[:q] ||= {}
+      if params[:q].has_key? :active_false
+        params[:q].delete(:active_false)
+      else
+        params[:q][:active_true] = 1
+      end
+      params[:q]
+    end
+    
 end

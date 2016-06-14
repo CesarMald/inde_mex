@@ -76,7 +76,7 @@ class HomeController < ApplicationController
   private 
 
   def load_core_objects
-    @brands = Brand.includes(:models)
+    @brands = Brand.active.includes(:models)
     @collections = Collection.all.each_slice(Collection.count / 2)
     @q = Product.active.ransack(params[:q])
   end
@@ -116,7 +116,7 @@ class HomeController < ApplicationController
   end
 
   def active_products
-    Product.joins(:model).active.merge(Model.active)
+    Product.joins(:model, :brand).active.merge(Model.active).merge(Brand.active)
   end
 
 end

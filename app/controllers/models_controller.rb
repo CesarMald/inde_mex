@@ -66,15 +66,21 @@ class ModelsController < AdminController
 
   def activate
     @model = Model.find(params[:id])
-    @model.update_attribute(:active, true)
-    flash[:notice] = "¡Modelo activado exitosamente!"
+    if @model.can_be_activated?
+      @model.update_attribute(:active, true)
+      @model.products.update_all(active: true)
+      flash[:notice] = "¡Equipo activado exitosamente!"
+    else
+      flash[:alert] = "Equipo no puede ser activado correctamente. Revise que su marca esté activada" 
+    end
     redirect_to models_path
   end
 
   def deactivate
     @model = Model.find(params[:id])
     @model.update_attribute(:active, false)
-    flash[:notice] = "¡Modelo desactivado exitosamente!"
+    @model.products.update_all(active: false)
+    flash[:notice] = "¡Equipo desactivado exitosamente!"
     redirect_to models_path
   end
 

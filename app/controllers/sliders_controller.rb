@@ -10,7 +10,7 @@ class SlidersController < AdminController
   def update
     @slider = Slider.find(params[:id])
     if @slider.update(slider_params)
-      redirect_to sliders_path, notice: "Slider was successfully updated"
+      redirect_to sliders_path, notice: "¡Slider actualizado exitosamente!"
     else
       render :index
     end

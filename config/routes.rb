@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get 'search_section' => 'home#search_section', as: :search_section
   get 'make_contact' => 'home#make_contact', as: :make_contact
   
-  resources :newsletters, only: [:create]
+  resources :newsletters, only: [:create, :index, :destroy]
   resources :customers, only: [:edit, :update]
 
   resources :carts do

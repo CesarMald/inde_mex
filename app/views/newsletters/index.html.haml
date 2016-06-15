@@ -1,0 +1,17 @@
+%div.ibox-title
+  %h5= "Correos inscritos al Newsletter"
+
+%div.ibox-content
+  %div.table-responsive
+    %table.table.table-striped
+      %thead
+        %th Email
+        %th Suscrito el 
+      %tbody
+        - @newsletters.each do |newsletter|
+          %tr
+            %td= newsletter.email
+            %td= newsletter.created_at.strftime("%d/%m/%Y")
+            %td
+              = link_to newsletter, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
+                %i.fa.fa-remove.text-navy

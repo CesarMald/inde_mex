@@ -73,5 +73,10 @@
       %li{class: "#{set_active_class("newsletter_builder")}"}
         = link_to newsletter_builders_path do
           %i.fa.fa-magic
+          %span.nav-label= "Modal Principal"
+
+      %li{class: "#{set_active_class("newsletter")}"}
+        = link_to newsletters_path do
+          %i.fa.fa-magic
           %span.nav-label= "Sección de Newsletter"
 

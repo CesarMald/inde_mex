@@ -1,0 +1,9 @@
+- related_products.each do |product|
+  %tr
+    %td= product.name
+    %td= product.collection.name.titleize
+    %td= product.brand.name.titleize
+    %td= product.model.name.titleize
+    %td
+      = link_to product, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
+        %i.fa.fa-remove.text-navy

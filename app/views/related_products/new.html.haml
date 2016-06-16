@@ -1,0 +1,10 @@
+%div.ibox-title
+  %h5= "Asociar Nuevo Producto"
+
+= render 'search_section'
+
+= render 'hidden_table', related_products: @products
+%br
+%div.ibox-content.ca-forms-god
+  %div.row
+    = render 'form'

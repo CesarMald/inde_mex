@@ -1,9 +1,0 @@
-%div.col-sm-12.products_section
-  %div.col-sm-10
-    = select_tag "product[related_product_ids][#{product_id}]", options_for_select(products_combo, product_id), {prompt: "Producto", class: "ca-forms forms-group input-sm form-control input-s-m inline related_p", required: true }
-    %p
-  %div.col-sm-2
-    = link_to "Eliminar", "#", class: "btn btn-primary ca-elim remove_fields"
-
-
-

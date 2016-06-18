@@ -53,8 +53,6 @@
     %div.form-group
       = f.text_field :offer_price, placeholder: "Precio de Oferta", class: "form-control", required: @product.on_offer?
 
-  #related_products_section
-    = render 'related_products_section', product: @product if @product.persisted?
 
 
   %div.col-sm-12

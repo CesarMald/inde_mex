@@ -1,0 +1,11 @@
+%div.ibox-title
+  %h5= "Editar Orden #{@order.id}"
+
+
+%div.ibox-title
+  %h5= "Cliente: #{@order.user.email}"
+
+%div.ibox-content.ca-forms-god
+  %div.row
+    = render 'form', line_items: @order.line_items, order: @order
+

@@ -4,9 +4,6 @@
       %th{scope: "row"} Subtotal
       %td= number_to_currency(order.subtotal, precision: 2)
     %tr
-      %th{scope: "row"} IVA 
-      %td= number_to_currency(order.subtotal * 0.16, precision: 2)
-    %tr
       %th{scope: "row"} Total
       %td
         %strong= number_to_currency(order.total, precision: 2)

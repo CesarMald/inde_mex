@@ -23,5 +23,6 @@
 //= require products
 //= require pictures
 //= require slider_brands
+//= require orders
 //= require turbolinks
 

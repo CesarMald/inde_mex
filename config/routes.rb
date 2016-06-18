@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       get 'edit_password', on: :member
       put 'update_password', on: :member
     end
-    resources :orders, only: [:index, :show, :destroy]
+    resources :orders do
+      get 'complete', on: :member
+      get 'send_to_client', on: :member
+    end
     resources :models, except: :destroy do
       get 'activate', on: :member
       get 'deactivate', on: :member

@@ -7,6 +7,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @line_item = @order.line_items.new(line_item_params)
+    @line_item.price = price_for_current_user
     @line_item.total = calculate_price(@line_item.quantity)
     if @line_item.save
       update_price_for_order
@@ -52,8 +53,7 @@ class LineItemsController < ApplicationController
   end
 
   def calculate_price quantity
-    price = price_for_current_user
-    price * quantity
+    @line_item.price * quantity
   end
 
   def price_for_current_user

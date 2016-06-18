@@ -7,11 +7,8 @@
         %h5= r_product.name
         %div.price-section
           - if user_signed_in?
-            %span.mb8.rebate-price= number_to_currency(r_product.regular_price, precision: 2)
-            - if current_user.premium?
-              %span.mb8.rebate-price= number_to_currency(r_product.offer_price, precision: 2)
-              %span.mb8.normal-price= number_to_currency(r_product.premium_price, precision: 2)
-            - else
-              %span.mb8.normal-price= number_to_currency(r_product.offer_price, precision: 2)
+            %span.number.price.old-price= number_to_currency(r_product.regular_price, precision: 2)
+            %span.number.price= price_for_product(r_product, current_user) 
           - else
-            %span.mb8.normal-price= number_to_currency(r_product.regular_price, precision: 2)
+            %span.number.price= number_to_currency(product.regular_price, precision: 2)
+

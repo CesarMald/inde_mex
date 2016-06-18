@@ -8,20 +8,20 @@ jQuery ->
   $("#order_shipping_price, #order_tax_price").on 'change', ->
     updateTotal()
 
-    
-
 updateLineItem = (field, tr) ->
   price = tr.find(".product_price").val()
   total = field.val() * price
-  console.log(total)
-  tr.find(".total_line_item").html(total)
+  string_total = numeral(total).format('$0,0.00')
+  tr.find(".total_line_item").html(string_total)
   tr.find(".alt_total_line_item").val(total)
 
 updateSubtotal = () ->
   total = 0
   $('.alt_total_line_item').each (index) ->
     total += parseFloat($(this).val())
-  $("#subtotal_order").html(total)
+  string_total = numeral(total).format('$0,0.00')
+  $("#subtotal_order").html(string_total)
+  $(".alt_subtotal_order").val(total)
   return
 
 updateTotal = () ->
@@ -29,7 +29,8 @@ updateTotal = () ->
   shipping_price = parseFloat($("#order_shipping_price").val())
   tax_price = parseFloat($("#order_tax_price").val())
   total = subtotal + shipping_price + tax_price
-  $("#total_order").html(total)
+  string_total = numeral(total).format('$0,0.00')
+  $("#total_order").html(string_total)
   return
  
   

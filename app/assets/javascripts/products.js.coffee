@@ -11,12 +11,16 @@ jQuery ->
     $("#offer_fields").toggle()
     $("#product_offer_price").attr("required", checked)
 
-  $(".add_product").click (event) ->
+  $("body").on "click", ".add_product", (event) ->
     event.preventDefault()
     product_id = $(this).siblings('.product_id').eq(0).val()
-    row = $("tr#product_" + product_id.toString()).html()
-    $('#products_to_add').append '<tr>' + row + '</tr>'
+    unless $(".related_product_id_" + product_id).length == 2
+      row = $("tr#product_" + product_id.toString()).html()
+      $('#products_to_add').append '<tr>' + row + '</tr>'
+    $(".save_button").attr("disabled", false)
   
   $('body').on 'click', '.remove_product', (event) ->
     event.preventDefault()
     $(this).closest('tr').remove()
+    if $("#products_to_add tr").length == 1
+      $(".save_button").attr("disabled", true)

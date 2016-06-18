@@ -1,8 +1,9 @@
 %div.ibox-title
-  %h5= "Asociar Nuevo Producto"
+  %h5= "Asociar productos a: " + @product.name
+%br
+= link_to "Atrás", product_related_products_path(@product)
 
 = render 'search_section'
-
 = render 'hidden_table', related_products: @products
 %br
 %div.ibox-content.ca-forms-god

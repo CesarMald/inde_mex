@@ -7,17 +7,17 @@ class RelatedProductsController < AdminController
   end
 
   def new
-    @q = Product.ransack(params[:q])
+    @q = Product.where.not(id: @product.related_product_ids).ransack(params[:q])
     @products = @q.result(distinct: true)
   end
 
   def create
-    if @product.update(product_params)
-      flash[:notice] = "Productos asociados exitosamente"
-      redirect_to product_related_products_path(@product)
-    else
-      render :new
-    end
+    product_params
+    original_products = @product.related_product_ids
+    @related_product_ids.concat(original_products)
+    @product.related_product_ids = @related_product_ids.uniq
+    flash[:notice] = "Productos asociados exitosamente"
+    redirect_to product_related_products_path(@product)
   end
 
   def destroy
@@ -35,7 +35,10 @@ class RelatedProductsController < AdminController
   end
 
   def product_params
-    params[:product][:related_product_ids] ||= {}
-    params[:product][:related_product_ids] = params[:product][:related_product_ids].values
+    @related_product_ids ||= []
+    params.each do |key, value|
+      @related_product_ids << value if key =~ /related/
+    end
   end
+
 end

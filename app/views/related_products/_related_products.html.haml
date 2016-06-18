@@ -5,5 +5,5 @@
     %td= product.brand.name.titleize
     %td= product.model.name.titleize
     %td
-      = link_to product, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
+      = link_to product_related_product_path(@product, product), { method: :delete, data: {confirm: '¿Estás seguro?'}} do
         %i.fa.fa-remove.text-navy

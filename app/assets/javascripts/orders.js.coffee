@@ -1,9 +1,14 @@
 jQuery ->
   $(".order_line_item_quantity").on 'change', ->
-    tr = $(this).parent().parent()
-    updateLineItem($(this), tr)
-    updateSubtotal()
-    updateTotal()
+    save_button = $(".order_save_button")
+    if $(this).val() == ""
+      save_button.attr("disabled", true)
+    else
+      save_button.attr("disabled", false)
+      tr = $(this).parent().parent()
+      updateLineItem($(this), tr)
+      updateSubtotal()
+      updateTotal()
   
   $("#order_shipping_price, #order_tax_price").on 'change', ->
     updateTotal()

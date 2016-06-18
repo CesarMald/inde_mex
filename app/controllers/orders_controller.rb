@@ -36,7 +36,7 @@ class OrdersController < AdminController
   def complete
     @order = Order.find(params[:id])
     @order.update_attribute(:status, "completed")
-    flash[:notice] = "¡Order completada exitosamente!"
+    flash[:notice] = "¡Orden completada exitosamente!"
     redirect_to orders_path
   end
 

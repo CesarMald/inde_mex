@@ -19,3 +19,5 @@
         = link_to "Desactivar", deactivate_product_path(product)
       - else
         = link_to "Activar", activate_product_path(product)
+
+      = link_to "Relacionados", product_related_products_path(product)

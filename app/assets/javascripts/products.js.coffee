@@ -1,21 +1,4 @@
 jQuery ->
-  $('form').on 'click', '.remove_fields', (event) ->
-    $(this).closest('.products_section').remove()
-    event.preventDefault()
-
-  $('form').on 'click', '.add_fields', (event) ->
-    time = new Date().getTime()
-    regexp = new RegExp($(this).data('id'), 'g')
-    $("#related_products_section").after($(this).data('fields'))
-    event.preventDefault()
-
-  $(".edit_product").on "submit", (e) ->
-    verifyRelatedProducts()
-    !($(".error").length >= 1)
-
-  $('form').on 'change', '.related_p', (event) ->
-    $(this).removeClass("error")
-    $(this).siblings("p").html("")
 
   $('form').on 'change', '.brand_field', (event) ->
     jQuery.ajax
@@ -27,15 +10,17 @@ jQuery ->
     checked = $(this).is(':checked')
     $("#offer_fields").toggle()
     $("#product_offer_price").attr("required", checked)
-    
-verifyRelatedProducts = ->
-  product_id = parseInt($("#product_id").val())
-  related_products = $(".related_p")
-  i = 0
-  item = undefined
-  while item = related_products[i]
-    console.log(item)
-    if parseInt(item.value) == product_id
-      $(item).addClass("error")
-      $(item).siblings('p').html("El producto no puede estar relacionado a sí mismo")
-    i++
+
+  $("body").on "click", ".add_product", (event) ->
+    event.preventDefault()
+    product_id = $(this).siblings('.product_id').eq(0).val()
+    unless $(".related_product_id_" + product_id).length == 2
+      row = $("tr#product_" + product_id.toString()).html()
+      $('#products_to_add').append '<tr>' + row + '</tr>'
+    $(".save_button").attr("disabled", false)
+  
+  $('body').on 'click', '.remove_product', (event) ->
+    event.preventDefault()
+    $(this).closest('tr').remove()
+    if $("#products_to_add tr").length == 1
+      $(".save_button").attr("disabled", true)

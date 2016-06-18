@@ -1,0 +1,19 @@
+%h5 Productos a agregar
+
+= form_for [@product, Product.new], url: product_related_products_path(@product, Product.new) do |f|
+  %div.table-responsive
+    %table.table.table-striped#products_to_add
+      %thead
+        %th Nombre
+        %th Colección
+        %th Marca
+        %th Equipo
+      %tbody
+
+  
+  = f.submit "Guardar", class: "btn btn-sm btn-primary save_button", disabled: true
+    
+
+
+  
+

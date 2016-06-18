@@ -1,0 +1,24 @@
+%div.ibox-content
+  %div.row.right
+    = search_form_for @q, remote: true, url: new_product_related_product_path(@product) do |f|
+      %div.col-sm-4.mb-xs
+        = f.select :collection_id_eq, collections_combo, {include_blank: "Colección"}, {class: "input-sm form-control input-s-sm inline"}
+      %div.col-sm-4.mb-xs
+        = f.text_field :name_cont, placeholder: "Nombre", class: "input-sm form-control"
+      %div.col-sm-4
+        %div.input-group
+          %span.input-group-btn
+            = f.submit "Buscar", class: "btn btn-sm btn-primary"
+
+  %br
+  %div.table-responsive
+    %table.table.table-striped
+      %thead
+        %th Nombre
+        %th Colección
+        %th Marca
+        %th Equipo
+        %th
+      %tbody#all_products_result
+        = render 'all_products', products: @products
+

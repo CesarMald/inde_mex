@@ -2,23 +2,24 @@
   %h5= "Orden: #{@order.id}"
 
 %div.ibox-title
-  %h5= "Cliente: #{@order.user.email}"
+  %h5= "Cliente: #{@order.user.complete_name} / #{@order.user.email}"
 
 %div.ibox-content
 
+  
   %div.table-response
     %table.table.table-striped
       %thead
+        %th
         %th Producto
-        %th Código
         %th Cantidad
         %th Precio
         %th Total
       %tbody
         - @line_items.each do |line_item|
           %tr
+            %td= image_tag line_item.product.main_picture, style: "max-width: 180px"
             %td= line_item.product.name
-            %td= line_item.product.code
             %td= line_item.quantity
             - if @order.user.regular?
               %td= number_to_currency(line_item.product.offer_price)
@@ -27,13 +28,31 @@
             %td= number_to_currency(line_item.total, precision: 2)
         %tr
           %td
-            %strong Total
           %td
           %td
             %strong= @line_items.sum(:quantity)
+          %td Subtotal
           %td
             %strong= number_to_currency(@order.subtotal)
+        %tr
+          %td{colspan: "3"}
+          %td Envio
+          %td
+            %strong= number_to_currency(@order.shipping_price)
+        %tr
+          %td{colspan: "3"}
+          %td IVA
+          %td
+            %strong= number_to_currency(@order.tax_price)
+        %tr
+          %td{colspan: "3"}
+          %td Total
           %td
             %strong= number_to_currency(@order.total)
 
+
+%div
+  = link_to "Editar", edit_order_path(@order), class: "btn btn-sm btn-primary"
+  = link_to "Enviar Cotización", send_to_client_order_path(@order), class: "btn btn-sm btn-primary"
+  = link_to "Completar Orden", complete_order_path(@order), class: "btn btn-sm btn-primary"
 

@@ -15,10 +15,10 @@ class CartsController < ApplicationController
 
   def complete
     @order = Order.find(session[:cart_id])
-    @order.update_attribute(:status, "completed")
+    @order.update_attribute(:status, "in_progress")
     session[:cart_id] = nil
     flash[:notice] = "Se ha enviado la cotización correctamente"
-    OrderMailer.send_confirmation(@order, current_user).deliver_now
+    OrderMailer.send_confirmation(@order).deliver_now
     redirect_to root_path
   end
 

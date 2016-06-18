@@ -5,7 +5,7 @@
   %div.row
     = search_form_for @q, remote: true do |f|
       %div.col-sm-4.mb-xs
-        = f. select :status_eq, options_for_select(order_status_combo, "completed"), {}, {class: "input-sm form-control input-s-sm inline"}
+        = f. select :status_eq, options_for_select(order_status_combo, "in_progress"), {}, {class: "input-sm form-control input-s-sm inline"}
       %div.col-sm-4.mb-xs
         = f.select :user_id_eq, users_combo, { include_blank: "Cliente"}, {class: "input-sm form-control input-s-sm inline"}
       

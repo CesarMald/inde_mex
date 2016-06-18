@@ -2,7 +2,7 @@
   = hidden_field_tag "product_id", @product.id
   - if @product.errors.any? 
     %div#error_explanation
-      %h2= pluralize(@product.errors.count, "error") + "prohibited this product from being saved:"
+      %h2= pluralize(@product.errors.count, "error") + " impidieron que el producto se guardara: "
       %ul
         - @product.errors.full_messages.each do |message| 
           %li= message

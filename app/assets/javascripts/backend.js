@@ -20,8 +20,10 @@
 //= require jquery-ui
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require numeral.min.js
 //= require products
 //= require pictures
 //= require slider_brands
+//= require orders
 //= require turbolinks
 

@@ -2,6 +2,6 @@
 class OrderMailerPreview < ActionMailer::Preview
 
   def send_confirmation
-    OrderMailer.send_confirmation(Order.completed.first, User.regular.first)
+    OrderMailer.send_confirmation(Order.in_progress.last)
   end
 end

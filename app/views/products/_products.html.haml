@@ -11,7 +11,9 @@
     %td= number_to_currency(product.regular_price, precision: 2)
     %td= number_to_currency(product.merchant_price, precision: 2)
     %td= number_to_currency(product.premium_price, precision: 2)
-    %td= number_to_currency(product.offer_price, precision: 2)
+    %td
+      - if product.on_offer?
+        = number_to_currency(product.offer_price, precision: 2)
     %td
       = link_to edit_product_path(product), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy

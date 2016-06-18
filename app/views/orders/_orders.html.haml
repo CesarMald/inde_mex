@@ -7,5 +7,12 @@
     %td= number_to_currency(order.subtotal, precision: 2)
     %td= number_to_currency(order.total, precision: 2)
     %td
+      = link_to edit_order_path(order), class: "ca-actions" do
+        %i.fa.fa-pencil.text-navy
       = link_to order, {method: :delete, data: {confirm: '¿Estás seguro?'}} do
         %i.fa.fa-remove.text-navy 
+
+      - if order.in_progress?
+        = link_to "Completar", complete_order_path(order)
+
+

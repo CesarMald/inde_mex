@@ -44,7 +44,7 @@ class OrdersController < AdminController
     @order = Order.find(params[:id])
     flash[:notice] = "Se ha enviado la cotización correctamente"
     OrderMailer.send_confirmation(@order).deliver_now
-    redirect_to root_path
+    redirect_to orders_path
   end
 
   private
@@ -55,7 +55,7 @@ class OrdersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:shipping_price, :tax_price, line_items_attributes: [:id, :quantity] )
+      params.require(:order).permit(:shipping_price, :tax_price, line_items_attributes: [:id, :quantity, :total] )
     end
 
     def ransack_params

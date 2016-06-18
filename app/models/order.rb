@@ -30,6 +30,7 @@ class Order < ActiveRecord::Base
   def update_total
     self.shipping_price ||= 0.0
     self.tax_price ||= 0.0
+    update_column(:subtotal, line_items.sum(:total))
     update_column(:total, shipping_price + tax_price + subtotal)
   end
 end

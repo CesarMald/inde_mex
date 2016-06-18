@@ -12,20 +12,19 @@
           %th Total
         %tbody
           - line_items.each do |line_item|
-            %tr
-              = hidden_field_tag "product_price", line_item.price, class: "product_price"
-              = hidden_field_tag "alt_total_line_item", line_item.total, class: "alt_total_line_item"
-              %td= image_tag line_item.product.main_picture, style: "max-width: 180px"
-              %td= line_item.product.name
-              %td
-                = f.fields_for :line_items, line_item do |line_item|
-                  = line_item.number_field :quantity, class: "order_line_item_quantity"
-              %td
-                - if @order.user.regular?
-                  = number_to_currency(line_item.product.offer_price)
-                - else
-                  = number_to_currency(line_item.product.premium_price)
-              %td{class: "total_line_item"}= number_to_currency(line_item.total, precision: 2)
+            = f.fields_for :line_items, line_item do |f_line_item|
+              %tr
+                = hidden_field_tag "product_price", line_item.price, class: "product_price"
+                = f_line_item.hidden_field :total, class: "alt_total_line_item"
+                %td= image_tag line_item.product.main_picture, style: "max-width: 180px"
+                %td= line_item.product.name
+                %td= f_line_item.number_field :quantity, class: "order_line_item_quantity"
+                %td
+                  - if @order.user.regular?
+                    = number_to_currency(line_item.product.offer_price)
+                  - else
+                    = number_to_currency(line_item.product.premium_price)
+                %td{class: "total_line_item"}= number_to_currency(line_item.total, precision: 2)
           %tr
             %td
             %td

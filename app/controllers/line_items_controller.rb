@@ -69,8 +69,7 @@ class LineItemsController < ApplicationController
 
   def update_price_for_order
     subtotal = @order.line_items.sum(:total)
-    total = subtotal + (subtotal * 0.16)
-    @order.update_attributes(subtotal: subtotal, total: total)
+    @order.update_attributes(subtotal: subtotal, total: subtotal)
   end
 
   def line_item_update_attributes

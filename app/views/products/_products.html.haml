@@ -3,7 +3,8 @@
     %td= product.id
     %td
       = product.name
-      %small= offer_label(product)
+      - if product.on_offer
+        %small= offer_label(product)
     %td= product.code
     %td= product.collection.name.titleize
     %td= product.brand.name.titleize

@@ -4,8 +4,8 @@
       = render 'pictures_slider', pictures: @product.pictures, product: @product
       = render 'product_detail', product: @product
 
-    %div.row
-      %h4.uppercase.mb8 Descripción
+    %div
+      %h5.uppercase.mb8.fing Descripción
       %div
         %p= @product.description
 
@@ -13,6 +13,6 @@
   %div.container
     %div.row
       %div.col-sm-12
-        %h4.uppercase.mb80.mb-xs-40 You May Also Like
+        %h5.uppercase.mb-xs-40 También te puede interesar
     %div.row
       = render 'related_products', products: @product.related_products unless @product.related_products.empty?

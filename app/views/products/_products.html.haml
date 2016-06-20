@@ -3,7 +3,8 @@
     %td= product.id
     %td
       = product.name
-      %small= offer_label(product)
+      - if product.on_offer
+        %small= offer_label(product)
     %td= product.code
     %td= product.collection.name.titleize
     %td= product.brand.name.titleize
@@ -18,8 +19,11 @@
       = link_to edit_product_path(product), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       - if product.active?
-        = link_to "Desactivar", deactivate_product_path(product)
+        = link_to deactivate_product_path(product), class: "ca-actions" do
+          %i.fa.fa-check-circle.text-navy
       - else
-        = link_to "Activar", activate_product_path(product)
+        = link_to activate_product_path(product), class: "ca-actions" do
+          %i.fa.fa-check-circle-o.text-navy
 
-      = link_to "Relacionados", product_related_products_path(product)
+      = link_to product_related_products_path(product), class: "ca-actions" do
+        %i.fa.fa-exchange.text-navy

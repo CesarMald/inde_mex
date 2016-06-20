@@ -1,7 +1,6 @@
 %div.ibox-title
   %h5= "Asociar productos a: " + @product.name
-%br
-= link_to "Atrás", product_related_products_path(@product)
+  = link_to "Regresar", product_related_products_path(@product), class: "btn btn-sm btn-primary bck-btn"
 
 = render 'search_section'
 = render 'hidden_table', related_products: @products

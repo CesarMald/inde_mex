@@ -7,6 +7,8 @@
       = link_to edit_model_path(model), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       - if model.active?
-        = link_to "Desactivar", deactivate_model_path(model)
+        = link_to deactivate_model_path(model), class: "ca-actions" do
+          %i.fa.fa-check-circle.text-navy
       - else
-        = link_to "Activar", activate_model_path(model)
+        = link_to activate_model_path(model), class: "ca-actions" do
+          %i.fa.fa-check-circle-o.text-navy

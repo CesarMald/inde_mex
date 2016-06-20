@@ -4,7 +4,7 @@
 
 %div.ibox-content
   %div.row.right
-    = search_form_for @q, remote: true do |f|
+    = search_form_for @q, url: product_related_products_path(@product), remote: true do |f|
       %div.col-sm-4.mb-xs
         = f.select :collection_id_eq, collections_combo, {include_blank: "Colección"}, {class: "input-sm form-control input-s-sm inline"}
       %div.col-sm-4.mb-xs

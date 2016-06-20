@@ -1,5 +1,5 @@
 %div.ibox-title
-  %h5= "Orden: #{@order.id}"
+  %h5= "Número de Orden: #{@order.id}"
 
 %div.ibox-title
   %h5= "Cliente: #{@order.user.complete_name} / #{@order.user.email}"
@@ -8,9 +8,9 @@
 
   
   %div.table-response
-    %table.table.table-striped
+    %table.table.mid-table
       %thead
-        %th
+        %th Imagen
         %th Producto
         %th Cantidad
         %th Precio
@@ -26,7 +26,7 @@
             - else
               %td= number_to_currency(line_item.product.premium_price)
             %td= number_to_currency(line_item.total, precision: 2)
-        %tr
+        %tr.hls
           %td
           %td
           %td
@@ -44,15 +44,15 @@
           %td IVA
           %td
             %strong= number_to_currency(@order.tax_price)
-        %tr
+        %tr.tot
           %td{colspan: "3"}
           %td Total
           %td
             %strong= number_to_currency(@order.total)
 
 
-%div
-  = link_to "Editar", edit_order_path(@order), class: "btn btn-sm btn-primary"
-  = link_to "Enviar Cotización", send_to_client_order_path(@order), class: "btn btn-sm btn-primary"
-  = link_to "Completar Orden", complete_order_path(@order), class: "btn btn-sm btn-primary"
+  %div
+    = link_to "Editar", edit_order_path(@order), class: "btn btn-sm btn-primary"
+    = link_to "Enviar Cotización", send_to_client_order_path(@order), class: "btn btn-sm btn-primary"
+    = link_to "Completar Orden", complete_order_path(@order), class: "btn btn-sm btn-primary ca-suc"
 

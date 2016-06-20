@@ -45,9 +45,10 @@
   
   %div.col-sm-4
     %div.form-group
-      %label
-        = f.check_box :on_offer
-        Producto en Oferta
+      %div.beans
+        %label
+          = f.check_box :on_offer
+          Producto en Oferta
 
   %div{class: "col-sm-4", style: "#{offer_display_field(@product)}", id: "offer_fields"}
     %div.form-group

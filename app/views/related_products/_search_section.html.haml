@@ -8,7 +8,7 @@
       %div.col-sm-4
         %div.input-group
           %span.input-group-btn
-            = f.submit "Buscar", class: "btn btn-sm btn-primary"
+            = f.submit "Buscar", class: "btn btn-sm btn-primary srch"
 
   %br
   %div.table-responsive
@@ -18,7 +18,7 @@
         %th Colección
         %th Marca
         %th Equipo
-        %th
+        %th.psul Agregar
       %tbody#all_products_result
         = render 'all_products', products: @products
 

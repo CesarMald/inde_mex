@@ -27,10 +27,14 @@
                 <% end %>
               </li>
               <li>
+                <%= link_to root_path do %>
+                  <i class="fa fa-shopping-cart"></i> Tienda
+                <% end%>
+              </li>
+              <li>
                 <%= link_to destroy_user_session_path, {method: :delete} do %>
                   <i class="fa fa-sign-out"></i> Logout
                 <% end%>
-                  
               </li>
             </ul>
           </nav>

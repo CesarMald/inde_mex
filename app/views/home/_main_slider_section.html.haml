@@ -2,7 +2,7 @@
   %ul.slides
     - sliders.each do |slider|
       %li.overlay.image-bg.bg-light
-        = link_to slider.url_link do
+        = link_to slider.url_link, class: "anchor-set" do
           .background-image-holder
             = image_tag slider.main_picture, alt: "image", class: "background-image"
           .container.v-align-transform

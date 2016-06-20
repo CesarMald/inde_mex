@@ -7,13 +7,15 @@
     = search_form_for @q, remote: true do |f|
       %div.col-sm-4.mb-xs
         = f.text_field :name_cont, { placeholder: "Search", class: "input-sm form-control"}
-      %div.col-sm-4.mb-xs
-        = "Mostrar inactivos"
-        = f.check_box :active_false, {}, "1", nil
       %div.col-sm-4
         %div.input-group
           %span.input-group-btn
-            = f.submit "Buscar", class: "btn btn-sm btn-primary" 
+            = f.submit "Buscar", class: "btn btn-sm btn-primary srch" 
+      %div.col-sm-4.mb-xs
+        %div.bg-shad
+          = f.check_box :active_false, {}, "1", nil
+          %label Mostrar Inactivos 
+      
 
 
   %div.table-responsive

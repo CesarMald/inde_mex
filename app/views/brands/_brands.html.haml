@@ -6,6 +6,8 @@
       = link_to edit_brand_path(brand), class: "ca-actions" do
         %i.fa.fa-pencil.text-navy
       - if brand.active?
-        = link_to "Desactivar", deactivate_brand_path(brand)
+        = link_to deactivate_brand_path(brand), class: "ca-actions" do
+          %i.fa.fa-check-circle.text-navy
       - else
-        = link_to "Activar", activate_brand_path(brand)
+        = link_to activate_brand_path(brand), class: "ca-actions" do
+          %i.fa.fa-check-circle-o.text-navy

@@ -13,6 +13,7 @@
         %i.fa.fa-remove.text-navy 
 
       - if order.in_progress?
-        = link_to "Completar", complete_order_path(order)
+        = link_to complete_order_path(order), class: "ca-actions" do
+          %i.fa.fa-check.text-navy
 
 

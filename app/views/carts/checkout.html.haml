@@ -32,5 +32,5 @@
               %td.text-center
                 %strong= number_to_currency(@order.total, precision: 2)
         %form.halves.text-center
-          = link_to "Regresar", detail_cart_path(@order), class: "btn btn-lg pull left"
-          = link_to "Enviar Cotización", complete_cart_path(@order), class: "btn btn-lg pull-right"
+          = link_to "Regresar", detail_cart_path(@order), class: "btn-smi"
+          = link_to "Enviar Cotización", complete_cart_path(@order), class: "btn-smi"

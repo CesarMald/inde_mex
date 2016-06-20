@@ -1,12 +1,16 @@
 %div.row
   %div.col-sm-12
     %h4= brand.name
+    %hr
 
-  %div.row.masonry
-    - models.active.each do |model| 
-      %div.col-md-3.col-sm-4.masonry-item.col-xs-6
-        %div.image-tile.outer-title.text-center.rif
-          = link_to model_section_path(model) do
-            = image_tag model.main_picture, class: "product-thumb"
-          %div.title
-            %h5.mb0.m-name= model.name.titleize
+  %div.row
+    %div.col-sm-12
+      %div.masonry
+        - models.active.each do |model| 
+          %div.col-md-3.col-sm-4.masonry-item.col-xs-6
+            %div.cherry
+              %div.image-tile.outer-title.text-center.rif
+                = link_to model_section_path(model) do
+                  = image_tag model.main_picture, class: "product-thumb"
+                %div.title
+                  %h5.mb0.m-name= model.name.titleize

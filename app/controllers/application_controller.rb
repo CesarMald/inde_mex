@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :load_base_objects, if: :devise_controller?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -25,6 +26,25 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
+  end
+
+  def load_base_objects
+    @brands = Brand.active.includes(:models)
+    @collections = Collection.all.each_slice(Collection.count / 2)
+    @q = Product.active.ransack(params[:q])
+    if user_signed_in?
+      session[:cart_id] = find_or_initialize_cart
+      @current_cart ||= Order.find(session[:cart_id])
+      @line_item = @current_cart.line_items.build
+    end
+  end
+
+  def find_or_initialize_cart
+    if session[:cart_id].nil?
+      order = current_user.orders.create
+      session[:cart_id] = order.id
+    end
+    session[:cart_id]
   end
 
 end

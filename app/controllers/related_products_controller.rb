@@ -7,7 +7,7 @@ class RelatedProductsController < AdminController
   end
 
   def new
-    @q = Product.where.not(id: @product.related_product_ids).ransack(params[:q])
+    @q = Product.where.not(id: [@product.related_product_ids, @product.id]).ransack(params[:q])
     @products = @q.result(distinct: true)
   end
 

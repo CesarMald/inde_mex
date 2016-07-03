@@ -1,0 +1,11 @@
+- products.each do |product|
+  %tr
+    %td= product.name
+    %td= product.collection.name.titleize
+    %td= product.brand.name.titleize
+    %td= product.model.name.titleize
+    %td
+      = link_to "#", class: "add_product" do
+        %i.fa.fa-plus-circle.text-navy.cntr
+      = hidden_field_tag "product_id", product.id, class: "product_id"
+

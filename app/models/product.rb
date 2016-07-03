@@ -1,10 +1,14 @@
 class Product < ActiveRecord::Base
+  OTHER_COLORS = "other_colors"
+  YOU_MAY_ALSO_LIKE = "you_may_also_like"
+  BOTH = "both"
 
   has_one :brand, through: :model
   belongs_to :collection
   belongs_to :model
   has_many :line_items
   has_and_belongs_to_many(:related_products, join_table: "product_connections", foreign_key: "product_a_id", association_foreign_key: "product_b_id", class_name: "Product")
+  has_and_belongs_to_many(:similar_products, join_table: "similar_products", foreign_key: "product_a_id", association_foreign_key: "product_b_id", class_name: "Product")
   has_many :pictures, as: :picturable, dependent: :destroy
 
   before_validation :set_offer_price_as_zero

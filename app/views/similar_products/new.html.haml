@@ -1,0 +1,11 @@
+%div.ibox-title
+  %h5= "Asociar productos a: " + @product.name
+  = link_to "Regresar", product_similar_products_path(@product), class: "btn btn-sm btn-primary bck-btn"
+
+= render 'search_section'
+= render 'hidden_table', related_products: @products
+%br
+%div.ibox-content.ca-forms-god
+  %div.row
+    = render 'form'
+

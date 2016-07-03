@@ -1,0 +1,13 @@
+%table#template_table{style: "display:none"}
+  %tbody
+    - related_products.each do |product|
+      %tr{id: "product_#{product.id}"}
+        = hidden_field_tag "related_product_id_#{product.id}", product.id, class: "related_product_id_#{product.id}"
+        %td= product.name
+        %td= product.collection.name.titleize
+        %td= product.brand.name.titleize
+        %td= product.model.name.titleize
+        %td
+          = link_to "#" do
+            %i.fa.fa-remove.text-navy.remove_product
+

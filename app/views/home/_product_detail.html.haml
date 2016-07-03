@@ -10,6 +10,14 @@
         %span.number.price= price_for_product(product, current_user) 
       - else
         %span.number.price= number_to_currency(product.regular_price, precision: 2)
+    - if @product.similar_products.any?
+      %p.mb8.mt40 Otros Colores
+      %ul.other-colors
+        - @product.similar_products.each do |s_product|
+          %li
+            = link_to product_section_path(s_product) do
+              = image_tag s_product.main_picture, class: "product-thumb"
+
     - if user_signed_in?
       = form_for @line_item, url: cart_line_items_path(@current_cart), html: {class: "add-to-cart"} do |f|
         = f.hidden_field :product_id, value: @product.id

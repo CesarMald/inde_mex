@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     resources :products, except: :destroy do
       get 'activate', on: :member
       get 'deactivate', on: :member
-      resources :related_products, path: 'related' 
+      resources :related_products, path: 'related'
+      resources :similar_products, path: 'similar'
     end
     resources :pictures, only: [:create, :destroy]
     resources :sliders, only: [:index, :update]

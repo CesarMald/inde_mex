@@ -52,7 +52,7 @@ class HomeController < ApplicationController
   def offer_section
     @products = active_products.on_offer
     @offer_builder = OfferBuilder.first
-    search_products_based_on_price if params[:product_order].present?
+    sort_offer_products if params[:product_order].present?
   end
 
   def contact_section
@@ -81,23 +81,21 @@ class HomeController < ApplicationController
     @q = Product.active.ransack(params[:q])
   end
 
-  def search_products_based_on_price
-    direction = (params[:product_order] == "highest") ? "DESC" : "ASC"
-    if params[:action] == "offer_section"
-      @products = @products.order("#{sort_by} #{direction}")
-    else
-      @products = @products.unscoped.order("#{sort_by} #{direction}")
+  def sort_offer_products
+    @products = @products.sort_by { |product| product.offer_price } 
+    if params[:product_order] == "highest"
+      @products.reverse! 
     end
-    @product = @products.active
   end
 
-  def sort_by
-    case 
-    when current_user.nil? then "regular_price"
-    when current_user.premium? then "premium_price"
-    when current_user.regular? then "offer_price"
+  def search_products_based_on_price
+    @products = @products.sort_by { |product| product.assigned_price(current_user) }
+    if params[:product_order] == "highest"
+      @products.reverse! 
     end
   end
+
+  
 
   def load_current_cart
     if user_signed_in?

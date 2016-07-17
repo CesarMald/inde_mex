@@ -3,7 +3,7 @@
     %div.image-tile.outer-title.text-center
       - if type == "newest"
         %span.label Nuevo
-      - elsif product.on_offer?
+      - elsif product.on_offer? && user_signed_in?
         %span.label.deal-label Sale
       = link_to product_section_path(product) do
         = image_tag product.main_picture, class: "product-thumb"

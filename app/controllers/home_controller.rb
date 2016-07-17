@@ -4,7 +4,7 @@ class HomeController < ApplicationController
  before_filter :load_current_cart
 
   def index
-    @sliders = Slider.includes(:picture)
+    @sliders = Slider.includes(:picture).order(:created_at)
     @slider_brand = SliderBrand.first
     @items = @slider_brand.items.includes(:picture)
     @complete_banners = Banner.includes(:picture).complete.order(:position)

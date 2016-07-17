@@ -4,7 +4,7 @@ class HomeController < ApplicationController
  before_filter :load_current_cart
 
   def index
-    @sliders = Slider.includes(:picture)
+    @sliders = Slider.includes(:picture).order(:created_at)
     @slider_brand = SliderBrand.first
     @items = @slider_brand.items.includes(:picture)
     @complete_banners = Banner.includes(:picture).complete.order(:position)
@@ -34,7 +34,12 @@ class HomeController < ApplicationController
 
   def collection_section
     @collection = Collection.find(params[:id])
-    @products = active_products.where(collection_id: @collection.id)
+    if params[:form_model_id].present?
+      @products = active_products.where(collection_id: @collection.id, model_id: params[:form_model_id])
+    else
+      @products = active_products.where(collection_id: @collection.id)
+    end
+    @models_for_product= {}
     search_products_based_on_price if params[:product_order].present?
   end
 
@@ -52,7 +57,7 @@ class HomeController < ApplicationController
   def offer_section
     @products = active_products.on_offer
     @offer_builder = OfferBuilder.first
-    search_products_based_on_price if params[:product_order].present?
+    sort_offer_products if params[:product_order].present?
   end
 
   def contact_section
@@ -73,6 +78,18 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
 
+  def models_for_brand
+    @collection = Collection.find(params[:collection_id])
+    @brand = Brand.find(params[:brand_id])
+    @models_for_product = @brand.models.map { |model| [model.name.titleize, model.id] }
+  end
+
+  def products_for_model
+    @collection = Collection.find(params[:collection_id])
+    @model = Model.find(params[:model_id])
+    @products = Product.where(collection_id: @collection.id, model_id: @model.id)
+  end
+
   private 
 
   def load_core_objects
@@ -81,23 +98,21 @@ class HomeController < ApplicationController
     @q = Product.active.ransack(params[:q])
   end
 
-  def search_products_based_on_price
-    direction = (params[:product_order] == "highest") ? "DESC" : "ASC"
-    if params[:action] == "offer_section"
-      @products = @products.order("#{sort_by} #{direction}")
-    else
-      @products = @products.unscoped.order("#{sort_by} #{direction}")
+  def sort_offer_products
+    @products = @products.sort_by { |product| product.offer_price } 
+    if params[:product_order] == "highest"
+      @products.reverse! 
     end
-    @product = @products.active
   end
 
-  def sort_by
-    case 
-    when current_user.nil? then "regular_price"
-    when current_user.premium? then "premium_price"
-    when current_user.regular? then "offer_price"
+  def search_products_based_on_price
+    @products = @products.sort_by { |product| product.assigned_price(current_user) }
+    if params[:product_order] == "highest"
+      @products.reverse! 
     end
   end
+
+  
 
   def load_current_cart
     if user_signed_in?

@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get 'contactanos' => 'home#contact_section', as: :contact_section
   get 'search_section' => 'home#search_section', as: :search_section
   get 'make_contact' => 'home#make_contact', as: :make_contact
+  get 'models_for_brand' => 'home#models_for_brand', as: :models_for_brand
+  get 'products_for_model' => 'home#products_for_model', as: :products_for_model
   
   resources :newsletters, only: [:create, :index, :destroy]
   resources :customers, only: [:edit, :update]

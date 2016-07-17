@@ -41,5 +41,26 @@
         }
       ]
      });
+    $('.brand-filter').slick({
+      infinite: true,
+      autoplay: false,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots:false,
+      responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        dots:true,
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
   </script>
+
 </html>

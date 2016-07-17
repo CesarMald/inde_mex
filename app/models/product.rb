@@ -32,6 +32,24 @@ class Product < ActiveRecord::Base
   def can_be_activated?
     brand.active? && model.active?
   end
+  
+  def assigned_price user 
+    first_price = official_price(user)
+    if on_offer?
+      offer_price
+    else
+      send(first_price)
+    end
+  end
+
+   def official_price current_user
+    case 
+    when current_user.nil? then :regular_price
+    when current_user.premium? then :premium_price
+    when current_user.regular? then :merchant_price
+    end
+  end
+
 
   private
 

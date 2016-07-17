@@ -34,7 +34,12 @@ class HomeController < ApplicationController
 
   def collection_section
     @collection = Collection.find(params[:id])
-    @products = active_products.where(collection_id: @collection.id)
+    if params[:form_model_id].present?
+      @products = active_products.where(collection_id: @collection.id, model_id: params[:form_model_id])
+    else
+      @products = active_products.where(collection_id: @collection.id)
+    end
+    @models_for_product= {}
     search_products_based_on_price if params[:product_order].present?
   end
 
@@ -71,6 +76,18 @@ class HomeController < ApplicationController
     ContactMailer.send_notification_to_admin(name, email, tel, message).deliver_now
     flash[:notice] = "Gracias por contactarnos. Te responderemos pronto"
     redirect_to root_path
+  end
+
+  def models_for_brand
+    @collection = Collection.find(params[:collection_id])
+    @brand = Brand.find(params[:brand_id])
+    @models_for_product = @brand.models.map { |model| [model.name.titleize, model.id] }
+  end
+
+  def products_for_model
+    @collection = Collection.find(params[:collection_id])
+    @model = Model.find(params[:model_id])
+    @products = Product.where(collection_id: @collection.id, model_id: @model.id)
   end
 
   private 

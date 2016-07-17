@@ -2,6 +2,33 @@
   %div.background-image-holder
     = image_tag @collection.main_picture, class: "background-image"
 
+%section#products-filters.device-filter
+  = hidden_field_tag "collection_id", @collection.id
+  .container
+    .row
+      .col-md-6
+        .col-md-12
+          .brand-filter
+            - @brands.each do |brand|
+              %div.brand_sections
+                = hidden_field_tag "brand_id", brand.id 
+                .checkbox-slide
+                  %input.checks{name: "check_brand_#{brand.id}", type: "checkbox", value: "#{brand.id}", id: "check_brand_#{brand.id}"}/
+                  %label{for: "check_brand_#{brand.id}"}
+                    = image_tag "icon-#{brand.name}.png"
+                  %h6.uppercase.txt-center= brand.name
+           
+        .col-md-12
+          #models_section
+            = render 'select_for_models', models: @models_for_product
+          
+      .col-md-6
+        .v-center.ca-instructions
+          %h3.mb0.inline-block.uppercase Instrucciones
+          %p.lead
+            Selecciona la marca de tu equipo haciendo clic en el teléfono, en la parte de abajo escoge tu modelo y comienza a comprar
+            tus accesorios favoritos.
+
 %section.sps
   %div.container
     %div.row
@@ -14,6 +41,7 @@
           %i.ti-angle-down
           = form_tag collection_section_path, id: "products_sort", method: :get, remote: true do
             = select_tag "product_order", options_for_select(products_order_combo), prompt: "Sort by"
+            = hidden_field_tag "form_model_id", nil
            
     %div.row
       %div.col-sm-12

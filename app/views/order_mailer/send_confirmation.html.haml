@@ -73,15 +73,7 @@
               %td{style: 'text-align: left; border-bottom:1px solid #ccc;'}= line_item.product.name
               %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}= line_item.product.code
               %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}= line_item.quantity
-              %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}
-                - if line_item.product.on_offer?
-                  = number_to_currency(line_item.product.offer_price, precision: 2)
-                - else
-                  - if @user.regular?
-                    = number_to_currency(line_item.product.merchant_price, precision: 2)
-                  - else
-                    = number_to_currency(line_item.product.premium_price, precision: 2)
-
+              %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}= number_to_currency(line_item.price, precision: 2)
               %td{style: 'text-align: right; border-bottom:1px solid #ccc;'}= number_to_currency(line_item.total, precision: 2)
           %tr
             %td{scope: "row", style: 'font-weight: bold;'} Totales

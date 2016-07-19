@@ -20,10 +20,7 @@
                 %td= line_item.product.name
                 %td= f_line_item.number_field :quantity, class: "order_line_item_quantity"
                 %td
-                  - if @order.user.regular?
-                    = number_to_currency(line_item.product.offer_price)
-                  - else
-                    = number_to_currency(line_item.product.premium_price)
+                  = number_to_currency(line_item.price, precision: 2)
                 %td{class: "total_line_item"}= number_to_currency(line_item.total, precision: 2)
           %tr.hls
             %td

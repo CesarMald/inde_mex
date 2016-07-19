@@ -21,10 +21,7 @@
             %td= image_tag line_item.product.main_picture, style: "max-width: 180px"
             %td= line_item.product.name
             %td= line_item.quantity
-            - if @order.user.regular?
-              %td= number_to_currency(line_item.product.offer_price)
-            - else
-              %td= number_to_currency(line_item.product.premium_price)
+            %td= number_to_currency(line_item.price, precision: 2)
             %td= number_to_currency(line_item.total, precision: 2)
         %tr.hls
           %td

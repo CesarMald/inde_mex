@@ -1,5 +1,5 @@
 jQuery ->
-  if $(".product_quantity").length > 1
+  if $(".product_quantity").length > 0
     $(".product_quantity").focusout ->
       updateSections($(this)) 
     

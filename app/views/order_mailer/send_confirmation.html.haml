@@ -47,91 +47,33 @@
           float: left;
       }
       
-      h4.uppercase {
-          letter-spacing: 3px;
-          margin-right: -3px;
-          font-size:20px;
-            font-weight:bolder;
-      }
-      .uppercase {
-          font-weight: 400;
-          text-transform: uppercase;
-      }
-      .mail-title {
-          border-bottom: 1px solid #D8D8D8;
-          line-height: initial;
-          margin-bottom: 0;
-          padding-bottom: 15px;
-          font-family: 'Raleway',"Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .ca-order-number {
-          float: right;
-          margin-top: 10px;
-          margin-bottom: 0;
-          margin-right: 10px;
-          font-family: 'Raleway',"Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      
-      p, span {
-          font-weight: 400;
-      }
-      
-      .table {
-          width: 100%;
-          max-width: 100%;
-          margin-bottom: 20px;
-          font-family: 'Raleway',"Helvetica Neue", Helvetica, Arial, sans-serif;
-            color:#666;
-      }
-      
-      .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-          padding: 8px;
-          line-height: 1.42857143;
-          vertical-align: top;
-          border-top: 1px solid #ddd;
-      }
-      
-      .text-center {
-          text-align: center;
-      }
-      
-      th, td {
-          line-height: 24px !important;
-      }
-      .col-md-offset-2 div img{
-          max-width: 100px;
-      }
-      .table td img{
-          width: 20%;
-          min-width: 100px;
-      }
   %body
     %section
       .container
         .row
           .col-md-8.col-md-offset-2
             %div
-              %h4.uppercase.text-center.mail-title Cotización
-              = image_tag "https://cloud.githubusercontent.com/assets/4439027/15845807/3576b2d8-2c3c-11e6-910b-2beccb0e7864.png", alt: "idenmex"
-              %p.ca-order-number
+              %h4{style: 'text-align: center; text-transform: uppercase'} Cotización
+              = image_tag "https://cloud.githubusercontent.com/assets/4439027/15845807/3576b2d8-2c3c-11e6-910b-2beccb0e7864.png", style: 'max-width: 100px; float:left;', alt: "idenmex"
+              %p{style: 'float: right; background-color: #565656; padding: 10px; color: #fff; letter-spacing: 1px;'}
                 %strong No. de Orden
                 %span.ca-nu= @order.id 
-      %table.table
+      %table{style: 'width: 100%;'}
         %tbody
           %tr
-            %th{scope: "row"}
-            %th Producto
-            %th.text-center{scope: "row"} Código
-            %th.text-center{scope: "row"} Cantidad
-            %th.text-center{scope: "row"} Precio
-            %th.text-center{scope: "row"} Total
+            %th{scope: "row", style: 'text-align: left; border-bottom:1px solid #ccc;'} Imagen
+            %th{style: 'text-align: left; border-bottom:1px solid #ccc;'} Producto
+            %th{scope: "row", style: 'text-align: center; border-bottom:1px solid #ccc;'} Código
+            %th{scope: "row", style: 'text-align: center; border-bottom:1px solid #ccc;'} Cantidad
+            %th{scope: "row", style: 'text-align: center; border-bottom:1px solid #ccc;'} Precio
+            %th{scope: "row", style: 'text-align: right; border-bottom:1px solid #ccc;'} Total
           - @line_items.each do |line_item|
             %tr
-              %td= image_tag @server_name + line_item.product.main_picture
-              %td= line_item.product.name
-              %td.text-center= line_item.product.code
-              %td.text-center= line_item.quantity
-              %td.text-center
+              %td{style: 'border-bottom:1px solid #ccc;'}= image_tag @server_name + line_item.product.main_picture, style: "max-width: 70px"
+              %td{style: 'text-align: left; border-bottom:1px solid #ccc;'}= line_item.product.name
+              %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}= line_item.product.code
+              %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}= line_item.quantity
+              %td{style: 'text-align: center; border-bottom:1px solid #ccc;'}
                 - if line_item.product.on_offer?
                   = number_to_currency(line_item.product.offer_price, precision: 2)
                 - else
@@ -140,30 +82,30 @@
                   - else
                     = number_to_currency(line_item.product.premium_price, precision: 2)
 
-              %td.text-center= number_to_currency(line_item.total, precision: 2)
+              %td{style: 'text-align: right; border-bottom:1px solid #ccc;'}= number_to_currency(line_item.total, precision: 2)
           %tr
-            %td{scope: "row"} Total
+            %td{scope: "row", style: 'font-weight: bold;'} Totales
             %td
             %td
-            %td.text-center
+            %td{style: 'text-align: center;'}
               %strong= @line_items.sum(:quantity)
-            %td Subtotal
-            %td.text-center
-              %strong= number_to_currency(@order.subtotal, precision: 2)
+            %td{style: 'text-align: right; font-weight: bold; border-bottom:1px solid #e8e8e8;'} Subtotal
+            %td{style: 'text-align: right; border-bottom:1px solid #e8e8e8;'}
+              %strong{style: 'text-align: right;'}= number_to_currency(@order.subtotal, precision: 2)
           - if @order.shipping_price > 0.0
             %tr
-              %td{colspan: "4"}
-              %td Envío
-              %td
-                %strong= number_to_currency(@order.shipping_price, precision: 2)
+              %td{colspan: "4", style: 'text-align: right;'}
+              %td{style: 'text-align: right; font-weight: bold; border-bottom:1px solid #e8e8e8;'} Envío
+              %td{style: 'text-align: right; border-bottom:1px solid #e8e8e8;'}
+                %strong{style: 'text-align: right;'}= number_to_currency(@order.shipping_price, precision: 2)
           - if @order.tax_price > 0.0
             %tr
-              %td{colspan: "4"}
-              %td IVA
-              %td
-                %strong= number_to_currency(@order.tax_price, precision: 2)
+              %td{colspan: "4", style: 'text-align: right;'}
+              %td{style: 'text-align: right; font-weight: bold;'} IVA
+              %td{style: 'text-align: right; border-bottom:1px solid #e8e8e8;'}
+                %strong{style: 'text-align: right; border-bottom:1px solid #e8e8e8;'}= number_to_currency(@order.tax_price, precision: 2)
           %tr
-            %td{colspan: "4"}
-            %td Total
-            %td
-              %strong= number_to_currency(@order.total, precisin: 2)
+            %td{colspan: "4", style: 'text-align: right;'}
+            %td{style: 'text-align: right; font-weight: bold; border-bottom:1px solid #e8e8e8;'} Total
+            %td{style: 'text-align: right; border-bottom:1px solid #e8e8e8;'}
+              %strong{style: 'text-align: right;'}= number_to_currency(@order.total, precisin: 2)

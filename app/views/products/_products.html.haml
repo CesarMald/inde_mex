@@ -1,6 +1,6 @@
 - products.each do |product|
   %tr
-    %td= image_tag product.main_picture, class: "product-thumb"
+    %td.pxy= image_tag product.main_picture, class: "product-thumb"
     %td= product.id
     %td
       = product.name

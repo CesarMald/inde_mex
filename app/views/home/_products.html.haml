@@ -3,7 +3,7 @@
     %div.image-tile.outer-title.text-center
       - if type == "newest"
         %span.label Nuevo
-      - elsif product.on_offer? && user_signed_in?
+      - elsif product.on_offer? 
         %span.label.deal-label Sale
       = link_to product_section_path(product) do
         = image_tag product.main_picture, class: "product-thumb"
@@ -11,8 +11,7 @@
         %h5.mb0.m-name= product.name
         %p.p-title.mb8= product.description
         %div.price-section
-          - if user_signed_in?
-            %span.mb8.rebate-price= number_to_currency(product.regular_price, precision: 2)
-            %span.mb8.normal-price= price_for_product(product, current_user)
-          - else
-            %span.mb8.normal-price= number_to_currency(product.regular_price, precision: 2)
+          %span{class: "mb8 #{style_for_price(product, current_user)}"}= price_for_product(product, current_user)
+          - if product.on_offer && current_user.nil?
+            %span.mb.normal-price= number_to_currency(product.offer_price, precision: 2)
+

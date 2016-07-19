@@ -6,10 +6,19 @@
       = product.code
     %div.mb32.mb-xs-24
       - if user_signed_in?
-        %span.number.price.old-price= number_to_currency(product.regular_price, precision: 2)
-        %span.number.price= price_for_product(product, current_user) 
+        - if current_user.premium?
+          %span.number.price.old-price= number_to_currency(product.merchant_price, precision: 2)
+          %span.number.price= number_to_currency(product.premium_price, precision: 2)
+        - else
+          %span.number.price= number_to_currency(product.merchant_price, precision: 2)
       - else
-        %span.number.price= number_to_currency(product.regular_price, precision: 2)
+        - if product.on_offer?
+          %span.number.price.old-price= number_to_currency(product.regular_price, precision: 2)
+          %span.number.price= number_to_currency(product.offer_price, precision: 2)
+        - else
+          %span.number.price= number_to_currency(product.regular_price, precision: 2)
+     
+
     - if @product.similar_products.any?
       %p.mb8.mt40 Otros Colores
       %ul.other-colors

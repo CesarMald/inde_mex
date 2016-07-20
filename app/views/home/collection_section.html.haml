@@ -15,7 +15,7 @@
                 .checkbox-slide
                   %input.checks{name: "check_brand_#{brand.id}", type: "checkbox", value: "#{brand.id}", id: "check_brand_#{brand.id}"}/
                   %label{for: "check_brand_#{brand.id}"}
-                    = image_tag "icon-#{brand.name}.png"
+                    = image_tag "icon-#{brand.name.downcase}.png"
                   %h6.uppercase.txt-center= brand.name
            
         .col-md-12

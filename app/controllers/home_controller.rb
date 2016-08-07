@@ -99,14 +99,14 @@ class HomeController < ApplicationController
   end
 
   def sort_offer_products
-    @products = @products.sort_by { |product| product.offer_price } 
+    @products = @products.active.sort_by { |product| product.offer_price } 
     if params[:product_order] == "highest"
       @products.reverse! 
     end
   end
 
   def search_products_based_on_price
-    @products = @products.sort_by { |product| product.assigned_price(current_user) }
+    @products = @products.active.sort_by { |product| product.assigned_price(current_user) }
     if params[:product_order] == "highest"
       @products.reverse! 
     end

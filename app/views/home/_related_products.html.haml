@@ -6,9 +6,7 @@
       %div.title
         %h5= r_product.name
         %div.price-section
-          - if user_signed_in?
-            %span.number.price.old-price= number_to_currency(r_product.regular_price, precision: 2)
-            %span.number.price= price_for_product(r_product, current_user) 
-          - else
-            %span.number.price= number_to_currency(r_product.regular_price, precision: 2)
+          %span{class: "mb8 #{style_for_price(r_product, current_user)}"}= price_for_product(r_product, current_user)
+          - if r_product.on_offer && current_user.nil?
+            %span.mb.normal-price= number_to_currency(r_product.offer_price, precision: 2)
 

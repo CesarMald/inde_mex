@@ -22,7 +22,7 @@
     - if @product.similar_products.any?
       %p.mb8.mt40 Otros Colores
       %ul.other-colors
-        - @product.similar_products.each do |s_product|
+        - @product.similar_products.active.each do |s_product|
           %li
             = link_to product_section_path(s_product) do
               = image_tag s_product.main_picture, class: "product-thumb"

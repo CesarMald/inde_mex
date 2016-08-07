@@ -15,4 +15,4 @@
       %div.col-sm-12
         %h5.uppercase.mb-xs-40 También te puede interesar
     %div.row
-      = render 'related_products', products: @product.related_products unless @product.related_products.empty?
+      = render 'related_products', products: @product.related_products.active unless @product.related_products.active.empty?
